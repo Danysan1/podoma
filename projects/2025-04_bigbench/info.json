@@ -1,32 +1,27 @@
 {
-	"id": 101,
-	"name": "2017-04_electionboard",
-	"title": "Panneaux électoraux",
+	"id": 100,
+	"name": "2025-04_bigbench",
+	"title": "Panchine giganti",
 	"start_date": "2025-04-01",
 	"soft_end_date": "2025-04-30",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#5%C2%B0_settimana_Aprile:_Panchine_giganti",
-		"osmforum": "https://community.openstreetmap.org/t/idee-per-il-weekend-alberi-monumentali/129202"
+		"osmforum": "https://community.openstreetmap.org/t/idee-per-il-weekend-panchine-giganti/129431"
 	},
 	"database": {
-		"osmium_tag_filter": "n/denotation=natural_monument",
+		"osmium_tag_filter": "n/tourism=giant_furniture",
 		"imposm": {
-			"types": [
-				"point",
-				"polygon"
-			],
+			"types": ["point", "polygon"],
 			"mapping": {
-				"denotation": [
-					"natural_monument"
-				]
+				"tourism": ["giant_furniture"]
 			}
 		}
 	},
 	"datasources": [
 		{
 			"source": "osm",
-			"name": "Panneau dans OSM",
-			"description": "Ce panneau électoral existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+			"name": "Arrêt de bus dans OSM",
+			"description": "Cet arrêt de bus existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
 		},
 		{
 			"source": "background",
@@ -47,11 +42,11 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "panneaux",
+		"feature_name": "arrêts de bus",
+		"osmose_tasks": "arrêts de bus complétés/intégrés",
 		"points": {
-			"add": 3,
-			"edit": 1,
-			"note": 1
+			"add": 2,
+			"edit": 2
 		}
 	},
 	"editors": {
