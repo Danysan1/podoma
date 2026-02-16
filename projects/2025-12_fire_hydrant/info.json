@@ -1,0 +1,72 @@
+{
+	"id": 111,
+	"name": "2025-12_fire_hydrant",
+	"title": "Idranti",
+	"start_date": "2025-12-01",
+	"soft_end_date": "2025-12-31",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-dicembre-2025-defibrillatori-e-idranti/138745"
+	},
+	"database": {
+		"osmium_tag_filter": "n/emergency=fire_hydrant",
+		"imposm": {
+			"types": [
+				"point"
+			],
+			"mapping": {
+				"emergency": [
+					"fire_hydrant"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "notes",
+			"name": "DAE da integrare",
+			"description": "Una persona ha creato una nota qui, verificate e poi modificate OSM per integrare le informazioni.",
+			"terms": [
+				"défib",
+				"dae"
+			]
+		},
+		{
+			"source": "osm",
+			"name": "DAE in OSM",
+			"description": "Questo defibrillatore esiste già in OSM. Potete completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Foto di strada (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Foto di strada (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "defibrillatori",
+		"osmose_tasks": "defibrillatori ufficiali integrati",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Ajout d'établissements scolaires",
+			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+		}
+	}
+}

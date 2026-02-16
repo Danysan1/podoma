@@ -1,0 +1,56 @@
+{
+	"id": 107,
+	"name": "2025-07_townhall",
+	"title": "Municipi",
+	"start_date": "2025-07-01",
+	"soft_end_date": "2025-07-31",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Luglio:_Comuni_senza_POI",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-luglio-2025-comuni-senza-poi/132103"
+	},
+	"database": {
+		"osmium_tag_filter": "nwr/amenity=townhall",
+		"imposm": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"amenity": [
+					"townhall"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Gendarmerie dans OSM",
+			"description": "Cette gendarmerie existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "gendarmeries",
+		"osmose_tasks": "gendarmeries complétées/intégrées",
+		"points": {
+			"add": 2,
+			"edit": 2
+		},
+		"points_labels": {
+			"gendarmerie": {
+				"edit-in": 1
+			}
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Ajout d'établissements scolaires",
+			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+		}
+	}
+}

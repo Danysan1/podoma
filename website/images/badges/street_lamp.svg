@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
+  <!-- Background circle split diagonally -->
+  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
+  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
+  <!-- Street lamp icon -->
+  <g transform="translate(17.514,17.514)" fill="none">
+    <!-- Pole -->
+    <rect x="-0.8" y="-4" width="1.6" height="16" rx="0.4" fill="#5d5d5d" stroke="#3a3a3a" stroke-width="0.4"/>
+    <!-- Base plate -->
+    <rect x="-3.5" y="11.5" width="7" height="1.4" rx="0.7" fill="#5d5d5d" stroke="#3a3a3a" stroke-width="0.4"/>
+    <!-- Base foot -->
+    <path d="M-4.5,12.9 Q-4.5,14.5 -3,14.5 L3,14.5 Q4.5,14.5 4.5,12.9" fill="#5d5d5d" stroke="#3a3a3a" stroke-width="0.4"/>
+    <!-- Curved arm -->
+    <path d="M0,-4 Q0,-9 -5,-11" fill="none" stroke="#5d5d5d" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M0,-4 Q0,-9 5,-11" fill="none" stroke="#5d5d5d" stroke-width="1.4" stroke-linecap="round"/>
+    <!-- Left lantern -->
+    <g transform="translate(-5,-11)">
+      <!-- Light glow -->
+      <ellipse cx="0" cy="2" rx="4" ry="3.5" fill="#fff9c4" opacity="0.35"/>
+      <!-- Lamp top -->
+      <path d="M-2.2,0 L2.2,0 L1.5,-1.5 L-1.5,-1.5 Z" fill="#5d5d5d" stroke="#3a3a3a" stroke-width="0.3"/>
+      <!-- Lamp cap -->
+      <rect x="-1.2" y="-2.2" width="2.4" height="0.8" rx="0.3" fill="#5d5d5d" stroke="#3a3a3a" stroke-width="0.3"/>
+      <!-- Glass housing -->
+      <path d="M-2.2,0 Q-2.8,2.5 -1.5,4 L1.5,4 Q2.8,2.5 2.2,0" fill="#ffee58" stroke="#f9a825" stroke-width="0.4" opacity="0.9"/>
+      <!-- Lamp bottom -->
+      <rect x="-1.5" y="3.8" width="3" height="0.6" rx="0.3" fill="#5d5d5d" stroke="#3a3a3a" stroke-width="0.3"/>
+    </g>
+    <!-- Right lantern -->
+    <g transform="translate(5,-11)">
+      <!-- Light glow -->
+      <ellipse cx="0" cy="2" rx="4" ry="3.5" fill="#fff9c4" opacity="0.35"/>
+      <!-- Lamp top -->
+      <path d="M-2.2,0 L2.2,0 L1.5,-1.5 L-1.5,-1.5 Z" fill="#5d5d5d" stroke="#3a3a3a" stroke-width="0.3"/>
+      <!-- Lamp cap -->
+      <rect x="-1.2" y="-2.2" width="2.4" height="0.8" rx="0.3" fill="#5d5d5d" stroke="#3a3a3a" stroke-width="0.3"/>
+      <!-- Glass housing -->
+      <path d="M-2.2,0 Q-2.8,2.5 -1.5,4 L1.5,4 Q2.8,2.5 2.2,0" fill="#ffee58" stroke="#f9a825" stroke-width="0.4" opacity="0.9"/>
+      <!-- Lamp bottom -->
+      <rect x="-1.5" y="3.8" width="3" height="0.6" rx="0.3" fill="#5d5d5d" stroke="#3a3a3a" stroke-width="0.3"/>
+    </g>
+    <!-- Decorative ring at top of pole -->
+    <circle cx="0" cy="-4" r="1.2" fill="#5d5d5d" stroke="#3a3a3a" stroke-width="0.4"/>
+    <circle cx="0" cy="-4" r="0.6" fill="#3a3a3a"/>
+  </g>
+</svg>

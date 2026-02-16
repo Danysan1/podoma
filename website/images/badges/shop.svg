@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
+  <!-- Background circle split diagonally -->
+  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
+  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
+  <!-- Storefront icon -->
+  <g transform="translate(17.514,17.514)" fill="none">
+    <!-- Awning scalloped -->
+    <path d="M-11,-4.5 L11,-4.5 L11,-0.5 Q9.2,-0.5 8.2,-3 Q7.2,-0.5 5.5,-0.5 Q3.8,-0.5 2.75,-3 Q1.7,-0.5 0,-0.5 Q-1.7,-0.5 -2.75,-3 Q-3.8,-0.5 -5.5,-0.5 Q-7.2,-0.5 -8.2,-3 Q-9.2,-0.5 -11,-0.5 Z" fill="#e65100" stroke="#bf360c" stroke-width="0.4"/>
+    <!-- Awning stripe separators -->
+    <path d="M-5.5,-4.5 L-5.5,-0.5" stroke="#bf360c" stroke-width="0.25"/>
+    <path d="M0,-4.5 L0,-0.5" stroke="#bf360c" stroke-width="0.25"/>
+    <path d="M5.5,-4.5 L5.5,-0.5" stroke="#bf360c" stroke-width="0.25"/>
+    <!-- Building wall -->
+    <rect x="-11" y="-0.5" width="22" height="13.5" fill="#f5f0e8" stroke="#5d4037" stroke-width="0.4"/>
+    <!-- Door -->
+    <rect x="-2.5" y="4.5" width="5" height="8.5" rx="0.4" fill="#5d4037" stroke="#3e2723" stroke-width="0.35"/>
+    <!-- Door handle -->
+    <circle cx="1.2" cy="9" r="0.45" fill="#ffc107"/>
+    <!-- Door window -->
+    <rect x="-1.5" y="5.5" width="3" height="3" rx="0.3" fill="#bbdefb" stroke="#3e2723" stroke-width="0.25"/>
+    <!-- Left display window -->
+    <rect x="-10" y="1.5" width="6.5" height="6" rx="0.3" fill="#bbdefb" stroke="#5d4037" stroke-width="0.35"/>
+    <!-- Right display window -->
+    <rect x="3.5" y="1.5" width="6.5" height="6" rx="0.3" fill="#bbdefb" stroke="#5d4037" stroke-width="0.35"/>
+    <!-- Roof line -->
+    <rect x="-11.5" y="-5" width="23" height="0.8" rx="0.3" fill="#5d4037" stroke="#3e2723" stroke-width="0.3"/>
+    <!-- Sign board hanging -->
+    <rect x="-4.5" y="-9.5" width="9" height="4" rx="0.6" fill="#5d4037" stroke="#3e2723" stroke-width="0.35"/>
+    <!-- Sign bracket left -->
+    <path d="M-4.5,-5.5 L-4.5,-5" stroke="#3e2723" stroke-width="0.6" stroke-linecap="round"/>
+    <!-- Sign bracket right -->
+    <path d="M4.5,-5.5 L4.5,-5" stroke="#3e2723" stroke-width="0.6" stroke-linecap="round"/>
+    <!-- Shopping basket icon on sign -->
+    <path d="M-2,-7 L-2.8,-9 L2.8,-9 L2,-7 Z" fill="#ffc107" stroke="#f9a825" stroke-width="0.3"/>
+    <path d="M-2,-7 L2,-7" stroke="#f9a825" stroke-width="0.3"/>
+    <line x1="-0.8" y1="-7" x2="-1.6" y2="-9" stroke="#f9a825" stroke-width="0.25"/>
+    <line x1="0.8" y1="-7" x2="1.6" y2="-9" stroke="#f9a825" stroke-width="0.25"/>
+    <!-- Basket handle -->
+    <path d="M-1.5,-9 Q0,-11 1.5,-9" fill="none" stroke="#f9a825" stroke-width="0.4" stroke-linecap="round"/>
+  </g>
+</svg>

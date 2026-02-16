@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
+  <!-- Background circle split diagonally -->
+  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
+  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
+  <!-- Italian house number plate -->
+  <g transform="translate(17.514,17.514)">
+    <!-- White rectangular plate with dark border (Italian style) -->
+    <rect x="-10" y="-6.5" width="20" height="13" rx="1" fill="#ffffff" stroke="#2c2c2c" stroke-width="1.2"/>
+    <!-- Inner border line -->
+    <rect x="-8.8" y="-5.3" width="17.6" height="10.6" rx="0.5" fill="none" stroke="#2c2c2c" stroke-width="0.4"/>
+    <!-- House number "42" -->
+    <text x="0" y="3" text-anchor="middle" font-family="serif" font-weight="bold" font-size="10" fill="#2c2c2c">42</text>
+  </g>
+</svg>

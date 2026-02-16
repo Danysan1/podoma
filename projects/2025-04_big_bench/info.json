@@ -1,0 +1,58 @@
+{
+	"id": 100,
+	"name": "2025-04_big_bench",
+	"title": "Panchine giganti",
+	"start_date": "2025-04-01",
+	"soft_end_date": "2025-04-30",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#5%C2%B0_settimana_Aprile:_Panchine_giganti",
+		"osmforum": "https://community.openstreetmap.org/t/idee-per-il-weekend-panchine-giganti/129431"
+	},
+	"database": {
+		"osmium_tag_filter": "n/tourism=giant_furniture",
+		"imposm": {
+			"types": ["point", "polygon"],
+			"mapping": {
+				"tourism": ["giant_furniture"]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Arrêt de bus dans OSM",
+			"description": "Cet arrêt de bus existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Photos de rue (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Photos de rue (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "arrêts de bus",
+		"osmose_tasks": "arrêts de bus complétés/intégrés",
+		"points": {
+			"add": 2,
+			"edit": 2
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Ajout d'établissements scolaires",
+			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+		}
+	}
+}

@@ -1,0 +1,72 @@
+{
+	"id": 104,
+	"name": "2021-07_drinking_water",
+	"title": "Fontanelle",
+	"start_date": "2025-07-01",
+	"soft_end_date": "2025-07-31",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Luglio:_Comuni_senza_POI",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-luglio-2025-comuni-senza-poi/132103"
+	},
+	"database": {
+		"osmium_tag_filter": "nw/amenity=drinking_water",
+		"imposm": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"amenity": [
+					"drinking_water"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "notes",
+			"name": "Labo à intégrer",
+			"description": "Une personne a créé une note ici, vérifiez puis éditez OSM pour intégrer les informations.",
+			"terms": [
+				"labo"
+			]
+		},
+		{
+			"source": "osm",
+			"name": "Labo dans OSM",
+			"description": "Ce laboratoire existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Photos de rue (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Photos de rue (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "laboratoires",
+		"osmose_tasks": "laboratoires officiels intégrés",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Ajout d'établissements scolaires",
+			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+		}
+	}
+}

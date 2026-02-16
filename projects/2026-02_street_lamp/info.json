@@ -1,0 +1,72 @@
+{
+	"id": 113,
+	"name": "2026-02_street_lamp",
+	"title": "Lampioni",
+	"start_date": "2026-02-01",
+	"soft_end_date": "2026-02-31",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Febbraio:_lampioni",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-febbraio-2026-lampioni/141180"
+	},
+	"database": {
+		"osmium_tag_filter": "n/highway=street_lamp",
+		"imposm": {
+			"types": [
+				"point"
+			],
+			"mapping": {
+				"highway": [
+					"street_lamp"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "notes",
+			"name": "DAE da integrare",
+			"description": "Una persona ha creato una nota qui, verificate e poi modificate OSM per integrare le informazioni.",
+			"terms": [
+				"défib",
+				"dae"
+			]
+		},
+		{
+			"source": "osm",
+			"name": "DAE in OSM",
+			"description": "Questo defibrillatore esiste già in OSM. Potete completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Foto di strada (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Foto di strada (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "defibrillatori",
+		"osmose_tasks": "defibrillatori ufficiali integrati",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Ajout d'établissements scolaires",
+			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+		}
+	}
+}

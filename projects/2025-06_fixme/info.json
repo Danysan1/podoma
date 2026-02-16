@@ -1,0 +1,63 @@
+{
+	"id": 103,
+	"name": "2025-06_fixme",
+	"title": "fixme=*",
+	"start_date": "2025-06-01",
+	"soft_end_date": "2025-06-30",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#5%C2%B0_settimana_Aprile:_Panchine_giganti",
+		"osmforum": "https://community.openstreetmap.org/t/idee-per-il-weekend-alberi-monumentali/129202"
+	},
+	"database": {
+		"osmium_tag_filter": "nw/fixme=*",
+		"imposm": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"fixme": [
+					"__any__"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Poste dans OSM",
+			"description": "Ce poste électrique existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Photos de rue (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Photos de rue (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "postes électriques",
+		"osmose_tasks": "postes intégrés",
+		"points": {
+			"add": 3,
+			"edit": 2
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Ajout d'établissements scolaires",
+			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+		}
+	}
+}

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
+  <!-- Background circle split diagonally -->
+  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
+  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
+  <!-- Envelope icon -->
+  <g transform="translate(17.514,17.514)" fill="none">
+    <!-- Envelope body -->
+    <rect x="-11" y="-7" width="22" height="15" rx="1" fill="#fff9c4" stroke="#f9a825" stroke-width="0.6"/>
+    <!-- Envelope flap (top triangle) -->
+    <path d="M-11,-7 L0,3 L11,-7" fill="#ffecb3" stroke="#f9a825" stroke-width="0.6" stroke-linejoin="round"/>
+    <!-- Bottom fold lines -->
+    <path d="M-11,8 L-3,1" stroke="#f9a825" stroke-width="0.4"/>
+    <path d="M11,8 L3,1" stroke="#f9a825" stroke-width="0.4"/>
+    <!-- Stamp -->
+    <rect x="5.5" y="-5.5" width="4" height="4.5" rx="0.3" fill="#e53935" stroke="#c62828" stroke-width="0.3"/>
+    <!-- Stamp inner detail -->
+    <rect x="6" y="-5" width="3" height="3.5" rx="0.2" fill="#ef5350"/>
+    <!-- Stamp perforations (dots around stamp) -->
+    <circle cx="5.5" cy="-4" r="0.25" fill="#fff9c4"/>
+    <circle cx="5.5" cy="-2.5" r="0.25" fill="#fff9c4"/>
+    <circle cx="9.5" cy="-4" r="0.25" fill="#fff9c4"/>
+    <circle cx="9.5" cy="-2.5" r="0.25" fill="#fff9c4"/>
+    <circle cx="7" cy="-5.5" r="0.25" fill="#fff9c4"/>
+    <circle cx="8.5" cy="-5.5" r="0.25" fill="#fff9c4"/>
+    <circle cx="7" cy="-1" r="0.25" fill="#fff9c4"/>
+    <circle cx="8.5" cy="-1" r="0.25" fill="#fff9c4"/>
+  </g>
+</svg>

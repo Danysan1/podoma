@@ -1,0 +1,72 @@
+{
+	"id": 112,
+	"name": "2026-01_wikidata",
+	"title": "Wikidata",
+	"start_date": "2026-01-01",
+	"soft_end_date": "2026-01-31",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Gennaio:_Wikidata",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-gennaio-2026-wikidata/139938"
+	},
+	"database": {
+		"osmium_tag_filter": "nwr/wikidata=*",
+		"imposm": {
+			"types": [
+				"point"
+			],
+			"mapping": {
+				"wikidata": [
+					"__any__"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "notes",
+			"name": "DAE da integrare",
+			"description": "Una persona ha creato una nota qui, verificate e poi modificate OSM per integrare le informazioni.",
+			"terms": [
+				"défib",
+				"dae"
+			]
+		},
+		{
+			"source": "osm",
+			"name": "DAE in OSM",
+			"description": "Questo defibrillatore esiste già in OSM. Potete completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Foto di strada (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Foto di strada (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "defibrillatori",
+		"osmose_tasks": "defibrillatori ufficiali integrati",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Ajout d'établissements scolaires",
+			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+		}
+	}
+}

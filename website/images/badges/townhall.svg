@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
+  <!-- Background circle split diagonally -->
+  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
+  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
+  <!-- Town hall icon -->
+  <g transform="translate(17.514,17.514)" fill="none">
+    <!-- Pediment (triangle roof) -->
+    <path d="M-11,0 L0,-8 L11,0 Z" fill="#d4a24c" stroke="#b8862d" stroke-width="0.5"/>
+    <!-- Pediment inner triangle -->
+    <path d="M-7.5,-0.5 L0,-5.5 L7.5,-0.5 Z" fill="none" stroke="#b8862d" stroke-width="0.35"/>
+    <!-- Clock in pediment -->
+    <circle cx="0" cy="-2.5" r="1.8" fill="#f5f0e8" stroke="#b8862d" stroke-width="0.35"/>
+    <line x1="0" y1="-2.5" x2="0" y2="-3.8" stroke="#5d4037" stroke-width="0.3"/>
+    <line x1="0" y1="-2.5" x2="1" y2="-2" stroke="#5d4037" stroke-width="0.3"/>
+    <!-- Entablature (beam above columns) -->
+    <rect x="-12" y="-0.3" width="24" height="1.5" rx="0.2" fill="#c9b07a" stroke="#b8862d" stroke-width="0.3"/>
+    <!-- Columns -->
+    <rect x="-10" y="1.2" width="2" height="9.5" rx="0.4" fill="#f5f0e8" stroke="#b8862d" stroke-width="0.35"/>
+    <rect x="-5" y="1.2" width="2" height="9.5" rx="0.4" fill="#f5f0e8" stroke="#b8862d" stroke-width="0.35"/>
+    <rect x="3" y="1.2" width="2" height="9.5" rx="0.4" fill="#f5f0e8" stroke="#b8862d" stroke-width="0.35"/>
+    <rect x="8" y="1.2" width="2" height="9.5" rx="0.4" fill="#f5f0e8" stroke="#b8862d" stroke-width="0.35"/>
+    <!-- Column capitals -->
+    <rect x="-10.5" y="0.8" width="3" height="0.8" rx="0.2" fill="#d4c49a" stroke="#b8862d" stroke-width="0.2"/>
+    <rect x="-5.5" y="0.8" width="3" height="0.8" rx="0.2" fill="#d4c49a" stroke="#b8862d" stroke-width="0.2"/>
+    <rect x="2.5" y="0.8" width="3" height="0.8" rx="0.2" fill="#d4c49a" stroke="#b8862d" stroke-width="0.2"/>
+    <rect x="7.5" y="0.8" width="3" height="0.8" rx="0.2" fill="#d4c49a" stroke="#b8862d" stroke-width="0.2"/>
+    <!-- Door -->
+    <path d="M-1.5,10.7 L-1.5,5 Q-1.5,3 0,3 Q1.5,3 1.5,5 L1.5,10.7" fill="#5d4037" stroke="#3e2723" stroke-width="0.35"/>
+    <!-- Door line -->
+    <line x1="0" y1="3.5" x2="0" y2="10.7" stroke="#3e2723" stroke-width="0.25"/>
+    <!-- Base / steps -->
+    <rect x="-12" y="10.7" width="24" height="1.3" rx="0.2" fill="#c9b07a" stroke="#b8862d" stroke-width="0.3"/>
+    <rect x="-13" y="12" width="26" height="1" rx="0.2" fill="#b8a06a" stroke="#9e8652" stroke-width="0.3"/>
+  </g>
+</svg>

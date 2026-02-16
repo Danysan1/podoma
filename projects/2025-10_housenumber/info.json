@@ -1,0 +1,63 @@
+{
+	"id": 108,
+	"name": "2025-10_housenumber",
+	"title": "Numeri civici",
+	"start_date": "2025-10-01",
+	"soft_end_date": "2025-10-31",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Ottobre:_Numeri_civici",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-ottobre-2025-numeri-civici/136286"
+	},
+	"database": {
+		"osmium_tag_filter": "nw/addr:housenumber=*",
+		"imposm": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"addr:housenumber": [
+					"__any__"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Borne dans OSM",
+			"description": "Cette borne existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Photos de rue (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Photos de rue (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "bornes de recharge",
+		"osmose_tasks": "bornes officielles intégrées",
+		"points": {
+			"add": 3,
+			"edit": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Ajout d'établissements scolaires",
+			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+		}
+	}
+}

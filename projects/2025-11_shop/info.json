@@ -1,0 +1,63 @@
+{
+	"id": 109,
+	"name": "2025-11_shop",
+	"title": "Attività commerciali",
+	"start_date": "2025-11-01",
+	"soft_end_date": "2025-11-30",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Novembre:_Attivit%C3%A0_commerciali",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-novembre-2025-attivita-commerciali/137550"
+	},
+	"database": {
+		"osmium_tag_filter": "nw/shop=*",
+		"imposm": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"shop": [
+					"__any__"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Borne dans OSM",
+			"description": "Cette borne existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Photos de rue (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Photos de rue (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "bornes de recharge",
+		"osmose_tasks": "bornes officielles intégrées",
+		"points": {
+			"add": 3,
+			"edit": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Ajout d'établissements scolaires",
+			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+		}
+	}
+}

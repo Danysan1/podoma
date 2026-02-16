@@ -1,0 +1,129 @@
+{
+	"id": 110,
+	"name": "2025-12_aed",
+	"title": "Defibrillatori",
+	"start_date": "2025-12-01",
+	"soft_end_date": "2025-12-31",
+	"summary": "I defibrillatori automatici esterni (DAE) permettono di soccorrere le persone durante un arresto cardiaco. Questi dispositivi di primo soccorso sono essenziali, eppure la loro posizione non è sempre nota. Questo mese, completiamo insieme OpenStreetMap per offrire un elenco esaustivo dei defibrillatori in Italia!",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-dicembre-2025-defibrillatori-e-idranti/138745"
+	},
+	"database": {
+		"osmium_tag_filter": "n/emergency=defibrillator",
+		"imposm": {
+			"types": [
+				"point"
+			],
+			"mapping": {
+				"emergency": [
+					"defibrillator"
+				]
+			}
+		},
+		"compare": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"aeroway": [
+					"aerodrome"
+				],
+				"amenity": [
+					"college",
+					"university",
+					"ferry_terminal",
+					"cinema",
+					"community_centre",
+					"theatre",
+					"conference_centre",
+					"townhall",
+					"arts_centre"
+				],
+				"highway": [
+					"services"
+				],
+				"leisure": [
+					"ice_rink",
+					"sports_centre",
+					"stadium",
+					"water_park"
+				],
+				"railway": [
+					"station"
+				],
+				"shop": [
+					"department_store",
+					"mall",
+					"supermarket",
+					"wholesale"
+				],
+				"tourism": [
+					"camp_site",
+					"hotel",
+					"museum",
+					"theme_park",
+					"zoo"
+				],
+				"information": [
+					"office"
+				]
+			},
+			"radius": 100
+		}
+	},
+	"datasources": [
+		{
+			"source": "notes",
+			"name": "DAE da integrare",
+			"description": "Una persona ha creato una nota qui, verificate e poi modificate OSM per integrare le informazioni.",
+			"terms": [
+				"défib",
+				"dae"
+			]
+		},
+		{
+			"source": "osm",
+			"name": "DAE in OSM",
+			"description": "Questo defibrillatore esiste già in OSM. Potete completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "osm-compare",
+			"name": "Luogo che potrebbe disporre di un DAE",
+			"description": "Questo luogo potrebbe disporre di un defibrillatore. Potete verificare sul posto la posizione del dispositivo e aggiungerlo a OSM."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Foto di strada (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Foto di strada (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "defibrillatori",
+		"osmose_tasks": "defibrillatori ufficiali integrati",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Ajout d'établissements scolaires",
+			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+		}
+	}
+}
