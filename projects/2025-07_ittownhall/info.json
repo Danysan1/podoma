@@ -1,7 +1,7 @@
 {
-	"id": 106,
-	"name": "2025-07_school",
-	"title": "Scuole",
+	"id": 107,
+	"name": "2025-07_ittownhall",
+	"title": "Municipi",
 	"start_date": "2025-07-01",
 	"soft_end_date": "2025-07-31",
 	"links": {
@@ -9,7 +9,7 @@
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-luglio-2025-comuni-senza-poi/132103"
 	},
 	"database": {
-		"osmium_tag_filter": "nw/amenity=school",
+		"osmium_tag_filter": "nwr/amenity=townhall",
 		"imposm": {
 			"types": [
 				"point",
@@ -17,24 +17,16 @@
 			],
 			"mapping": {
 				"amenity": [
-					"school"
+					"townhall"
 				]
 			}
 		}
 	},
 	"datasources": [
 		{
-			"source": "notes",
-			"name": "École à intégrer",
-			"description": "Une personne a créé une note ici, vérifiez puis éditez OSM pour intégrer les informations.",
-			"terms": [
-				"école"
-			]
-		},
-		{
 			"source": "osm",
-			"name": "École dans OSM",
-			"description": "Cete école existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+			"name": "Gendarmerie dans OSM",
+			"description": "Cette gendarmerie existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
 		},
 		{
 			"source": "stats"
@@ -43,12 +35,16 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "écoles",
-		"osmose_tasks": "écoles intégrés",
+		"feature_name": "gendarmeries",
+		"osmose_tasks": "gendarmeries complétées/intégrées",
 		"points": {
-			"add": 3,
-			"edit": 1,
-			"note": 1
+			"add": 2,
+			"edit": 2
+		},
+		"points_labels": {
+			"gendarmerie": {
+				"edit-in": 1
+			}
 		}
 	},
 	"editors": {

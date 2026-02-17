@@ -1,7 +1,7 @@
 {
-	"id": 104,
-	"name": "2021-07_drinkingwater",
-	"title": "Fontanelle",
+	"id": 106,
+	"name": "2025-07_itschool",
+	"title": "Scuole",
 	"start_date": "2025-07-01",
 	"soft_end_date": "2025-07-31",
 	"links": {
@@ -9,7 +9,7 @@
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-luglio-2025-comuni-senza-poi/132103"
 	},
 	"database": {
-		"osmium_tag_filter": "nw/amenity=drinking_water",
+		"osmium_tag_filter": "nw/amenity=school",
 		"imposm": {
 			"types": [
 				"point",
@@ -17,7 +17,7 @@
 			],
 			"mapping": {
 				"amenity": [
-					"drinking_water"
+					"school"
 				]
 			}
 		}
@@ -25,28 +25,16 @@
 	"datasources": [
 		{
 			"source": "notes",
-			"name": "Labo à intégrer",
+			"name": "École à intégrer",
 			"description": "Une personne a créé une note ici, vérifiez puis éditez OSM pour intégrer les informations.",
 			"terms": [
-				"labo"
+				"école"
 			]
 		},
 		{
 			"source": "osm",
-			"name": "Labo dans OSM",
-			"description": "Ce laboratoire existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
-		},
-		{
-			"source": "background",
-			"tiles": "mapillary",
-			"name": "Photos de rue (Mapillary)",
-			"icon": "picture"
-		},
-		{
-			"source": "background",
-			"tiles": "panoramax",
-			"name": "Photos de rue (Panoramax)",
-			"icon": "picture"
+			"name": "École dans OSM",
+			"description": "Cete école existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
 		},
 		{
 			"source": "stats"
@@ -55,8 +43,8 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "laboratoires",
-		"osmose_tasks": "laboratoires officiels intégrés",
+		"feature_name": "écoles",
+		"osmose_tasks": "écoles intégrés",
 		"points": {
 			"add": 3,
 			"edit": 1,

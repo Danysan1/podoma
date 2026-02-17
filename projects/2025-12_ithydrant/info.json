@@ -1,22 +1,22 @@
 {
-	"id": 112,
-	"name": "2026-01_wikidata",
-	"title": "Wikidata",
-	"start_date": "2026-01-01",
-	"soft_end_date": "2026-01-31",
+	"id": 111,
+	"name": "2025-12_ithydrant",
+	"title": "Idranti",
+	"start_date": "2025-12-01",
+	"soft_end_date": "2025-12-31",
 	"links": {
-		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Gennaio:_Wikidata",
-		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-gennaio-2026-wikidata/139938"
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-dicembre-2025-defibrillatori-e-idranti/138745"
 	},
 	"database": {
-		"osmium_tag_filter": "nwr/wikidata=*",
+		"osmium_tag_filter": "n/emergency=fire_hydrant",
 		"imposm": {
 			"types": [
 				"point"
 			],
 			"mapping": {
-				"wikidata": [
-					"__any__"
+				"emergency": [
+					"fire_hydrant"
 				]
 			}
 		}

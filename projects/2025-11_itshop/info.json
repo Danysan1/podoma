@@ -1,22 +1,22 @@
 {
-	"id": 103,
-	"name": "2025-06_fixme",
-	"title": "fixme=*",
-	"start_date": "2025-06-01",
-	"soft_end_date": "2025-06-30",
+	"id": 109,
+	"name": "2025-11_itshop",
+	"title": "Attività commerciali",
+	"start_date": "2025-11-01",
+	"soft_end_date": "2025-11-30",
 	"links": {
-		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#5%C2%B0_settimana_Aprile:_Panchine_giganti",
-		"osmforum": "https://community.openstreetmap.org/t/idee-per-il-weekend-alberi-monumentali/129202"
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Novembre:_Attivit%C3%A0_commerciali",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-novembre-2025-attivita-commerciali/137550"
 	},
 	"database": {
-		"osmium_tag_filter": "nw/fixme=*",
+		"osmium_tag_filter": "nw/shop=*",
 		"imposm": {
 			"types": [
 				"point",
 				"polygon"
 			],
 			"mapping": {
-				"fixme": [
+				"shop": [
 					"__any__"
 				]
 			}
@@ -25,8 +25,8 @@
 	"datasources": [
 		{
 			"source": "osm",
-			"name": "Poste dans OSM",
-			"description": "Ce poste électrique existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+			"name": "Borne dans OSM",
+			"description": "Cette borne existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
 		},
 		{
 			"source": "background",
@@ -47,11 +47,11 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "postes électriques",
-		"osmose_tasks": "postes intégrés",
+		"feature_name": "bornes de recharge",
+		"osmose_tasks": "bornes officielles intégrées",
 		"points": {
 			"add": 3,
-			"edit": 2
+			"edit": 1
 		}
 	},
 	"editors": {
