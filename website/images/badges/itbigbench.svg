@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
+  <!-- Background circle split diagonally -->
+  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
+  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
+  <!-- Big bench icon -->
+  <g transform="translate(17.514,18.5)" fill="none">
+    <!-- Green grass ground -->
+    <ellipse cx="0" cy="12.5" rx="13" ry="3" fill="#66bb6a"/>
+    <ellipse cx="0" cy="12" rx="11" ry="2.2" fill="#81c784"/>
+    <!-- Grass blades -->
+    <path d="M-9,10.5 L-8.5,8.5 L-8,10.5" fill="#4caf50"/>
+    <path d="M-5,11 L-4.5,9 L-4,11" fill="#4caf50"/>
+    <path d="M6,11 L6.5,9 L7,11" fill="#4caf50"/>
+    <path d="M10,10.5 L10.5,8.5 L11,10.5" fill="#4caf50"/>
+    <path d="M0,11.5 L0.5,9.5 L1,11.5" fill="#4caf50"/>
+    <!-- Left leg -->
+    <rect x="-10.5" y="2" width="2" height="10" rx="0.4" fill="#e53935" stroke="#c62828" stroke-width="0.4"/>
+    <!-- Right leg -->
+    <rect x="8.5" y="2" width="2" height="10" rx="0.4" fill="#e53935" stroke="#c62828" stroke-width="0.4"/>
+    <!-- Left armrest -->
+    <path d="M-10.5,2 L-10.5,-5 Q-10.5,-7 -9,-7 L-8.5,-7 Q-7,-7 -7,-5 L-7,2" fill="#e53935" stroke="#c62828" stroke-width="0.4"/>
+    <!-- Right armrest -->
+    <path d="M10.5,2 L10.5,-5 Q10.5,-7 9,-7 L8.5,-7 Q7,-7 7,-5 L7,2" fill="#e53935" stroke="#c62828" stroke-width="0.4"/>
+    <!-- Seat plank -->
+    <rect x="-11" y="1" width="22" height="2.5" rx="0.5" fill="#e53935" stroke="#c62828" stroke-width="0.4"/>
+    <!-- Backrest planks -->
+    <rect x="-7" y="-5" width="14" height="2" rx="0.4" fill="#e53935" stroke="#c62828" stroke-width="0.35"/>
+    <rect x="-7" y="-2.5" width="14" height="2" rx="0.4" fill="#e53935" stroke="#c62828" stroke-width="0.35"/>
+    <!-- Small person seated on the bench seat -->
+    <g transform="translate(0.5,0)">
+      <!-- Head -->
+      <circle cx="0" cy="-5" r="1.4" fill="#f5c5a3" stroke="#d4a07e" stroke-width="0.3"/>
+      <!-- Torso (upright, leaning against backrest) -->
+      <rect x="-1.3" y="-3.6" width="2.6" height="3.5" rx="0.5" fill="#1565c0"/>
+      <!-- Arms resting on lap -->
+      <path d="M-1.3,-2.5 Q-2.5,-1.5 -2,0" stroke="#1565c0" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M1.3,-2.5 Q2.5,-1.5 2,0" stroke="#1565c0" stroke-width="0.8" stroke-linecap="round"/>
+      <!-- Upper legs (on seat, going forward) -->
+      <line x1="-0.7" y1="-0.1" x2="-1.5" y2="1.2" stroke="#1565c0" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="0.7" y1="-0.1" x2="1.5" y2="1.2" stroke="#1565c0" stroke-width="0.9" stroke-linecap="round"/>
+      <!-- Lower legs (hanging down from seat edge) -->
+      <line x1="-1.5" y1="1.2" x2="-1.5" y2="4.5" stroke="#1565c0" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="1.5" y1="1.2" x2="1.5" y2="4.5" stroke="#1565c0" stroke-width="0.8" stroke-linecap="round"/>
+      <!-- Shoes -->
+      <ellipse cx="-1.5" cy="4.8" rx="0.7" ry="0.5" fill="#5d4037"/>
+      <ellipse cx="1.5" cy="4.8" rx="0.7" ry="0.5" fill="#5d4037"/>
+    </g>
+  </g>
+</svg>
