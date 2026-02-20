@@ -13,6 +13,7 @@
 		"imposm": {
 			"types": [
 				"point",
+				"line",
 				"polygon"
 			],
 			"mapping": {
@@ -25,19 +26,19 @@
 	"datasources": [
 		{
 			"source": "osm",
-			"name": "Poste dans OSM",
-			"description": "Ce poste électrique existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+			"name": "Fixme in OSM",
+			"description": "Questo elemento OSM necessita di un controllo."
 		},
 		{
 			"source": "background",
 			"tiles": "mapillary",
-			"name": "Photos de rue (Mapillary)",
+			"name": "Immagini stradali (Mapillary)",
 			"icon": "picture"
 		},
 		{
 			"source": "background",
 			"tiles": "panoramax",
-			"name": "Photos de rue (Panoramax)",
+			"name": "Immagini stradali (Panoramax)",
 			"icon": "picture"
 		},
 		{

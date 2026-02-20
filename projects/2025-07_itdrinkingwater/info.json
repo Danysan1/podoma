@@ -33,19 +33,19 @@
 		},
 		{
 			"source": "osm",
-			"name": "Labo dans OSM",
-			"description": "Ce laboratoire existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+			"name": "Fontanelle in OSM",
+			"description": "Questa fontanella esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
 		},
 		{
 			"source": "background",
 			"tiles": "mapillary",
-			"name": "Photos de rue (Mapillary)",
+			"name": "Immagini stradali (Mapillary)",
 			"icon": "picture"
 		},
 		{
 			"source": "background",
 			"tiles": "panoramax",
-			"name": "Photos de rue (Panoramax)",
+			"name": "Immagini stradali (Panoramax)",
 			"icon": "picture"
 		},
 		{

@@ -24,28 +24,27 @@
 	"datasources": [
 		{
 			"source": "notes",
-			"name": "DAE da integrare",
+			"name": "Collegamenti Wikidata da integrare",
 			"description": "Una persona ha creato una nota qui, verificate e poi modificate OSM per integrare le informazioni.",
 			"terms": [
-				"défib",
-				"dae"
+				"wikidata"
 			]
 		},
 		{
 			"source": "osm",
-			"name": "DAE in OSM",
-			"description": "Questo defibrillatore esiste già in OSM. Potete completare o modificare le sue informazioni se necessario."
+			"name": "Elementi collegati a wikidata in OSM",
+			"description": "Questo elemento OSM è già collegato a Wikidata. Puoi completare o modificare le sue informazioni se necessario."
 		},
 		{
 			"source": "background",
 			"tiles": "mapillary",
-			"name": "Foto di strada (Mapillary)",
+			"name": "Immagini stradali (Mapillary)",
 			"icon": "picture"
 		},
 		{
 			"source": "background",
 			"tiles": "panoramax",
-			"name": "Foto di strada (Panoramax)",
+			"name": "Immagini stradali (Panoramax)",
 			"icon": "picture"
 		},
 		{

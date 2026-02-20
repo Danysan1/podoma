@@ -9,7 +9,7 @@
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-novembre-2025-attivita-commerciali/137550"
 	},
 	"database": {
-		"osmium_tag_filter": "nw/shop=*",
+		"osmium_tag_filter": "nw/shop=* nw/amenity=restaurant nw/amenity=fast_food nw/amenity=cafe nw/amenity=fuel nw/amenity=pharmacy nw/amenity=bank nw/amenity=bar nw/amenity=pub nw/amenity=dentist",
 		"imposm": {
 			"types": [
 				"point",
@@ -18,26 +18,54 @@
 			"mapping": {
 				"shop": [
 					"__any__"
+				],
+				"amenity": [
+					"restaurant",
+					"fast_food",
+					"cafe",
+					"fuel",
+					"pharmacy",
+					"bank",
+					"bar",
+					"pub",
+					"dentist"
 				]
 			}
 		}
 	},
 	"datasources": [
 		{
+			"source": "notes",
+			"name": "DAE da integrare",
+			"description": "Una persona ha creato una nota qui, verificate e poi modificate OSM per integrare le informazioni.",
+			"terms": [
+				"negozi",
+				"ristorant",
+				"fast food",
+				"caffe",
+				"benzina",
+				"farmaci",
+				"banca",
+				"bar",
+				"pub",
+				"dentist"
+			]
+		},
+		{
 			"source": "osm",
-			"name": "Borne dans OSM",
-			"description": "Cette borne existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+			"name": "Attività commerciali in OSM",
+			"description": "Quest'attività esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
 		},
 		{
 			"source": "background",
 			"tiles": "mapillary",
-			"name": "Photos de rue (Mapillary)",
+			"name": "Immagini stradali (Mapillary)",
 			"icon": "picture"
 		},
 		{
 			"source": "background",
 			"tiles": "panoramax",
-			"name": "Photos de rue (Panoramax)",
+			"name": "Immagini stradali (Panoramax)",
 			"icon": "picture"
 		},
 		{

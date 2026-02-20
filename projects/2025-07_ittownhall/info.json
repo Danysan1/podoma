@@ -25,8 +25,20 @@
 	"datasources": [
 		{
 			"source": "osm",
-			"name": "Gendarmerie dans OSM",
-			"description": "Cette gendarmerie existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+			"name": "Municipi in OSM",
+			"description": "Questo municipio esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
 		},
 		{
 			"source": "stats"

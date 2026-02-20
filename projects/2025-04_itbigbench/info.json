@@ -20,19 +20,19 @@
 	"datasources": [
 		{
 			"source": "osm",
-			"name": "Arrêt de bus dans OSM",
-			"description": "Cet arrêt de bus existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+			"name": "Panchine  giganti in OSM",
+			"description": "Questa panchina gigante esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
 		},
 		{
 			"source": "background",
 			"tiles": "mapillary",
-			"name": "Photos de rue (Mapillary)",
+			"name": "Immagini stradali (Mapillary)",
 			"icon": "picture"
 		},
 		{
 			"source": "background",
 			"tiles": "panoramax",
-			"name": "Photos de rue (Panoramax)",
+			"name": "Immagini stradali (Panoramax)",
 			"icon": "picture"
 		},
 		{

@@ -79,14 +79,14 @@
 			"name": "DAE da integrare",
 			"description": "Una persona ha creato una nota qui, verificate e poi modificate OSM per integrare le informazioni.",
 			"terms": [
-				"défib",
+				"defibrillator",
 				"dae"
 			]
 		},
 		{
 			"source": "osm",
 			"name": "DAE in OSM",
-			"description": "Questo defibrillatore esiste già in OSM. Potete completare o modificare le sue informazioni se necessario."
+			"description": "Questo defibrillatore esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
 		},
 		{
 			"source": "osm-compare",
@@ -96,13 +96,13 @@
 		{
 			"source": "background",
 			"tiles": "mapillary",
-			"name": "Foto di strada (Mapillary)",
+			"name": "Immagini stradali (Mapillary)",
 			"icon": "picture"
 		},
 		{
 			"source": "background",
 			"tiles": "panoramax",
-			"name": "Foto di strada (Panoramax)",
+			"name": "Immagini stradali (Panoramax)",
 			"icon": "picture"
 		},
 		{

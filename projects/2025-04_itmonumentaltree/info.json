@@ -25,19 +25,19 @@
 	"datasources": [
 		{
 			"source": "osm",
-			"name": "Panneau dans OSM",
-			"description": "Ce panneau électoral existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+			"name": "Alberi monumentali in OSM",
+			"description": "Questo albero monumentale esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
 		},
 		{
 			"source": "background",
 			"tiles": "mapillary",
-			"name": "Photos de rue (Mapillary)",
+			"name": "Immagini stradali (Mapillary)",
 			"icon": "picture"
 		},
 		{
 			"source": "background",
 			"tiles": "panoramax",
-			"name": "Photos de rue (Panoramax)",
+			"name": "Immagini stradali (Panoramax)",
 			"icon": "picture"
 		},
 		{

@@ -25,8 +25,20 @@
 	"datasources": [
 		{
 			"source": "osm",
-			"name": "Lieu avec horaires de confinement",
-			"description": "Ce lieu a ses horaires durant le confinement renseignées dans OSM."
+			"name": "Uffici postali in OSM",
+			"description": "Questo ufficio postale esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
 		},
 		{
 			"source": "stats"

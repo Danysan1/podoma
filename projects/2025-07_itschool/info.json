@@ -28,13 +28,28 @@
 			"name": "École à intégrer",
 			"description": "Une personne a créé une note ici, vérifiez puis éditez OSM pour intégrer les informations.",
 			"terms": [
-				"école"
+				"scuol",
+				"scolastic",
+				"istruzione",
+				"liceo"
 			]
 		},
 		{
 			"source": "osm",
-			"name": "École dans OSM",
-			"description": "Cete école existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+			"name": "Scuole in OSM",
+			"description": "Questa scuola esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
 		},
 		{
 			"source": "stats"
