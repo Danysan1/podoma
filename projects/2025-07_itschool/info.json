@@ -58,8 +58,8 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "écoles",
-		"osmose_tasks": "écoles intégrés",
+		"feature_name": "scuole",
+		"osmose_tasks": "scuole integrate",
 		"points": {
 			"add": 3,
 			"edit": 1,
@@ -68,8 +68,8 @@
 	},
 	"editors": {
 		"all": {
-			"comment": "Ajout d'établissements scolaires",
-			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+			"comment": "Aggiunta scuole",
+			"hashtags": "progettodelmese"
 		}
 	}
 }

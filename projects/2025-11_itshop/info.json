@@ -75,8 +75,8 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "bornes de recharge",
-		"osmose_tasks": "bornes officielles intégrées",
+		"feature_name": "attività commerciali",
+		"osmose_tasks": "attività commerciali completate",
 		"points": {
 			"add": 3,
 			"edit": 1
@@ -84,8 +84,8 @@
 	},
 	"editors": {
 		"all": {
-			"comment": "Ajout d'établissements scolaires",
-			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+			"comment": "Aggiunta attività commerciali",
+			"hashtags": "progettodelmese"
 		}
 	}
 }

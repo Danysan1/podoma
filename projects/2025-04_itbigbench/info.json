@@ -42,8 +42,8 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "arrêts de bus",
-		"osmose_tasks": "arrêts de bus complétés/intégrés",
+		"feature_name": "panchine giganti",
+		"osmose_tasks": "panchine giganti completate",
 		"points": {
 			"add": 2,
 			"edit": 2
@@ -51,8 +51,8 @@
 	},
 	"editors": {
 		"all": {
-			"comment": "Ajout d'établissements scolaires",
-			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+			"comment": "Aggiunta panchine giganti",
+			"hashtags": "progettodelmese"
 		}
 	}
 }

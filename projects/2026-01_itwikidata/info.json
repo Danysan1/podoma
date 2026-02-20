@@ -54,8 +54,8 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "defibrillatori",
-		"osmose_tasks": "defibrillatori ufficiali integrati",
+		"feature_name": "link wikidata",
+		"osmose_tasks": "link wikidata completati",
 		"points": {
 			"add": 3,
 			"edit": 1,
@@ -64,8 +64,8 @@
 	},
 	"editors": {
 		"all": {
-			"comment": "Ajout d'établissements scolaires",
-			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+			"comment": "Aggiunta link wikidata",
+			"hashtags": "progettodelmese"
 		}
 	}
 }

@@ -47,7 +47,8 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "lieux",
+		"feature_name": "uffici postali",
+		"osmose_tasks": "uffici postali completati",
 		"points": {
 			"edit-in": 3,
 			"edit_covid": 1
@@ -55,8 +56,8 @@
 	},
 	"editors": {
 		"all": {
-			"comment": "Ajout d'établissements scolaires",
-			"hashtags": "projetdumois,ecolesdansopenstreetmap,teamprof"
+			"comment": "Aggiunta uffici postali",
+			"hashtags": "progettodelmese"
 		}
 	}
 }
