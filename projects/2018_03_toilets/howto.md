@@ -1,1 +1,0 @@
-Accéder aux toilettes est un besoin primaire important, notamment pour les publics fragiles : personnes âgées ou touchées de handicap, parents de nouveaux-nés, diverses maladies. 
