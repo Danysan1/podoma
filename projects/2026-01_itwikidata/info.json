@@ -9,10 +9,12 @@
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-gennaio-2026-wikidata/139938"
 	},
 	"database": {
-		"osmium_tag_filter": "nwr/wikidata=*",
+		"osmium_tag_filter": "nw/wikidata=*",
 		"imposm": {
 			"types": [
-				"point"
+				"point",
+				"linestring",
+				"polygon"
 			],
 			"mapping": {
 				"wikidata": [
