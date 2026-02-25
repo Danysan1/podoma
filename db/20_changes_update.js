@@ -262,7 +262,7 @@ if (projectLength > 0){
     projectsQry = `${projectsQry.substring(0, projectsQry.length-1)} ON CONFLICT (project_id) DO UPDATE SET start_date=EXCLUDED.start_date, end_date=EXCLUDED.end_date`;
     pgPool.query(projectsQry, (err, res) => {
         if (err){
-            throw new Error(`Error when installing projects: ${err}`);
+            throw new Error(`Error when installing projects: ${err}\n\nQuery was: ${projectsQry}`);
         }
         console.log(projectLength+" project(s) installed");
     });
