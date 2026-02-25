@@ -3,7 +3,7 @@
 	"name": "2025-07_itschool",
 	"title": "Scuole",
 	"start_date": "2024-01-01",
-	"soft_end_date": "2025-07-31",
+	"end_date": "2025-07-31",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Luglio:_Comuni_senza_POI",
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-luglio-2025-comuni-senza-poi/132103"

@@ -3,7 +3,7 @@
 	"name": "2025-11_itshop",
 	"title": "Attività commerciali",
 	"start_date": "2024-01-01",
-	"soft_end_date": "2025-11-30",
+	"end_date": "2025-11-30",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Novembre:_Attivit%C3%A0_commerciali",
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-novembre-2025-attivita-commerciali/137550"
@@ -37,7 +37,7 @@
 		{
 			"source": "notes",
 			"name": "DAE da integrare",
-			"description": "Una persona ha creato una nota qui, verificate e poi modificate OSM per integrare le informazioni.",
+			"description": "Una persona ha creato una nota qui, verifica e poi modifica OSM per integrare le informazioni.",
 			"terms": [
 				"negozi",
 				"ristorant",

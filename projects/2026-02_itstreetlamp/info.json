@@ -3,7 +3,7 @@
 	"name": "2026-02_itstreetlamp",
 	"title": "Lampioni",
 	"start_date": "2024-01-01",
-	"soft_end_date": "2026-02-31",
+	"end_date": "2026-02-28",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Febbraio:_lampioni",
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-febbraio-2026-lampioni/141180"
@@ -25,7 +25,7 @@
 		{
 			"source": "notes",
 			"name": "Lampioni da integrare",
-			"description": "Una persona ha creato una nota qui, verificate e poi modificate OSM per integrare le informazioni.",
+			"description": "Una persona ha creato una nota qui, verifica e poi modifica OSM per integrare le informazioni.",
 			"terms": [
 				"lamp",
 				"lantern",
