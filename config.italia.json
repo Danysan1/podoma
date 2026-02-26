@@ -1,0 +1,55 @@
+{
+  "WEBSITE_NAME": "Progetto del mese",
+  "WEBSITE_MOTTO": "Dashboard Progetto del mese OpenStreetMap Italia",
+  "WEBSITE_URL": "https://osmit-podoma.wmcloud.org",
+  "WEBSITE_DESCRIPTION": "Podoma is a powerful, full-featured, engine and dashboard for getting precise statistics about OpenStreetMap community contributions over specific topics.",
+  "OSM_URL": "https://www.openstreetmap.org",
+  "OSM_API_URL": "https://api.openstreetmap.org",
+  "OSM_USER": "____ Nome utente OSM per download OSH ____",
+  "OSM_PASS": "____ Password OSM per download OSH ____",
+  "OSM_CLIENT_ID": "____ Client ID SSO Oauth2 da https://www.openstreetmap.org/oauth2/applications ____",
+  "OVERPASS_URL": "https://overpass-api.de/api/interpreter",
+  "OSMOSE_URL": "https://osmose.openstreetmap.fr",
+  "NOMINATIM_URL": "https://nominatim.openstreetmap.org",
+  "MAPILLARY_URL": "https://www.mapillary.com",
+  "MAPILLARY_API_KEY": "____ Access Token da https://www.mapillary.com/dashboard/developers ____",
+  "PANORAMAX_URL": "https://explore.panoramax.fr",
+  "MATOMO_TAG_MANAGER_URL": "https://matomo.wikimedia.it/js/container_KXoufYGC.js",
+  "REPOSITORY_URL": "https://github.com/osm-fr/podoma",
+  "JOSM_REMOTE_URL": "http://localhost:8111",
+  "OSH_PBF_AUTHORIZED": true,
+  "OSH_PBF_URL": "https://osm-internal.download.geofabrik.de/europe/italy-internal.osh.pbf",
+  "OSM_PBF_URL": "https://download.geofabrik.de/europe/italy-latest.osm.pbf",
+  "POLY_URL": "https://download.geofabrik.de/europe/italy.poly",
+  "VECT_STYLE": "https://api.maptiler.com/maps/openstreetmap/style.json?key=f9lRqWcrUSOYx4BnX6I4",
+  "PDM_TILES_URL": "https://osmit-podoma-tiles.wmcloud.org",
+  "DB_USE_IMPOSM_UPDATE": true,
+  "WORK_DIR": "/tmp/pdm",
+  "GEOJSON_BOUNDS": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          18.7,
+          35.4
+        ],
+        [
+          18.7,
+          47.1
+        ],
+        [
+          6.6,
+          47.1
+        ],
+        [
+          6.6,
+          35.4
+        ],
+        [
+          18.7,
+          35.4
+        ]
+      ]
+    ]
+  }
+}
