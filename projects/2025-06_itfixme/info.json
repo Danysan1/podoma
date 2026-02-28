@@ -3,6 +3,7 @@
 	"name": "2025-06_itfixme",
 	"title": "fixme=*",
 	"start_date": "2024-04-01",
+	"soft_end_date": "2025-06-30",
 	"end_date": "2026-06-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#5%C2%B0_settimana_Aprile:_Panchine_giganti",

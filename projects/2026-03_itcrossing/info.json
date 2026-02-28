@@ -3,6 +3,7 @@
 	"name": "2026-03_itcrossing",
 	"title": "Attraversamenti pedonali",
 	"start_date": "2024-04-01",
+	"soft_end_date": "2025-03-31",
 	"end_date": "2027-03-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"

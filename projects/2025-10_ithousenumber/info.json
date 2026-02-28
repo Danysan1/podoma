@@ -3,6 +3,7 @@
 	"name": "2025-10_ithousenumber",
 	"title": "Numeri civici",
 	"start_date": "2024-04-01",
+	"soft_end_date": "2025-10-31",
 	"end_date": "2026-10-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Ottobre:_Numeri_civici",
