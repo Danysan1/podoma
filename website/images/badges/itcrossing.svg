@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
+  <defs>
+    <clipPath id="circle-clip">
+      <circle cx="17.514" cy="17.514" r="17.514"/>
+    </clipPath>
+  </defs>
+  <!-- Full asphalt background circle -->
+  <circle cx="17.514" cy="17.514" r="17.514" fill="#505050"/>
+  <!-- Zebra stripes: vertical bars spanning full width, centered in partial height -->
+  <g clip-path="url(#circle-clip)">
+    <g transform="translate(17.514,17.514)">
+      <rect x="-16" y="-8" width="3.2" height="16" fill="#fff"/>
+      <rect x="-10.4" y="-8" width="3.2" height="16" fill="#fff"/>
+      <rect x="-4.8" y="-8" width="3.2" height="16" fill="#fff"/>
+      <rect x="0.8" y="-8" width="3.2" height="16" fill="#fff"/>
+      <rect x="6.4" y="-8" width="3.2" height="16" fill="#fff"/>
+      <rect x="12" y="-8" width="3.2" height="16" fill="#fff"/>
+    </g>
+  </g>
+</svg>
