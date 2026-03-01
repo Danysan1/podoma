@@ -26,10 +26,11 @@
 	"datasources": [
 		{
 			"source": "notes",
-			"name": "Labo à intégrer",
-			"description": "Une personne a créé une note ici, vérifiez puis éditez OSM pour intégrer les informations.",
+			"name": "Fontanelle da integrare",
+			"description": "Una persona ha creato una nota qui, verifica e poi modifica OSM per integrare le informazioni.",
 			"terms": [
-				"labo"
+				"fontan",
+				"potabil"
 			]
 		},
 		{
