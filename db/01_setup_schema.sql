@@ -1,12 +1,12 @@
 -- User names
-CREATE TABLE pdm_user_names(
+CREATE TABLE IF NOT EXISTS pdm_user_names(
 	userid BIGINT NOT NULL,
 	username VARCHAR NOT NULL,
 	CONSTRAINT pdm_user_names_pk PRIMARY KEY(userid)
 );
 
 -- Projects
-CREATE TABLE pdm_projects(
+CREATE TABLE IF NOT EXISTS pdm_projects(
 	project_id int primary key,
 	project VARCHAR,
 	start_date TIMESTAMP NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE pdm_projects(
 	counts_lastupdate_date TIMESTAMP NULL
 );
 
-CREATE TABLE pdm_projects_points (
+CREATE TABLE IF NOT EXISTS pdm_projects_points (
 	project_id int,
 	contrib VARCHAR,
 	label VARCHAR default null,
@@ -24,7 +24,7 @@ CREATE TABLE pdm_projects_points (
 	CONSTRAINT pdm_projects_points_unique UNIQUE NULLS NOT DISTINCT (project_id, contrib, label)
 );
 
-CREATE TABLE pdm_projects_teams (
+CREATE TABLE IF NOT EXISTS pdm_projects_teams (
 	project_id int,
 	team varchar,
 	username varchar,
@@ -34,7 +34,7 @@ CREATE TABLE pdm_projects_teams (
 
 -- Users contributions
 -- No osmid, then no primary key on this table (several contribs can occur at the same ts)
-CREATE TABLE pdm_user_contribs(
+CREATE TABLE IF NOT EXISTS pdm_user_contribs(
 	project_id int NOT NULL,
 	userid BIGINT NOT NULL,
 	ts DATE NOT NULL,
@@ -51,14 +51,14 @@ CREATE INDEX ON pdm_user_contribs(project_id);
 CREATE INDEX ON pdm_user_contribs(userid);
 
 -- Overall counts
-CREATE TABLE pdm_counts_dates (
+CREATE TABLE IF NOT EXISTS pdm_counts_dates (
 	project_id int NOT NULL,
 	ts timestamp NOT NULL,
 	ts_past timestamp NOT NULL
 );
 CREATE INDEX ON pdm_counts_dates using btree(project_id, ts);
 
-CREATE TABLE pdm_feature_counts(
+CREATE TABLE IF NOT EXISTS pdm_feature_counts(
 	project_id int NOT NULL,
 	ts TIMESTAMP NOT NULL,
 	label varchar,
@@ -71,7 +71,7 @@ CREATE TABLE pdm_feature_counts(
 
 CREATE INDEX ON pdm_feature_counts(project_id);
 
-CREATE TABLE pdm_mapper_counts(
+CREATE TABLE IF NOT EXISTS pdm_mapper_counts(
 	project_id int NOT NULL,
 	ts TIMESTAMP NOT NULL,
 	label varchar,
@@ -85,7 +85,7 @@ CREATE TABLE pdm_mapper_counts(
 CREATE INDEX ON pdm_mapper_counts(project_id);
 
 -- Boundary counts
-CREATE TABLE pdm_feature_counts_per_boundary(
+CREATE TABLE IF NOT EXISTS pdm_feature_counts_per_boundary(
 	project_id int NOT NULL,
 	boundary BIGINT NOT NULL,
 	ts TIMESTAMP NOT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE pdm_feature_counts_per_boundary(
 CREATE INDEX ON pdm_feature_counts_per_boundary using btree (project_id);
 CREATE INDEX ON pdm_feature_counts_per_boundary using btree (boundary);
 
-CREATE TABLE pdm_mapper_counts_per_boundary(
+CREATE TABLE IF NOT EXISTS pdm_mapper_counts_per_boundary(
 	project_id int NOT NULL,
 	boundary BIGINT NOT NULL,
 	ts TIMESTAMP NOT NULL,
@@ -116,7 +116,7 @@ CREATE INDEX ON pdm_mapper_counts_per_boundary using btree (project_id);
 CREATE INDEX ON pdm_mapper_counts_per_boundary using btree (boundary);
 
 -- Note counts
-CREATE TABLE pdm_note_counts(
+CREATE TABLE IF NOT EXISTS pdm_note_counts(
 	project_id int NOT NULL,
 	ts TIMESTAMP NOT NULL,
 	open INT NOT NULL,
@@ -147,7 +147,7 @@ JOIN scores sc ON st.project = sc.project AND sc.amount = st.amount
 JOIN pdm_user_names un ON st.userid = un.userid;
 
 -- OSM compare feature exclusions
-CREATE TABLE pdm_compare_exclusions(
+CREATE TABLE IF NOT EXISTS pdm_compare_exclusions(
 	project_id int NOT NULL,
 	osm_id VARCHAR NOT NULL,
 	ts TIMESTAMP NOT NULL DEFAULT current_timestamp,
