@@ -1,1 +1,7 @@
-TODO
+- Taggare con [`emergency`](https://wiki.openstreetmap.org/wiki/IT:Key:emergency)=[`fire_hydrant`](https://wiki.openstreetmap.org/wiki/IT:Tag:emergency%3Dfire_hydrant) (+ [`fire_hydrant:type`](https://wiki.openstreetmap.org/wiki/Key:fire_hydrant:type)=\*, [`fire_hydrant:position`](https://wiki.openstreetmap.org/wiki/Key:fire_hydrant:position)=\*, [`couplings`](https://wiki.openstreetmap.org/wiki/Key:couplings)=\*, [`survey:date`](https://wiki.openstreetmap.org/wiki/Key:survey:date)=\*, ...)
+- Usare il [tema di MapComplete](https://mapcomplete.org/hailhydrant)
+- Usare l'editor integrato in [OsmHydrant](https://www.osmhydrant.org/it/)
+- Esaminare le note [per idranti](https://ent8r.github.io/NotesReview/?view=map&query=drant&&bbox=8.9697%2C45.3852%2C9.4458%2C45.5617&area=view&limit=100)
+- In alcune aree esistono mappe ufficiali degli idranti (**NON COPIARE** se non in CC0, utile per trovare idranti da verificare con un soprallugo)
+  - Bolzano (solo per alcuni comuni): [dataset](https://geonetwork1.civis.bz.it/geonetwork/geonetwork/ita/catalog.search#/metadata/ccpbosc:Infrastructures:DrinkingWater-Nodes) (CC0 => si può copiare/importare, [import in corso](https://wiki.openstreetmap.org/wiki/Geoservices_Import_Alto_Adige_-_S%C3%BCdtirol/Geoservices_3/DrinkingWater-Nodes/Hydrants))
+  - [Altri dataset Open Data](https://www.dati.gov.it/view-dataset?Cerca=idranti&tags_set=&tags=&ordinamento=&access_rights=PUBBLICO&sort=Submit+Query)

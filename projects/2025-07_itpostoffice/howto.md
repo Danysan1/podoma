@@ -1,1 +1,3 @@
-TODO
+- [`amenity`](https://wiki.openstreetmap.org/wiki/IT:Key:amenity)=[`post_office`](https://wiki.openstreetmap.org/wiki/IT:Tag:amenity%3Dpost_office), a inizio mese mancante in 2417 comuni italiani
+- [uMap](https://umap.openstreetmap.fr/it/map/missing-pois_564040?datalayers=50b1b4ec-3573-4f87-a905-054cfdb2793d) / [Overpass](https://github.com/musuruan/missing_POIs/blob/main/queries/uffici_postali.overpassql) / [QLever](https://qlever.dev/osm-planet/gHabmw) con comuni senza fontanelle
+- [Mappa ufficiale](https://www.poste.it/cerca-mappe-app/?vieni-in-poste&tipologia=UfficioPostale): NON COPIARE, utile per trovare uffici postali da verificare

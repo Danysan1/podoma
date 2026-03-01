@@ -1,1 +1,7 @@
-TODO
+- [IT:Addresses](https://wiki.openstreetmap.org/wiki/IT:Addresses): regole di mappatura dei civici in Italia
+- [Video YouTube](https://www.youtube.com/watch?v=YaO2-o8m6nw) che approfondisce le regole di mappatura dei civici in Italia
+- Trova le aree con civici già mappati con [questa query Overpass](https://overpass-turbo.eu/s/2cGm) (comoda dove mancano molti civici)
+- Trova le aree senza civici già mappati con [questa query Overpass](https://overpass-turbo.eu/s/2cQw) (comoda dove la mappatura è quasi completa)
+- Trova gli elementi con numero civico ma senza via nè località con [questa query Overpass](https://overpass-turbo.eu/s/2eEM)
+- Trova i negozi e POI senza numero civico con [questa query Overpass](https://overpass-turbo.eu/s/2eEK) ([quest'altra](https://overpass-turbo.eu/s/2eEJ) filtra solo gli elementi con un brand)
+- Fare survey o usare foto stradali georeferenziate ([Mapillary](https://wiki.openstreetmap.org/wiki/Mapillary), [Panoramax](https://wiki.openstreetmap.org/wiki/Panoramax), [Bing Streetside](https://wiki.openstreetmap.org/wiki/Bing_Streetside), ...)

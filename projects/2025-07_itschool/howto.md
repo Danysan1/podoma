@@ -1,1 +1,4 @@
-TODO
+- [`amenity`](https://wiki.openstreetmap.org/wiki/IT:Key:amenity)=[`school`](https://wiki.openstreetmap.org/wiki/IT:Tag:amenity%3Dschool), a inizio mese mancante in 3163 comuni italiani
+- [uMap](https://umap.openstreetmap.fr/it/map/missing-pois_564040?datalayers=44d1321c-0ffc-43ce-a563-05b46998097b) / [Overpass](https://github.com/musuruan/missing_POIs/blob/main/queries/scuole.overpassql) / [QLever](https://qlever.dev/osm-planet/1UNO7Q) / [MapRoulette](https://mpr.lt/c/52673) con comuni senza scuole
+- [Scuola in Chiaro](https://unica.istruzione.gov.it/sic): NON COPIARE, utile per trovare scuole da verificare
+- [Query Overpass](https://overpass-turbo.eu/s/27fh) / [QLever](https://qlever.dev/osm-planet/cNjaKu) con le scuole mappate con [`amenity`](https://wiki.openstreetmap.org/wiki/IT:Key:amenity)=[`kindergarten`](https://wiki.openstreetmap.org/wiki/IT:Tag:amenity%3Dkindergarten)

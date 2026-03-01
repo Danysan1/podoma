@@ -1,1 +1,5 @@
-TODO
+- [`amenity`](https://wiki.openstreetmap.org/wiki/IT:Key:amenity)=[`townhall`](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dtownhall), a inizio mese mancante in 948 comuni italiani
+- [uMap](https://umap.openstreetmap.fr/it/map/missing-pois_564040?datalayers=05cbe2c3-b6e7-4654-86e0-97b87ca460d8) / [Overpass](https://github.com/musuruan/missing_POIs/blob/main/queries/municipi.overpassql) / [QLever](https://qlever.dev/osm-planet/w8QAxX) / [MapRoulette](https://mpr.lt/c/52671) con comuni senza municipio
+- [Post sul diario OSM](https://www.openstreetmap.org/user/Ysogo/diary/406953) con query per ciascuna regione
+- [OWL Map](https://map.osm.wikidata.link/map/8/44.43940/10.97691?isa=Q25550691) / [QLever](https://qlever.dev/osm-planet/UkYV0K) / [MapRoulette](https://maproulette.org/browse/challenges/52563) con i palazzi comunali su Wikidata non mappati e/o non collegati con [`wikidata`](https://wiki.openstreetmap.org/wiki/IT:Key:wikidata)=\*
+- [Query](https://overpass-turbo.eu/s/28pC) con gli edifici con [`name`](https://wiki.openstreetmap.org/wiki/IT:Key:name)=[`municipio`](https://wiki.openstreetmap.org/w/index.php?title=Tag:name%3Dmunicipio&action=edit&redlink=1) o simile ma senza [`amenity`](https://wiki.openstreetmap.org/wiki/IT:Key:amenity)=[`townhall`](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dtownhall)

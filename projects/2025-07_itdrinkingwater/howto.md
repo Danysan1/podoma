@@ -1,1 +1,4 @@
-TODO
+- [`vending`](https://wiki.openstreetmap.org/wiki/Key:vending)=[`water`](https://wiki.openstreetmap.org/wiki/Tag:vending%3Dwater), a inizio mese mancante in 1341 comuni italiani 
+- [uMap](https://umap.openstreetmap.fr/it/map/missing-pois_564040?datalayers=17440d86-ca59-440d-8e26-90ef1cc1f633) / [Overpass](https://github.com/musuruan/missing_POIs/blob/main/queries/fontanelle.overpassql) / [QLever](https://qlever.dev/osm-planet/7xBmGl) / [MapRoulette](https://mpr.lt/c/52674) con comuni senza fontanelle
+- [`vending`](https://wiki.openstreetmap.org/wiki/Key:vending)=[`water`](https://wiki.openstreetmap.org/wiki/Tag:vending%3Dwater): un altro tag simile (quando al posto di una fontanella c'è un distributore)
+- [fontanelle.org](https://www.fontanelle.org/mappa-citta.aspx): utile per trovare fontanelle da verificare

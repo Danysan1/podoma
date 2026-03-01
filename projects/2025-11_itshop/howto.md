@@ -1,1 +1,6 @@
-TODO
+- [IT:Negozi](https://wiki.openstreetmap.org/wiki/IT:Negozi) per una panoramica su come mappare i negozi
+- **Esaminare le note [inserite con su.openstreetmap.it](https://ent8r.github.io/NotesReview/?view=map&query=su.openstreetmap.it&bbox=8.9697%2C45.3852%2C9.4458%2C45.5617&area=view&limit=100) o [con onosm.org](https://ent8r.github.io/NotesReview/?view=map&query=onosm.org&bbox=8.9697%2C45.3852%2C9.4458%2C45.5617&area=view&limit=100)**
+- Fare survey con l'app per smartphone [EveryDoor](https://every-door.app/)
+- Trovare centri commerciali ([`shop`](https://wiki.openstreetmap.org/wiki/IT:Key:shop)=[`mall`](https://wiki.openstreetmap.org/wiki/IT:Tag:shop%3Dmall)) senza negozi (filtrabili con [questa query](https://overpass-turbo.eu/s/2eMR))
+- Sfruttare il dataset Places di [Overture Maps](https://wiki.openstreetmap.org/wiki/Overture_Maps) tramite l'editor [Rapid](https://wiki.openstreetmap.org/wiki/Rapid) (**verificare le informazioni**, geometrie e tag sono spesso approssimativi)
+- Sfruttare il dataset [All the Places](https://wiki.openstreetmap.org/wiki/All_the_Places) con [la sua mappa](https://alltheplaces.xyz/map.html) (**verificare le informazioni**, geometrie e tag sono spesso approssimativi)
