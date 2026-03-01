@@ -98,8 +98,9 @@ The properties in `info.json` are as follows:
 - `name`: mission identifier (authorized characters: A-Z, 0-9, \_ and -)
 - `title`: name of the mission (short enough)
 - `start_date`: start date of the mission (format YYYYY-MM-DD)
-- `end_date`: end date of the mission (format YYYYY-MM-DD)
+- `soft_start_date`: start date of the _strong_ community animation period (format YYYYY-MM-DD). This is only informational, it doesn't affect backend processing.
 - `soft_end_date`: end date of the _strong_ community animation period (format YYYYY-MM-DD). This is only informational, it doesn't affect backend processing.
+- `end_date`: end date of the mission (format YYYYY-MM-DD)
 - `summary`: summary of the mission
 - `links`: definition of the URLs for links to third party pages (OSM wiki, OSM forum or blog page) with this format "osmwiki|osmblog|osmforum": "projetdumois.fr"
 - `database.osmium_tag_filter` : Osmium filter on the tags to be applied to keep only the relevant OSM objects (for example `nwr/*:covid19`, [syntax described here](https://osmcode.org/osmium-tool/manual.html#filtering-by-tags)). It is possible to list many filters using `&` character and same syntax.

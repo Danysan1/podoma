@@ -2,9 +2,10 @@
 	"id": 100,
 	"name": "2025-04_itbigbench",
 	"title": "Panchine giganti",
-	"start_date": "2024-04-01",
+	"start_date": "2024-10-01",
+	"soft_start_date": "2025-04-01",
 	"soft_end_date": "2025-04-30",
-	"end_date": "2026-04-01",
+	"end_date": "2026-10-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#5%C2%B0_settimana_Aprile:_Panchine_giganti",
 		"osmforum": "https://community.openstreetmap.org/t/idee-per-il-weekend-panchine-giganti/129431"

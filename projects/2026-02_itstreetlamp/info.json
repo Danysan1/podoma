@@ -2,9 +2,10 @@
 	"id": 113,
 	"name": "2026-02_itstreetlamp",
 	"title": "Lampioni",
-	"start_date": "2024-04-01",
-	"soft_end_date": "2025-02-28",
-	"end_date": "2027-02-01",
+	"start_date": "2025-08-01",
+	"soft_start_date": "2026-02-01",
+	"soft_end_date": "2026-02-28",
+	"end_date": "2026-08-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Febbraio:_lampioni",
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-febbraio-2026-lampioni/141180"
