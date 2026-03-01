@@ -24,6 +24,7 @@
   "VECT_STYLE": "https://api.maptiler.com/maps/openstreetmap/style.json?key=f9lRqWcrUSOYx4BnX6I4",
   "PDM_TILES_URL": "https://osmit-podoma-tiles.wmcloud.org",
   "DB_USE_IMPOSM_UPDATE": true,
+  "USE_SOFT_DATES": true,
   "WORK_DIR": "/tmp/pdm",
   "GEOJSON_BOUNDS": {
     "type": "Polygon",
