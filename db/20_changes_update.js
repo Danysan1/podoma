@@ -474,9 +474,9 @@ Object.values(projects).forEach(project => {
         }
 
         script += `
-        echo "   => [\$((\$(date -d now +%s) - \$process_start_t0))s] Seek for all changes related to selected features "${oshProjectTags}" and convert to OPL"
+        echo "   => [\$((\$(date -d now +%s) - \$process_start_t0))s] Seek for all changes related to selected features and convert to OPL"
         rm -f "${oplProject}"
-        osmium getid ${getIdOptions} "\$history_osh" -I "${oshProjectTags}" -f opl,history=true -o "${oplProject}"
+        osmium getid ${getIdOptions} "\$history_osh" -I "${oshProjectTags}" -f opl,history=true -o "${oplProject}" || { echo "osmium getid failed, check ${oshProjectTags}"; exit 1; }
         rm -f "${csvFeatures}" "${csvMembers}" "${oshProjectTags}"
 
         ${macroChangesCsv ("init", project, oplProject, csvFeatures, csvUsers, csvMembers, "\$process_start_ts", "\$process_end_tss")}
