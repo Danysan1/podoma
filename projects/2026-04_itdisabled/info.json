@@ -1,30 +1,26 @@
 {
-	"id": 114,
-	"name": "2026-03_itcrossing",
-	"title": "Attraversamenti pedonali",
-	"start_date": "2025-12-01",
-	"soft_start_date": "2026-03-01",
-	"soft_end_date": "2026-03-31",
-	"end_date": "2026-07-01",
+	"id": 115,
+	"name": "2026-04_itdisabled",
+	"title": "Parcheggi per persone con disabilità",
+	"start_date": "2026-01-01",
+	"soft_start_date": "2026-04-01",
+	"soft_end_date": "2026-04-30",
+	"end_date": "2026-08-01",
 	"links": {
-		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-marzo-2026-attraversamenti-e-marciapiedi/141952",
-		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Marzo:_attraversamenti_pedonali_e_marciapiedi"
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"
 	},
 	"database": {
-		"osmium_tag_filter": "nw/highway=crossing nw/footway=crossing nw/cycleway=crossing",
+		"osmium_tag_filter": "nw/capacity:disabled nw/parking_space=disabled",
 		"imposm": {
 			"types": [
 				"point", "linestring"
 			],
 			"mapping": {
-				"highway": [
-					"crossing"
+				"capacity:disabled": [
+					"__any__"
 				],
-				"footway": [
-					"crossing"
-				],
-				"cycleway": [
-					"crossing"
+				"parking_space": [
+					"disabled"
 				]
 			}
 		}

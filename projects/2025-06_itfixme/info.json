@@ -2,10 +2,10 @@
 	"id": 103,
 	"name": "2025-06_itfixme",
 	"title": "fixme=*",
-	"start_date": "2024-12-01",
+	"start_date": "2025-03-01",
 	"soft_start_date": "2025-06-01",
 	"soft_end_date": "2025-06-30",
-	"end_date": "2025-12-01",
+	"end_date": "2025-10-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#5%C2%B0_settimana_Aprile:_Panchine_giganti",
 		"osmforum": "https://community.openstreetmap.org/t/idee-per-il-weekend-alberi-monumentali/129202"

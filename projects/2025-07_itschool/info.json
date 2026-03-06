@@ -2,10 +2,10 @@
 	"id": 106,
 	"name": "2025-07_itschool",
 	"title": "Scuole",
-	"start_date": "2025-01-01",
+	"start_date": "2025-04-01",
 	"soft_start_date": "2025-07-01",
 	"soft_end_date": "2025-07-31",
-	"end_date": "2026-01-01",
+	"end_date": "2025-11-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Luglio:_Comuni_senza_POI",
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-luglio-2025-comuni-senza-poi/132103"
@@ -25,17 +25,6 @@
 		}
 	},
 	"datasources": [
-		{
-			"source": "notes",
-			"name": "École à intégrer",
-			"description": "Une personne a créé une note ici, vérifiez puis éditez OSM pour intégrer les informations.",
-			"terms": [
-				"scuol",
-				"scolastic",
-				"istruzione",
-				"liceo"
-			]
-		},
 		{
 			"source": "osm",
 			"name": "Scuole in OSM",

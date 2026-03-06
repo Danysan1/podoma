@@ -1,0 +1,1 @@
+https://wiki.openstreetmap.org/wiki/How_to_map_for_the_needs_of_people_with_disabilities#Designated_parking_space

@@ -2,10 +2,10 @@
 	"id": 104,
 	"name": "2025-07_itdrinkingwater",
 	"title": "Fontanelle",
-	"start_date": "2025-01-01",
+	"start_date": "2025-04-01",
 	"soft_start_date": "2025-07-01",
 	"soft_end_date": "2025-07-31",
-	"end_date": "2026-01-01",
+	"end_date": "2025-11-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Luglio:_Comuni_senza_POI",
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-luglio-2025-comuni-senza-poi/132103"
@@ -25,15 +25,6 @@
 		}
 	},
 	"datasources": [
-		{
-			"source": "notes",
-			"name": "Fontanelle da integrare",
-			"description": "Una persona ha creato una nota qui, verifica e poi modifica OSM per integrare le informazioni.",
-			"terms": [
-				"fontan",
-				"potabil"
-			]
-		},
 		{
 			"source": "osm",
 			"name": "Fontanelle in OSM",
