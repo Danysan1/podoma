@@ -1,0 +1,68 @@
+{
+	"id": 115,
+	"name": "2026-03_itsidewalk",
+	"title": "Marciapiedi",
+	"start_date": "2026-01-01",
+	"soft_start_date": "2026-03-01",
+	"soft_end_date": "2026-03-31",
+	"end_date": "2026-06-01",
+	"links": {
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-marzo-2026-attraversamenti-e-marciapiedi/141952",
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Marzo:_attraversamenti_pedonali_e_marciapiedi"
+	},
+	"database": {
+		"osmium_tag_filter": "w/footway=sidewalk w/sidewalk=*",
+		"imposm": {
+			"types": [
+				"linestring"
+			],
+			"mapping": {
+				"footway": [
+					"sidewalk"
+				],
+				"sidewalk": [
+					"__any__"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Marciapiedi in OSM",
+			"description": "Questo marciapiede esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "Marciapiedi",
+		"osmose_tasks": "Marciapiedi completati",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Aggiunta marciapiedi",
+			"hashtags": "progettodelmese"
+		}
+	}
+}
