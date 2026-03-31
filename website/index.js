@@ -998,6 +998,7 @@ app.get("/users/:name", (req, res) => {
   }
 
   // Find user in database
+  console.log(`Getting user ID for username ${req.params.name}`);
   pool
     .query(`SELECT userid FROM pdm_user_names WHERE username = $1`, [
       req.params.name.replace(" ", "%20%"),
@@ -1017,6 +1018,7 @@ app.get("/users/:name", (req, res) => {
           ])
           .join(" UNION ALL ");
 
+        console.log(`Fetching badges for user ${userid}`);
         pool
           .query(sql, [userid])
           .then((res2) => {
@@ -1028,6 +1030,7 @@ app.get("/users/:name", (req, res) => {
             });
           })
           .catch((e) => {
+            console.error("Error fetching badges:", e);
             res.redirect("/error/500");
           });
       } else {
@@ -1035,6 +1038,7 @@ app.get("/users/:name", (req, res) => {
       }
     })
     .catch((e) => {
+      console.error("Error fetching user ID:", e);
       res.redirect("/error/500");
     });
 });
