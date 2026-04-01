@@ -7,7 +7,8 @@
 	"soft_end_date": "2026-04-30",
 	"end_date": "2026-07-01",
 	"links": {
-		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Aprile:_parcheggi_per_disabili",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-aprile-2026-parcheggi-per-disabili/142759"
 	},
 	"database": {
 		"osmium_tag_filter": "nw/capacity:disabled nw/parking_space=disabled",
