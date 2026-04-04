@@ -23,6 +23,8 @@
   "POLY_URL": "https://download.geofabrik.de/europe/italy.poly",
   "VECT_STYLE": "https://api.maptiler.com/maps/openstreetmap/style.json?key=f9lRqWcrUSOYx4BnX6I4",
   "MAP_INITIAL_ZOOM": 5,
+  "MAP_INITIAL_LAT": 12.6,
+  "MAP_INITIAL_LON": 42.5,
   "PDM_TILES_URL": "https://osmit-podoma-tiles.wmcloud.org",
   "DB_USE_IMPOSM_UPDATE": true,
   "USE_SOFT_DATES": true,
