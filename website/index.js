@@ -352,6 +352,7 @@ app.get("/projects/:name", (req, res) => {
         endDate != null && 
         new Date(endDate + "T23:59:59Z").getTime() >= recentPastThreshold;
     });
+  
   res.render(
     "pages/project",
     Object.assign(
@@ -568,31 +569,26 @@ app.get("/projects/:name/stats", (req, res) => {
         `,
         [p.id]
         )
-        .then((results) => ({
-          osm_counts: results.rows,
-          "daily":{
-            "ts": results.rows.length > 0 &&
-              results.rows[results.rows.length - 1].ts,
-            "ts_start": results.rows[0].ts,
-            "count":results.rows.length > 0 &&
-              results.rows[results.rows.length - 1].amount,
-            "added":
-              results.rows.length > 0 &&
-              results.rows[results.rows.length - 1].amount -
-                results.rows[0].amount
-          },
-          "past": {
-            "ts": results.rows.length > 1 &&
-              results.rows[results.rows.length - 1].ts,
-            "ts_start": results.rows[0].ts,
-            "count": results.rows.length > 1 &&
-              results.rows[results.rows.length - 2].amount,
-            "added":
-              results.rows.length > 1 &&
-              results.rows[results.rows.length - 2].amount -
-                results.rows[0].amount
-          }
-        })),
+        .then((results) => {
+          const firstItem = results.rows[0],
+            lastItem = results.rows.length > 0 ? results.rows[results.rows.length - 1] : null,
+            secondLastItem = results.rows.length > 1 ? results.rows[results.rows.length - 2] : null;
+          return {
+            osm_counts: results.rows,
+            "daily":{
+              "ts": lastItem?.ts,
+              "ts_start": firstItem?.ts,
+              "count": lastItem?.amount,
+              "added": firstItem && lastItem && lastItem.amount - firstItem.amount
+            },
+            "past": {
+              "ts": secondLastItem?.ts,
+              "ts_start": firstItem?.ts,
+              "count": secondLastItem?.amount,
+              "added": firstItem && secondLastItem && secondLastItem.amount - firstItem.amount
+            }
+          };
+        }),
     );
 
     allPromises.push(
