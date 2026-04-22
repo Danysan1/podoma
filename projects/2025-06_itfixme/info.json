@@ -2,9 +2,7 @@
 	"id": 103,
 	"name": "2025-06_itfixme",
 	"title": "fixme=*",
-	"start_date": "2025-04-01",
-	"soft_start_date": "2025-06-01",
-	"soft_end_date": "2025-06-30",
+	"start_date": "2025-05-01",
 	"end_date": "2025-09-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Giugno:_fixme=*",
