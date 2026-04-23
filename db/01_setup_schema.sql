@@ -215,7 +215,7 @@ BEGIN
 		-- Badges related to amount of contributions
 		IF nb_contributions < 3 THEN
 			id := '1_edit';
-			name := '1er point';
+			name := '1st point';
 			description := 'Lancez-vous dans l''aventure';
 			acquired := nb_contributions >= 1;
 			progress := acquired::INT * 100;
