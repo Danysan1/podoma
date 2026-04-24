@@ -1115,6 +1115,12 @@ const authorized = {
   "chartjs-plugin-annotation": {
     "annotation.js": "dist/chartjs-plugin-annotation.min.js",
   },
+  "hammerjs": {
+    "hammer.js": "hammer.min.js",
+  },
+  "chartjs-plugin-zoom": {
+    "zoom.js": "dist/chartjs-plugin-zoom.min.js",
+  },
   "maplibre-gl": {
     "maplibre-gl.js": "dist/maplibre-gl.js",
     "maplibre-gl.css": "dist/maplibre-gl.css",

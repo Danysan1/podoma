@@ -321,19 +321,31 @@ script.
 			const dateFmt = #{isActive || isNext || isRecentPast || "false"} ? "DD/MM" : "MM/YYYY";
 
 			const annotationOpts = (softStartDate && softEndDate) ? {
-				annotation: {
-					annotations: {
-						softRange: {
-							type: "box",
-							xMin: softStartDate,
-							xMax: softEndDate,
-							backgroundColor: "rgba(33, 150, 243, 0.1)",
-							borderColor: "rgba(33, 150, 243, 0.3)",
-							borderWidth: 1
-						}
+				annotations: {
+					softRange: {
+						type: "box",
+						xMin: softStartDate,
+						xMax: softEndDate,
+						backgroundColor: "rgba(33, 150, 243, 0.1)",
+						borderColor: "rgba(33, 150, 243, 0.3)",
+						borderWidth: 1
 					}
 				}
-			} : {};
+			} : undefined;
+			const zoomOpts = {
+				zoom: {
+					wheel: {
+						enabled: true,
+					},
+					drag: {
+						enabled: true,
+					},
+					pinch: {
+						enabled: true,
+					},
+					mode: 'x',
+				}
+			};
 
 			// Notes count + chart
 			if(res.chartNotes) {
@@ -346,7 +358,10 @@ script.
 					},
 					options: {
 						responsive: true,
-						plugins: annotationOpts,
+						plugins: {
+							annotation: annotationOpts,
+							zoom: zoomOpts,
+						},
 						scales: {
 							x: {
 								type: 'time',
@@ -385,7 +400,10 @@ script.
 					},
 					options: {
 						responsive: true,
-						plugins: annotationOpts,
+						plugins: {
+							annotation: annotationOpts,
+							zoom: zoomOpts,
+						},
 						scales: {
 							x: {
 								type: 'time',
