@@ -10,6 +10,8 @@ CREATE TABLE pdm_projects(
 	project_id int primary key,
 	project VARCHAR,
 	start_date TIMESTAMP NOT NULL,
+	soft_start_date TIMESTAMP NULL,
+	soft_end_date TIMESTAMP NULL,
 	end_date TIMESTAMP NULL,
 	changes_lastupdate_date TIMESTAMP NULL,
 	counts_lastupdate_date TIMESTAMP NULL

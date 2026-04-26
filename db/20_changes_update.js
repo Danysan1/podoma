@@ -253,14 +253,10 @@ let projectPointsLength = 0;
 let projectTeamsLength = 0;
 
 Object.values(projects).forEach(project => {
-    let project_end_date = project.end_date;
-    if (project_end_date != null){
-        project_end_date = `'${project_end_date}'`;
-    }
-    else {
-        project_end_date = null;
-    }
-    projectsQry += `(${project.id}, '${project.name}', '${project.start_date}', ${project_end_date}),`;
+    const project_soft_start_date = project.soft_start_date ? `'${project_soft_start_date}'` : null,
+        project_soft_end_date = project.soft_end_date ? `'${project_soft_end_date}'` : null,
+        project_end_date = project.end_date ? `'${project_end_date}'` : null;
+    projectsQry += `(${project.id}, '${project.name}', '${project.start_date}', ${project_soft_start_date}, ${project_soft_end_date}, ${project_end_date}),`;
     projectLength++;
 
     if (project.statistics.hasOwnProperty("points") && project.statistics.points){
