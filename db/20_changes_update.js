@@ -235,7 +235,7 @@ function macroChangesCsv (mode, project, oplProject, csvFeatures, csvUsers, csvM
 // Beware of async queries
 console.log("Projects installation");
 
-let projectsQry = "INSERT INTO pdm_projects (project_id, project, start_date, end_date) VALUES ";
+let projectsQry = "INSERT INTO pdm_projects (project_id, project, start_date, soft_start_date, soft_end_date, end_date) VALUES ";
 let projectPointsQry = "INSERT INTO pdm_projects_points (project_id, contrib, label, points) VALUES ";
 let projectTeamsQry = "INSERT INTO pdm_projects_teams (project_id, team, username) VALUES ";
 let projectLength = 0;
@@ -243,9 +243,9 @@ let projectPointsLength = 0;
 let projectTeamsLength = 0;
 
 Object.values(projects).forEach(project => {
-    const project_soft_start_date = project.soft_start_date ? `'${project_soft_start_date}'` : null,
-        project_soft_end_date = project.soft_end_date ? `'${project_soft_end_date}'` : null,
-        project_end_date = project.end_date ? `'${project_end_date}'` : null;
+    const project_soft_start_date = project.soft_start_date ? `'${project.soft_start_date}'` : null,
+        project_soft_end_date = project.soft_end_date ? `'${project.soft_end_date}'` : null,
+        project_end_date = project.end_date ? `'${project.end_date}'` : null;
     projectsQry += `(${project.id}, '${project.name}', '${project.start_date}', ${project_soft_start_date}, ${project_soft_end_date}, ${project_end_date}),`;
     projectLength++;
 
