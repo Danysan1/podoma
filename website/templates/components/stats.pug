@@ -172,15 +172,12 @@ script.
 			if(res.tasksSolved !== undefined) {
 				addBlock("triangle-exclamation", numberFormat.format(res.tasksSolved), "#{statistics.osmose_tasks}", null);
 			}
-			//- if (useSoftDates) {
-				//if(res.nbContributors) { addBlock(numberFormat.format(res.nbContributors), "#{__('contributors')}", addedDateRange); } // We use addedDateRange here as well because it's more reliable than the project start/end dates, for example if they have been changed after data initialization
-				// TODO
-			//- } else if (res.daily && res.daily.nbContributors) {
+			
 			if (res.daily?.nbContributors) {
 				addBlock(
 					"users",
 					numberFormat.format(res.daily.nbContributors),
-					`#{__('contributors')} (${(new Intl.DateTimeFormat()).formatRange(new Date(res.daily.ts_start), new Date(res.daily.ts))})`,
+					"#{__('contributors')}",
 					isDailyDateToday ? { "24h": res.daily.nbContributors - res.past.nbContributors } : null
 				);
 			}

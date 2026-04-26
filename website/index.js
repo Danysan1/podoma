@@ -634,8 +634,9 @@ app.get("/projects/:name/stats", (req, res) => {
   // Fetch mappers count
   allPromises.push(
     pool
-      .query(`SELECT * FROM pdm_mapper_counts WHERE project_id = $1 and label is null ORDER BY ts DESC limit 2`, [
+      .query(`SELECT * FROM pdm_mapper_counts WHERE project_id = $1 AND ts <= $2 AND label is null ORDER BY ts DESC limit 2`, [
         p.id,
+        CONFIG.USE_SOFT_DATES && p.soft_end_date || p.end_date
       ])
       .then((results) => ({
         "daily":{
