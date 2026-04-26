@@ -192,7 +192,7 @@ Object.values(projects).forEach(project => {
     const slug = project.name.split("_").pop();
     script += `
 IFS='|'
-process_data=\$(${PSQL} -qtAc "SELECT to_char (COALESCE(counts_lastupdate_date, start_date) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as start, to_char (LEAST(COALESCE(soft_end_date,end_date), CURRENT_TIMESTAMP) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as end from pdm_projects where project_id=${project.id}")
+process_data=\$(${PSQL} -qtAc "SELECT to_char (COALESCE(counts_lastupdate_date, start_date) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as start, to_char (LEAST(end_date, CURRENT_TIMESTAMP) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as end from pdm_projects where project_id=${project.id}")
 read -r -a process_qry <<< \$process_data
 process_start_ts=\${process_qry[0]}
 process_start_day=\$(date -d "\$process_start_ts" +%-d)
