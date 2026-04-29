@@ -29,8 +29,8 @@
 	"datasources": [
 		{
 			"source": "osm",
-			"name": "Attraversamenti in OSM",
-			"description": "Questo attraversamento esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+			"name": "Parcheggi per persone con disabilità in OSM",
+			"description": "Questo parcheggio per persone con disabilità esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
 		},
 		{
 			"source": "background",
@@ -51,8 +51,8 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "Attraversamenti",
-		"osmose_tasks": "Attraversamenti completati",
+		"feature_name": "Parcheggi per persone con disabilità",
+		"osmose_tasks": "Parcheggi per persone con disabilità completati",
 		"points": {
 			"add": 3,
 			"edit": 1,
@@ -61,7 +61,7 @@
 	},
 	"editors": {
 		"all": {
-			"comment": "Aggiunta attraversamenti",
+			"comment": "Aggiunta parcheggi per persone con disabilità",
 			"hashtags": "progettodelmese"
 		}
 	}
