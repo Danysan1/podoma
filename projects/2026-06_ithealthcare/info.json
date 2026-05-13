@@ -1,0 +1,78 @@
+{
+	"id": 118,
+	"name": "2026-06_ithealthcare",
+	"title": "Sanità",
+	"start_date": "2026-05-01",
+	"soft_start_date": "2026-06-01",
+	"soft_end_date": "2026-07-01",
+	"end_date": "2026-09-01",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"
+	},
+	"database": {
+		"osmium_tag_filter": "nw/amenity=hospital nw/amenity=pharmacy nw/amenity=doctors nw/amenity=dentist nw/amenity=clinic nw/healthcare nw/vending=chemist nw/parking_space=emergency",
+		"imposm": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"amenity": [
+					"hospital",
+					"pharmacy",
+					"doctors",
+					"dentist",
+					"clinic"
+				],
+				"healthcare": [
+					"__any__"
+				],
+				"vending": [
+					"chemist"
+				],
+				"parking_space": [
+					"emergency"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Strutture sanitarie in OSM",
+			"description": "Questa struttura sanitaria esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "strutture sanitarie",
+		"osmose_tasks": "strutture sanitarie completate",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Aggiunta strutture sanitarie",
+			"hashtags": "progettodelmese"
+		}
+	}
+}
