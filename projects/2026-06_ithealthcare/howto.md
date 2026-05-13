@@ -1,0 +1,14 @@
+Il progetto consiste nel migliorare la situazione di tutto ciò che riguarda la salute: ospedali, cliniche, farmacie, parafarmacie, distributori di medicinali, studi medici di base, studi specialistici, ecc.
+
+
+* Ospedali ([`amenity=hospital`](https://wiki.openstreetmap.org/wiki/IT:Tag:amenity%3Dhospital)): anche se la maggior parte sono già esistenti, possono essere migliorate le informazioni ed estese con dettagli maggiori. Ad esempio, può essere un’ottima occasione per approfondire l’indoor mapping con i diversi reparti mappati singolarmente. O specificando ingressi del pronto soccorso, parcheggi disponibili e info simili
+
+* Farmacie e parafarmacie ([`amenity=pharmacy`](https://wiki.openstreetmap.org/wiki/IT:Tag:amenity%3Dpharmacy) + [`dispensing`](https://wiki.openstreetmap.org/wiki/Key:dispensing)): mapparle con annessi orari, distributori automatici dove presenti ([`vending=chemist`](https://wiki.openstreetmap.org/wiki/Tag:vending%3Dchemist)), ecc.
+
+* Studi medici ([`amenity=doctors`](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Ddoctors)): mappare gli studi medici con annessi nomi dei medici presenti all’interno
+
+* Studi specialistici e cliniche private: mappare gli studi specialistici con annessi nomi dei medici presenti all’interno ([`amenity=dentist`](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Ddentist), [`amenity=clinic`](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dclinic), [`healthcare`](https://wiki.openstreetmap.org/wiki/Key:healthcare), [`healthcare:speciality`](https://wiki.openstreetmap.org/wiki/Key:healthcare:speciality) ecc.)
+
+* Parcheggi davanti alle farmacie riservate ai clienti
+
+* Parcheggi riservati ad ambulanze ([`parking_space=emergency`](https://wiki.openstreetmap.org/wiki/Key:parking_space)) e auto mediche
