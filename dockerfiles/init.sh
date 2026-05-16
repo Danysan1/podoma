@@ -2,6 +2,7 @@
 set -e
 set -x
 cd $(dirname "$0")/..
+mkdir -p logs
 
 docker compose up -d pgsqldb
 sleep 20
