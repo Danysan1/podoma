@@ -126,7 +126,6 @@ function macroChangesCsv (mode, project, oplProject, csvFeatures, csvUsers, csvM
                 IFS='|' read -ra missing_features_qry_res <<< \$missing_features
                 echo "data=(\${missing_features_qry_res[0]} \${missing_features_qry_res[1]} \${missing_features_qry_res[2]}); (._;>>;); out meta;" > ${CONFIG.WORK_DIR}/missing_osm.overpass
 
-                echo "Using user agent Podoma/1.0 (${CONFIG.WEBSITE_URL})"
                 curl -d @${CONFIG.WORK_DIR}/missing_osm.overpass --retry 10 --retry-max-time 250 -f -o "${CONFIG.WORK_DIR}/missing_osm.xml" -A "Podoma/1.0 (${CONFIG.WEBSITE_URL})" -X POST ${CONFIG.OVERPASS_URL}
                 if [[ -f "${CONFIG.WORK_DIR}/missing_osm.xml" ]]; then
                     osmium cat -f opl -o "${CONFIG.WORK_DIR}/missing_osm.opl" "${CONFIG.WORK_DIR}/missing_osm.xml"
@@ -498,7 +497,7 @@ Object.values(projects).forEach(project => {
         script += `
             echo "   => [\$((\$(date -d now +%s) - \$process_start_t0))s] Seek for all changes related to selected features and convert to OPL"
             rm -f "${oplProject}"
-            osmium getid ${getIdOptions} "\$history_osh" -I "${oshProjectTags}" -f opl,history=true -o "${oplProject}" || { echo "osmium getid failed, check ${oshProjectTags}"; exit 1; }
+            osmium getid ${getIdOptions} "\$history_osh" -I "${oshProjectTags}" -f opl,history=true -o "${oplProject}"
             rm -f "${csvFeatures}" "${csvMembers}" "${oshProjectTags}"
         fi
 
