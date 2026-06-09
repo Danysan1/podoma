@@ -8,6 +8,7 @@
 	"end_date": "2026-08-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Maggio:_fermate_del_trasporto_pubblico"
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-maggio-2026-trasporto-pubblico/143481"
 	},
 	"database": {
 		"osmium_tag_filter": "nw/highway=bus_stop nw/public_transport=platform",
