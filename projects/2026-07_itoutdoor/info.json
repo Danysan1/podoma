@@ -1,0 +1,73 @@
+{
+	"id": 119,
+	"name": "2026-07_itoutdoor",
+	"title": "Outdoor",
+	"start_date": "2026-06-01",
+	"soft_start_date": "2026-07-01",
+	"soft_end_date": "2026-08-01",
+	"end_date": "2026-10-01",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"
+	},
+	"database": {
+		"osmium_tag_filter": "nw/amenity=drinking_water nw/amenity=bench nw/amenity=waste_basket nw/tourism=picnic_site nw/leisure=picnic_table",
+		"imposm": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"amenity": [
+					"drinking_water",
+					"bench",
+					"waste_basket"
+				],
+				"tourism": [
+					"picnic_site"
+				],
+				"leisure": [
+					"picnic_table"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Elementi in OSM",
+			"description": "Questo elemento esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "elementi",
+		"osmose_tasks": "elementi completati",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Aggiunta elementi outdoor",
+			"hashtags": "progettodelmese"
+		}
+	}
+}

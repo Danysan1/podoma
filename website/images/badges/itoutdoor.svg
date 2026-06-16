@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
+  <!-- Background circle split diagonally -->
+  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
+  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
+  <!-- Outdoor / picnic table icon -->
+  <g transform="translate(17.514,17.514)" fill="none">
+    <!-- Sun (bella stagione) -->
+    <g transform="translate(-9,-9)">
+      <circle cx="0" cy="0" r="2.6" fill="#ffd54f" stroke="#fbc02d" stroke-width="0.4"/>
+      <g stroke="#ffd54f" stroke-width="0.8" stroke-linecap="round">
+        <line x1="0" y1="-3.6" x2="0" y2="-4.8"/>
+        <line x1="0" y1="3.6" x2="0" y2="4.8"/>
+        <line x1="-3.6" y1="0" x2="-4.8" y2="0"/>
+        <line x1="3.6" y1="0" x2="4.8" y2="0"/>
+        <line x1="-2.6" y1="-2.6" x2="-3.5" y2="-3.5"/>
+        <line x1="2.6" y1="-2.6" x2="3.5" y2="-3.5"/>
+        <line x1="-2.6" y1="2.6" x2="-3.5" y2="3.5"/>
+        <line x1="2.6" y1="2.6" x2="3.5" y2="3.5"/>
+      </g>
+    </g>
+    <!-- Green grass ground -->
+    <ellipse cx="0" cy="12" rx="13" ry="3" fill="#66bb6a"/>
+    <ellipse cx="0" cy="11.5" rx="11" ry="2.2" fill="#81c784"/>
+    <!-- Grass blades -->
+    <path d="M-10,10.5 L-9.5,8.5 L-9,10.5" fill="#4caf50" stroke="none"/>
+    <path d="M9,10.5 L9.5,8.5 L10,10.5" fill="#4caf50" stroke="none"/>
+    <!-- Picnic table (front view, A-frame) -->
+    <!-- Splayed legs -->
+    <g stroke="#6d4c41" stroke-width="2.1" stroke-linecap="round">
+      <line x1="-3" y1="-2.5" x2="-8" y2="10"/>
+      <line x1="3" y1="-2.5" x2="8" y2="10"/>
+    </g>
+    <!-- Seat plank -->
+    <rect x="-10.5" y="3" width="21" height="2.4" rx="0.6" fill="#a1887f" stroke="#6d4c41" stroke-width="0.4"/>
+    <!-- Table top plank -->
+    <rect x="-11" y="-4.5" width="22" height="3" rx="0.7" fill="#bcaaa4" stroke="#6d4c41" stroke-width="0.4"/>
+    <!-- Table top wood grain -->
+    <line x1="-9" y1="-3" x2="9" y2="-3" stroke="#8d6e63" stroke-width="0.3" opacity="0.6"/>
+  </g>
+</svg>
