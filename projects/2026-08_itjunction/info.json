@@ -1,0 +1,82 @@
+{
+	"id": 120,
+	"name": "2026-08_itjunction",
+	"title": "Incroci e svincoli",
+	"start_date": "2026-07-01",
+	"soft_start_date": "2026-08-01",
+	"soft_end_date": "2026-09-01",
+	"end_date": "2026-11-01",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"
+	},
+	"database": {
+		"osmium_tag_filter": "n/highway=motorway_junction w/destination w/destination:forward w/destination:backward w/turn:lanes w/turn:lanes:forward w/turn:lanes:backward",
+		"imposm": {
+			"types": [
+				"point", "linestring"
+			],
+			"mapping": {
+				"highway": [
+					"motorway_junction"
+				],
+				"destination": [
+					"__any__"
+				],
+				"destination:forward": [
+					"__any__"
+				],
+				"destination:backward": [
+					"__any__"
+				],
+				"turn:lanes": [
+					"__any__"
+				],
+				"turn:lanes:forward": [
+					"__any__"
+				],
+				"turn:lanes:backward": [
+					"__any__"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Elementi in OSM",
+			"description": "Questo elemento esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "Incroci e svincoli",
+		"osmose_tasks": "Incroci e svincoli completati",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Aggiunta informazioni su incroci e svincoli",
+			"hashtags": "progettodelmese"
+		}
+	}
+}
