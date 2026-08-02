@@ -27,6 +27,3 @@ Cartelli stradali, corsie di svolta, indicazioni di destinazione e divieti di sv
   * l'elenco completo è nella pagina [Restrictions](https://wiki.openstreetmap.org/wiki/Restrictions)
   * dove possibile riportale tramite [`traffic_sign=*`](https://wiki.openstreetmap.org/wiki/Key:traffic_sign) come nella sezione "Cartelli"
 * Puoi verificare le relazioni di svolta con [Ahorn](https://ahorn.lima-city.de/tr/) o [OSM Inspector](https://tools.geofabrik.de/osmi/?view=turn_restrictions)
-
-Attraversamenti ([`highway=crossing`](https://wiki.openstreetmap.org/wiki/IT:Tag:highway%3Dcrossing) + [`crossing=*`](https://wiki.openstreetmap.org/wiki/IT:Key:crossing)): il progetto di marzo si è occupato nel dettaglio degli attraversamenti pedonali e ciclabili, [trovi le informazioni qui](/projects/2026-03_itcrossing); qui ci concentriamo sull'incrocio nel suo insieme.
-
