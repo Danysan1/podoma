@@ -1,23 +1,24 @@
 {
 	"id": 120,
 	"name": "2026-08_itjunction",
-	"title": "Incroci e svincoli",
+	"title": "Restrizioni, direzioni e cartelli",
 	"start_date": "2026-07-01",
 	"soft_start_date": "2026-08-01",
 	"soft_end_date": "2026-09-01",
 	"end_date": "2026-11-01",
 	"links": {
-		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-agosto-2026-restrizioni-direzioni-e-cartelli/146027"
 	},
 	"database": {
-		"osmium_tag_filter": "n/highway=motorway_junction w/destination w/destination:forward w/destination:backward w/turn:lanes w/turn:lanes:forward w/turn:lanes:backward",
+		"osmium_tag_filter": "nw/traffic_sign w/destination w/destination:forward w/destination:backward w/turn:lanes w/turn:lanes:forward w/turn:lanes:backward w/change:lanes w/change:lanes:forward w/change:lanes:backward",
 		"imposm": {
 			"types": [
 				"point", "linestring"
 			],
 			"mapping": {
-				"highway": [
-					"motorway_junction"
+				"traffic_sign": [
+					"__any__"
 				],
 				"destination": [
 					"__any__"
@@ -35,6 +36,15 @@
 					"__any__"
 				],
 				"turn:lanes:backward": [
+					"__any__"
+				],
+				"change:lanes": [
+					"__any__"
+				],
+				"change:lanes:forward": [
+					"__any__"
+				],
+				"change:lanes:backward": [
 					"__any__"
 				]
 			}
@@ -65,8 +75,8 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "Incroci e svincoli",
-		"osmose_tasks": "Incroci e svincoli completati",
+		"feature_name": "elementi",
+		"osmose_tasks": "elementi completati",
 		"points": {
 			"add": 3,
 			"edit": 1,
@@ -75,7 +85,7 @@
 	},
 	"editors": {
 		"all": {
-			"comment": "Aggiunta informazioni su incroci e svincoli",
+			"comment": "Aggiunta informazioni su cartelli, corsie, destinazioni e restrizioni",
 			"hashtags": "progettodelmese"
 		}
 	}

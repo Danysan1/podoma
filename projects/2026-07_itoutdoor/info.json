@@ -7,7 +7,8 @@
 	"soft_end_date": "2026-08-01",
 	"end_date": "2026-10-01",
 	"links": {
-		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-luglio-2026-gite-fuori-porta/144994"
 	},
 	"database": {
 		"osmium_tag_filter": "nw/amenity=drinking_water nw/amenity=bench nw/amenity=waste_basket nw/tourism=picnic_site nw/leisure=picnic_table",
