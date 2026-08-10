@@ -11,7 +11,7 @@
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-agosto-2026-restrizioni-direzioni-e-cartelli/146027"
 	},
 	"database": {
-		"osmium_tag_filter": "nw/traffic_sign r/type=restriction nw/hazard nw/junction nw/priority nw/priority_road nw/vehicle nw/overtaking nw/maxaxleload nw/maxheight nw/maxlength nw/maxspeed nw/maxweight nw/maxwidth nw/minspeed nw/oneway nw/hov nw/surface",
+		"osmium_tag_filter": "nw/traffic_sign r/type=restriction nw/hazard nw/junction nw/priority nw/priority_road nw/vehicle nw/overtaking nw/maxaxleload nw/maxheight nw/maxlength nw/maxspeed nw/maxweight nw/maxwidth nw/minspeed nw/oneway nw/hov",
 		"imposm": {
 			"types": [
 				"point", "linestring"
@@ -66,9 +66,6 @@
 					"__any__"
 				],
 				"hov": [
-					"__any__"
-				],
-				"surface": [
 					"__any__"
 				]
 			}
