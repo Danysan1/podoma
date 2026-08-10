@@ -1,6 +1,5 @@
 I cartelli di destinazione, in particolare quelli su svincoli e uscite autostradali, sono spesso poco dettagliati in OSM: manca il contenuto dei cartelli con le località raggiungibili proseguendo sulla strada. Completare queste informazioni aiuta i navigatori a dare indicazioni più precise e tempestive.
 
-* Nodi di svincolo ([`highway=motorway_junction`](https://wiki.openstreetmap.org/wiki/IT:Tag:highway%3Dmotorway_junction)): il punto di uscita da un'autostrada, spesso identificato da un numero o nome
 * Cartelli di destinazione ([`destination=*`](https://wiki.openstreetmap.org/wiki/Key:destination)/[`destination:forward=*`](https://wiki.openstreetmap.org/wiki/Key:destination)/[`destination:backward=*`](https://wiki.openstreetmap.org/wiki/Key:destination)): riportano il contenuto dei cartelli con le località raggiungibili proseguendo sulla strada
   * [`destination:lanes=*`](https://wiki.openstreetmap.org/wiki/Key:destination:lanes): quando il cartello indica destinazioni diverse per ciascuna corsia
   * [`destination:ref=*`](https://wiki.openstreetmap.org/wiki/Key:destination:ref)/[`destination:ref:forward=*`](https://wiki.openstreetmap.org/wiki/Key:destination:ref)/[`destination:ref:backward=*`](https://wiki.openstreetmap.org/wiki/Key:destination:ref): numero di strada indicato sul cartello

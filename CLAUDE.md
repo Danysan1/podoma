@@ -39,7 +39,7 @@ Full setup/build/Docker/pg_tileserv instructions are in [docs/DEVELOP.md](docs/D
 
 Each subdirectory is one thematic campaign, identified by name `<YYYY-MM>_<slug>` (e.g. `2026-07_itoutdoor`) and contains:
 - `info.json` — metadata: dates, links, `database` (perimeter filter + imposm mapping), `datasources` (map layers), `statistics`, `editors` (embedded editor form config), optional `teams`. Full schema is documented in [docs/DEVELOP.md](docs/DEVELOP.md) ("Project configuration" section) — read it before editing `info.json`.
-- `howto.md` — Markdown description of what to map, shown on the project page, rendered via `marked`.
+- `howto.md` — Markdown description of what to map, shown on the project page, rendered via `marked`. Keep it aligned with `database.osmium_tag_filter`/`imposm.mapping` in `info.json` whenever either is edited — a tag added/removed from one but not the other silently drifts the documented scope away from what's actually tracked.
 - `contribs.sql` (optional) — SQL `UPDATE` statements against `pdm_features` to classify contributions and award points.
 - `extract.sh` (optional) — produces a downloadable CSV export.
 
