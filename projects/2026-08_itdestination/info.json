@@ -1,0 +1,89 @@
+{
+	"id": 122,
+	"name": "2026-08_itdestination",
+	"title": "Destinazioni",
+	"start_date": "2026-07-01",
+	"soft_start_date": "2026-08-01",
+	"soft_end_date": "2026-09-01",
+	"end_date": "2026-11-01",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-agosto-2026-restrizioni-direzioni-e-cartelli/146027"
+	},
+	"database": {
+		"osmium_tag_filter": "r/type=destination_sign w/destination w/destination:forward w/destination:backward w/destination:lanes w/destination:ref w/destination:ref:forward w/destination:ref:backward w/destination:ref:lanes",
+		"imposm": {
+			"types": [
+				"point", "linestring"
+			],
+			"mapping": {
+				"type": [
+					"destination_sign"
+				],
+				"destination": [
+					"__any__"
+				],
+				"destination:forward": [
+					"__any__"
+				],
+				"destination:backward": [
+					"__any__"
+				],
+				"destination:lanes": [
+					"__any__"
+				],
+				"destination:ref": [
+					"__any__"
+				],
+				"destination:ref:forward": [
+					"__any__"
+				],
+				"destination:ref:backward": [
+					"__any__"
+				],
+				"destination:ref:lanes": [
+					"__any__"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Elementi in OSM",
+			"description": "Questo elemento esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "cartelli di destinazione",
+		"osmose_tasks": "cartelli di destinazione completati",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Aggiunta cartelli di destinazione",
+			"hashtags": "progettodelmese"
+		}
+	}
+}

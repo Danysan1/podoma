@@ -37,11 +37,15 @@ Full setup/build/Docker/pg_tileserv instructions are in [docs/DEVELOP.md](docs/D
 
 ### Monthly projects (`projects/<YYYY-MM>_<slug>/`)
 
-Each subdirectory is one thematic campaign, identified by name `<YYYY-MM>_<slug>` (e.g. `2026-08_itjunction`) and contains:
+Each subdirectory is one thematic campaign, identified by name `<YYYY-MM>_<slug>` (e.g. `2026-07_itoutdoor`) and contains:
 - `info.json` — metadata: dates, links, `database` (perimeter filter + imposm mapping), `datasources` (map layers), `statistics`, `editors` (embedded editor form config), optional `teams`. Full schema is documented in [docs/DEVELOP.md](docs/DEVELOP.md) ("Project configuration" section) — read it before editing `info.json`.
 - `howto.md` — Markdown description of what to map, shown on the project page, rendered via `marked`.
 - `contribs.sql` (optional) — SQL `UPDATE` statements against `pdm_features` to classify contributions and award points.
 - `extract.sh` (optional) — produces a downloadable CSV export.
+
+A single month can host more than one concurrent project when the topic naturally splits (e.g. `2025-12_itaed` + `2025-12_ithydrant`, or `2026-08_itsigns`/`itlanes`/`itdestination`) — each still needs its own unique `id` and its own badge (see below).
+
+**When adding a new project**, also add `website/images/badges/<slug>.svg` (the part of `name` after the last `_`) — `website/projects.js` sets `project.icon` to that path unconditionally, so a missing file is a broken image on the project/user/badges pages. Match the existing badges' style: `132.39×132.39` viewBox `0 0 35.028 35.028`, a full-circle background (solid or diagonally split two-tone), and a small hand-drawn flat-shape icon for the theme — no raster images or external fonts/icons.
 
 Key perimeter-filtering rule (from docs/DEVELOP.md): `database.osmium_tag_filter` (Osmium tags-filter syntax, `!=` unsupported) and `database.imposm.mapping` should stay selective — focus on the main/anchor tags for the topic, not every possible detail tag, since Osmium/Imposm select "objects existing in OSM" for both the perimeter and for feature counts. Use `database.labels` (Postgres JSON-path over feature tags) to further classify a wide perimeter into sub-populations instead of narrowing the base filter.
 
@@ -56,7 +60,7 @@ Numbered scripts represent an ordered pipeline, split between Node.js generators
 
 Contribution tagging model (project level): `add`, `edit-in`, `edit`, `edit-out`, `delete`; at label level: `edit-in`, `edit`. This feeds points/gamification (badges) and the per-team/per-mapper KPIs.
 
-Because daily diffs only contain features actually touched that day, referenced-but-untouched way/relation members are fetched via Overpass (`OVERPASS_URL`) to keep geometries complete; set it to `null` to disable, or use `database.live` per-project when a live-updated table is available instead.
+Because daily diffs only contain features actually touched that day, referenced-but-untouched way/relation members are fetched via Overpass (`OVERPASS_URL`) to keep geometries complete; set it to `null` to disable. `database.live` per-project additionally sources missing features from a live-updated table when available — the two mechanisms are combined, not alternatives.
 
 ### Website (`website/`)
 

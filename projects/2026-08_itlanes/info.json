@@ -1,7 +1,7 @@
 {
-	"id": 120,
-	"name": "2026-08_itjunction",
-	"title": "Restrizioni, direzioni e cartelli",
+	"id": 121,
+	"name": "2026-08_itlanes",
+	"title": "Corsie",
 	"start_date": "2026-07-01",
 	"soft_start_date": "2026-08-01",
 	"soft_end_date": "2026-09-01",
@@ -11,37 +11,19 @@
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-agosto-2026-restrizioni-direzioni-e-cartelli/146027"
 	},
 	"database": {
-		"osmium_tag_filter": "r/type=restriction r/type=destination_sign nw/traffic_sign w/destination* w/turn* w/change* w/*lanes* nw/hazard* nw/junction nw/priority* nw/priority_road* nw/maxaxleload* nw/vehicle* nw/maxheight* nw/maxlength* nw/maxspeed* nw/maxweight* nw/maxwidth* nw/minspeed* nw/oneway* nw/overtaking*",
+		"osmium_tag_filter": "w/lanes w/lanes:forward w/lanes:backward w/turn w/turn:lanes w/turn:lanes:forward w/turn:lanes:backward w/change w/change:lanes w/change:lanes:forward w/change:lanes:backward w/maxspeed:lanes w/minspeed:lanes w/maxheight:lanes w/maxwidth:lanes w/width:lanes w/surface:lanes w/hov:lanes",
 		"imposm": {
 			"types": [
 				"point", "linestring"
 			],
 			"mapping": {
-				"traffic_sign": [
+				"lanes": [
 					"__any__"
 				],
-				"destination": [
+				"lanes:forward": [
 					"__any__"
 				],
-				"destination:lanes": [
-					"__any__"
-				],
-				"destination:forward": [
-					"__any__"
-				],
-				"destination:backward": [
-					"__any__"
-				],
-				"destination:ref": [
-					"__any__"
-				],
-				"destination:ref:lanes": [
-					"__any__"
-				],
-				"destination:ref:forward": [
-					"__any__"
-				],
-				"destination:ref:backward": [
+				"lanes:backward": [
 					"__any__"
 				],
 				"turn": [
@@ -71,67 +53,24 @@
 				"maxspeed:lanes": [
 					"__any__"
 				],
-				"maxspeed": [
-					"__any__"
-				],
-				"minspeed:lanes=* ": [
-					"__any__"
-				],
-				"minspeed=* ": [
-					"__any__"
-				],
-				"surface:lanes": [
-					"__any__"
-				],
-				"surface": [
-					"__any__"
-				],
-				"maxwidth:lanes": [
-					"__any__"
-				],
-				"maxwidth": [
-					"__any__"
-				],
-				"width:lanes": [
-					"__any__"
-				],
-				"width": [
+				"minspeed:lanes": [
 					"__any__"
 				],
 				"maxheight:lanes": [
 					"__any__"
 				],
-				"maxheight": [
+				"maxwidth:lanes": [
+					"__any__"
+				],
+				"width:lanes": [
+					"__any__"
+				],
+				"surface:lanes": [
 					"__any__"
 				],
 				"hov:lanes": [
 					"__any__"
-				],
-				"hov": [
-					"__any__"
-				],
-				"type": [
-					"restriction",
-					"destination_sign"
-				],
-				"junction": [
-					"__any__"
-				],
-				"priority": [
-					"__any__"
-				],
-				"priority_road": [
-					"__any__"
-				],
-				"vehicle": [
-					"__any__"
-				],
-				"hazard": [
-					"__any__"
-				],
-				"overtaking": [
-					"__any__"
-				],
+				]
 			}
 		}
 	},
@@ -160,8 +99,8 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "elementi",
-		"osmose_tasks": "elementi completati",
+		"feature_name": "corsie",
+		"osmose_tasks": "corsie completate",
 		"points": {
 			"add": 3,
 			"edit": 1,
@@ -170,7 +109,7 @@
 	},
 	"editors": {
 		"all": {
-			"comment": "Aggiunta informazioni su cartelli, corsie, destinazioni e restrizioni",
+			"comment": "Aggiunta informazioni sulle corsie",
 			"hashtags": "progettodelmese"
 		}
 	}
