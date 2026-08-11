@@ -1,0 +1,113 @@
+{
+	"id": 120,
+	"name": "2026-08_itsigns",
+	"title": "Cartelli e restrizioni",
+	"start_date": "2026-07-01",
+	"soft_start_date": "2026-08-01",
+	"soft_end_date": "2026-09-01",
+	"end_date": "2026-11-01",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-agosto-2026-restrizioni-direzioni-e-cartelli/146027"
+	},
+	"database": {
+		"osmium_tag_filter": "nw/traffic_sign r/type=restriction nw/hazard nw/junction nw/priority nw/priority_road nw/vehicle nw/overtaking nw/maxaxleload nw/maxheight nw/maxlength nw/maxspeed nw/maxweight nw/maxwidth nw/minspeed nw/oneway nw/hov",
+		"imposm": {
+			"types": [
+				"point", "linestring"
+			],
+			"mapping": {
+				"traffic_sign": [
+					"__any__"
+				],
+				"type": [
+					"restriction"
+				],
+				"hazard": [
+					"__any__"
+				],
+				"junction": [
+					"__any__"
+				],
+				"priority": [
+					"__any__"
+				],
+				"priority_road": [
+					"__any__"
+				],
+				"vehicle": [
+					"__any__"
+				],
+				"overtaking": [
+					"__any__"
+				],
+				"maxaxleload": [
+					"__any__"
+				],
+				"maxheight": [
+					"__any__"
+				],
+				"maxlength": [
+					"__any__"
+				],
+				"maxspeed": [
+					"__any__"
+				],
+				"maxweight": [
+					"__any__"
+				],
+				"maxwidth": [
+					"__any__"
+				],
+				"minspeed": [
+					"__any__"
+				],
+				"oneway": [
+					"__any__"
+				],
+				"hov": [
+					"__any__"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Elementi in OSM",
+			"description": "Questo elemento esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "elementi",
+		"osmose_tasks": "elementi completati",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Aggiunta cartelli e restrizioni stradali",
+			"hashtags": "progettodelmese"
+		}
+	}
+}

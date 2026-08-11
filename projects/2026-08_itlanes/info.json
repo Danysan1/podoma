@@ -1,0 +1,116 @@
+{
+	"id": 121,
+	"name": "2026-08_itlanes",
+	"title": "Corsie",
+	"start_date": "2026-07-01",
+	"soft_start_date": "2026-08-01",
+	"soft_end_date": "2026-09-01",
+	"end_date": "2026-11-01",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-agosto-2026-restrizioni-direzioni-e-cartelli/146027"
+	},
+	"database": {
+		"osmium_tag_filter": "w/lanes w/lanes:forward w/lanes:backward w/turn w/turn:lanes w/turn:lanes:forward w/turn:lanes:backward w/change w/change:lanes w/change:lanes:forward w/change:lanes:backward w/maxspeed:lanes w/minspeed:lanes w/maxheight:lanes w/maxwidth:lanes w/width:lanes w/surface:lanes w/hov:lanes",
+		"imposm": {
+			"types": [
+				"point", "linestring"
+			],
+			"mapping": {
+				"lanes": [
+					"__any__"
+				],
+				"lanes:forward": [
+					"__any__"
+				],
+				"lanes:backward": [
+					"__any__"
+				],
+				"turn": [
+					"__any__"
+				],
+				"turn:lanes": [
+					"__any__"
+				],
+				"turn:lanes:forward": [
+					"__any__"
+				],
+				"turn:lanes:backward": [
+					"__any__"
+				],
+				"change": [
+					"__any__"
+				],
+				"change:lanes": [
+					"__any__"
+				],
+				"change:lanes:forward": [
+					"__any__"
+				],
+				"change:lanes:backward": [
+					"__any__"
+				],
+				"maxspeed:lanes": [
+					"__any__"
+				],
+				"minspeed:lanes": [
+					"__any__"
+				],
+				"maxheight:lanes": [
+					"__any__"
+				],
+				"maxwidth:lanes": [
+					"__any__"
+				],
+				"width:lanes": [
+					"__any__"
+				],
+				"surface:lanes": [
+					"__any__"
+				],
+				"hov:lanes": [
+					"__any__"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Elementi in OSM",
+			"description": "Questo elemento esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "corsie",
+		"osmose_tasks": "corsie completate",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Aggiunta informazioni sulle corsie",
+			"hashtags": "progettodelmese"
+		}
+	}
+}

@@ -1,7 +1,7 @@
 {
-	"id": 120,
-	"name": "2026-08_itjunction",
-	"title": "Restrizioni, direzioni e cartelli",
+	"id": 122,
+	"name": "2026-08_itdestination",
+	"title": "Destinazioni",
 	"start_date": "2026-07-01",
 	"soft_start_date": "2026-08-01",
 	"soft_end_date": "2026-09-01",
@@ -11,14 +11,14 @@
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-agosto-2026-restrizioni-direzioni-e-cartelli/146027"
 	},
 	"database": {
-		"osmium_tag_filter": "nw/traffic_sign w/destination w/destination:forward w/destination:backward w/turn:lanes w/turn:lanes:forward w/turn:lanes:backward w/change:lanes w/change:lanes:forward w/change:lanes:backward",
+		"osmium_tag_filter": "r/type=destination_sign w/destination w/destination:forward w/destination:backward w/destination:lanes w/destination:ref w/destination:ref:forward w/destination:ref:backward w/destination:ref:lanes",
 		"imposm": {
 			"types": [
 				"point", "linestring"
 			],
 			"mapping": {
-				"traffic_sign": [
-					"__any__"
+				"type": [
+					"destination_sign"
 				],
 				"destination": [
 					"__any__"
@@ -29,22 +29,19 @@
 				"destination:backward": [
 					"__any__"
 				],
-				"turn:lanes": [
+				"destination:lanes": [
 					"__any__"
 				],
-				"turn:lanes:forward": [
+				"destination:ref": [
 					"__any__"
 				],
-				"turn:lanes:backward": [
+				"destination:ref:forward": [
 					"__any__"
 				],
-				"change:lanes": [
+				"destination:ref:backward": [
 					"__any__"
 				],
-				"change:lanes:forward": [
-					"__any__"
-				],
-				"change:lanes:backward": [
+				"destination:ref:lanes": [
 					"__any__"
 				]
 			}
@@ -75,8 +72,8 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "elementi",
-		"osmose_tasks": "elementi completati",
+		"feature_name": "cartelli di destinazione",
+		"osmose_tasks": "cartelli di destinazione completati",
 		"points": {
 			"add": 3,
 			"edit": 1,
@@ -85,7 +82,7 @@
 	},
 	"editors": {
 		"all": {
-			"comment": "Aggiunta informazioni su cartelli, corsie, destinazioni e restrizioni",
+			"comment": "Aggiunta cartelli di destinazione",
 			"hashtags": "progettodelmese"
 		}
 	}

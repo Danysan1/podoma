@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
   <defs>
-    <clipPath id="circle-clip-junction">
+    <clipPath id="circle-clip-lanes">
       <circle cx="17.514" cy="17.514" r="17.514"/>
     </clipPath>
   </defs>
   <!-- Asphalt background circle -->
   <circle cx="17.514" cy="17.514" r="17.514" fill="#4a5560"/>
   <!-- Crossroads with a turn lane arrow -->
-  <g clip-path="url(#circle-clip-junction)">
+  <g clip-path="url(#circle-clip-lanes)">
     <g transform="translate(17.514,17.514)">
       <!-- Horizontal road -->
       <rect x="-20" y="-4.5" width="40" height="9" fill="#6b6b6b"/>
