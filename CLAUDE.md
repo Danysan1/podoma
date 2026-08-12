@@ -33,6 +33,8 @@ export DB_URL="postgres://user:password@host:5432/database"
 
 Full setup/build/Docker/pg_tileserv instructions are in [docs/DEVELOP.md](docs/DEVELOP.md) — read it before touching the data pipeline or deployment.
 
+**`docs/DEVELOP.md` and `docs/DEVELOP.fr.md` must stay in sync.** Whenever one is edited (new/changed config key, section, instruction, etc.), apply the equivalent change to the other (translated) — never edit just one.
+
 ## Architecture
 
 ### Monthly projects (`projects/<YYYY-MM>_<slug>/`)

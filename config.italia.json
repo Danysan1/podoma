@@ -9,6 +9,7 @@
   "OSM_PASS": "____ Password OSM per download OSH ____",
   "OSM_CLIENT_ID": "____ Client ID SSO Oauth2 da https://www.openstreetmap.org/oauth2/applications ____",
   "OVERPASS_URL": "https://overpass-api.de/api/interpreter",
+  "OVERPASS_FATAL": false,
   "OSMOSE_URL": "https://osmose.openstreetmap.fr",
   "NOMINATIM_URL": "https://nominatim.openstreetmap.org",
   "MAPILLARY_URL": "https://www.mapillary.com",
