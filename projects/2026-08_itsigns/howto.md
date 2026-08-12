@@ -9,6 +9,7 @@ Cartelli stradali e divieti/obblighi di svolta sono spesso poco dettagliati in O
   * [`overtaking=*`](https://wiki.openstreetmap.org/wiki/Key:overtaking): divieto di sorpasso
   * [`junction=*`](https://wiki.openstreetmap.org/wiki/Key:junction): tipo di incrocio (es. rotatoria)
   * [`vehicle=*`](https://wiki.openstreetmap.org/wiki/Key:vehicle): divieto di accesso ai veicoli
+  * [`highway=stop`](https://wiki.openstreetmap.org/wiki/Tag:highway=stop): obbligo di fermarsi
 
 ## Restrizioni
 
