@@ -121,12 +121,16 @@ function macroChangesCsv (mode, project, oplProject, csvFeatures, csvUsers, csvM
                 echo "  [\$((\$(date -d now +%s) - \$process_start_t0))s] Fetching missing members and live features"
                 missing_features=\$(${PSQL} -qtAf "${__dirname}/25_changes_missing_live_members.sql" -v members_table="${members_table}_tmp" -v live_table="${live_table}" -v features_table="${features_table}" -v features_table_update="${update_table}" )`
             }
+            // If some feature are missing (ex. relation members), fetch them from Overpass API and insert into update table
+            // curl parameters are chosen to respect OVerpass API best practices:
+            // https://wiki.openstreetmap.org/wiki/Overpass_API#Instances_with_global_data_coverage
+            // https://community.openstreetmap.org/t/overpass-api-performance-issues/140598/157
             script += `
             if [[ "\$missing_features" != "||" ]]; then
                 IFS='|' read -ra missing_features_qry_res <<< \$missing_features
                 echo "data=(\${missing_features_qry_res[0]} \${missing_features_qry_res[1]} \${missing_features_qry_res[2]}); (._;>>;); out meta;" > ${CONFIG.WORK_DIR}/missing_osm.overpass
 
-                curl -d @${CONFIG.WORK_DIR}/missing_osm.overpass --retry 3 --retry-delay 5 --retry-max-time 60 -f -o "${CONFIG.WORK_DIR}/missing_osm.xml" -A "Podoma/1.0 (${CONFIG.WEBSITE_URL})" -X POST ${CONFIG.OVERPASS_URL} || true
+                curl -d @${CONFIG.WORK_DIR}/missing_osm.overpass --retry 3 --retry-delay 35 --retry-max-time 250 -f -o "${CONFIG.WORK_DIR}/missing_osm.xml" -A "Podoma/1.0 (${CONFIG.WEBSITE_URL})" -X POST ${CONFIG.OVERPASS_URL} || true
                 if [[ -f "${CONFIG.WORK_DIR}/missing_osm.xml" ]]; then
                     osmium cat -f opl -o "${CONFIG.WORK_DIR}/missing_osm.opl" "${CONFIG.WORK_DIR}/missing_osm.xml"
                     echo "  [\$((\$(date -d now +%s) - \$process_start_t0))s] \$(wc -l < ${CONFIG.WORK_DIR}/missing_osm.opl) features has been retrieved from overpass"
