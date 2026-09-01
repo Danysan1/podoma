@@ -58,7 +58,7 @@ La configuration générale de l'outil est à renseigner dans `config.json`. Un 
 - `OSM_API_URL` : instance API OpenStreetMap à utiliser (exemple `https://api.openstreetmap.org`)
 - `JOSM_REMOTE_URL` : adresse du serveur JOSM à contacter (exemple `http://localhost:8111`)
 - `OVERPASS_URL`: URL vers l'interpreter d'une instance Overpass API utilisée pour la récupération des membres manquants
-- `OVERPASS_FATAL`: indique si une requête Overpass échouée doit interrompre `update_changes` ou seulement afficher un avertissement et continuer le traitement des projets suivants en omettant les membres manquants
+- `OVERPASS_FATAL`: indique si une requête Overpass échouée doit interrompre `update_changes`. Si false, le script poursuivra le traitement des projets restants en omettant les membres manquants et seul un avertissement sera journalisé ; CELA INTRODUIRA DES ERREURS dans les statistiques, préférez si possible changer `OVERPASS_URL` pour une instance plus stable.
 - `OSMOSE_URL` : instance Osmose à utiliser (exemple `https://osmose.openstreetmap.fr`)
 - `NOMINATIM_URL` : instance de Nominatim à utiliser (exemple `https://nominatim.openstreetmap.org`)
 - `MAPILLARY_URL` : instance Mapillary à utiliser (exemple `https://www.mapillary.com`)
