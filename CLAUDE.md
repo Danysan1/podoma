@@ -6,21 +6,43 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is the `italia` branch/fork of [Podoma](https://github.com/osm-fr/podoma), running the Italian "Progetto del Mese" (Project of the Month) instance at https://osmit-podoma.wmcloud.org. Podoma is an engine that computes and displays statistics about OpenStreetMap community contributions to thematic mapping campaigns.
 
-Most day-to-day work in this branch is adding/updating monthly project definitions under `projects/`, not touching the engine itself. `config.italia.json` holds this instance's config (Italy PBF/OSH sources, map center, GeoJSON bounds, etc.); `config.json` is the active config actually loaded at runtime.
+Most day-to-day work in this branch is adding/updating monthly project definitions under `projects/`, not touching the engine itself.
+
+### Remotes and branch workflow
+
+- `upstream` = osm-fr/podoma (the engine's home), `origin` = Danysan1/podoma (this fork), `wmf` = the Wikimedia Italia GitLab deployment repo.
+- `italia` is a long-lived integration branch: it carries the Italian projects/badges/locale plus engine changes, and `upstream/main` is merged into it periodically.
+- Engine changes (anything outside `projects/`, `website/locales/it.json`, `website/images/badges/it*.svg`) are developed on a dedicated topic branch off `main` so they can be PR'd upstream, then merged into `italia` — e.g. `OVERPASS_FATAL`, `feature/USE_SOFT_DATES`, `fix_osh_filtering`. Don't commit engine work directly onto `italia`.
+- Node >= 24 is required. `.gitattributes` forces LF on `*.sh` — keep it that way, CRLF breaks the scripts once copied into the Docker image.
+
+### Configuration
+
+`config.json` is the file actually loaded at runtime and is **gitignored** — it is a local copy of `config.italia.json` (the tracked instance config: Italy PBF/OSH sources, Italian map center/zoom, GeoJSON bounds, Matomo Tag Manager, `USE_SOFT_DATES`, `OVERPASS_FATAL`). Edit `config.italia.json` for anything that should persist, then re-copy. Every config key is documented in the "General configuration" section of [docs/DEVELOP.md](docs/DEVELOP.md).
 
 ## Commands
 
 There is no test suite (`npm test` is a placeholder) and no linter configured.
 
 ```bash
-npm install                # install deps
+npm install                 # install deps
 npm run start               # start the web server (reads config.json + DB_URL env var)
+npm run build:turf          # rebuild website/static/turf.js after bumping @turf/boolean-contains
 npm run features:update     # (re)generates db/11_features_update_tmp.sh (+ imposm yaml/scripts)
 npm run changes:update      # (re)generates db/21_changes_update_tmp.sh
 npm run projects:update     # (re)generates db/31_projects_update_tmp.sh
 ```
 
 Each `*:update` npm script only *generates* a shell script from the current `projects/*/info.json` files; the generated `db/*_tmp.sh` must then be executed (with `init` or `update` as first arg where applicable) to actually touch the database. `dockerfiles/docker-entrypoint.sh` shows the canonical command sequences (`install`, `init`, `run`, `update_daily`, `update_features`, `update_changes`, `update_projects`, `update_imposm`, `uninstall`).
+
+Operational Docker helpers (used on the server; logs land under `logs/`):
+
+```bash
+./dockerfiles/init.sh          # compose up db, build, install schema, full init (backgrounded + tail)
+./dockerfiles/update_daily.sh  # nightly: features + changes + projects update
+./dockerfiles/teardown.sh      # compose down + drop the podoma_db-data / podoma_pdm-data volumes (destructive)
+```
+
+`docker-compose.yml` services: `pgsqldb` (postgis), `pdm` (this app, command `run`), `pdm-tileserv` (pg_tileserv on :7800), `pgadmin` (behind the `pgadmin` profile).
 
 Local Postgres/PostGIS setup:
 ```bash
@@ -45,9 +67,12 @@ Each subdirectory is one thematic campaign, identified by name `<YYYY-MM>_<slug>
 - `contribs.sql` (optional) — SQL `UPDATE` statements against `pdm_features` to classify contributions and award points.
 - `extract.sh` (optional) — produces a downloadable CSV export.
 
-A single month can host more than one concurrent project when the topic naturally splits (e.g. `2025-12_itaed` + `2025-12_ithydrant`, or `2026-08_itsigns`/`itlanes`/`itdestination`) — each still needs its own unique `id` and its own badge (see below).
+Conventions on this branch (follow them when adding a project):
+- `id` is a unique integer allocated sequentially from the 100-block (currently up to 122); ids must never collide across projects.
+- Dates follow a fixed pattern around the campaign month M: `soft_start_date` = M-01, `soft_end_date` = (M+1)-01, `start_date` = one month before `soft_start_date`, `end_date` = two months after `soft_end_date`. The hard dates widen the data-collection window; because `config.italia.json` sets `USE_SOFT_DATES: true`, the **soft** dates are what the site uses to decide past/current/next and to bound contribution counting.
+- A single month can host more than one concurrent project when the topic naturally splits (e.g. `2025-12_itaed` + `2025-12_ithydrant`, or `2026-08_itsigns`/`itlanes`/`itdestination`) — each still needs its own unique `id` and its own badge (see below).
 
-**When adding a new project**, also add `website/images/badges/<slug>.svg` (the part of `name` after the last `_`) — `website/projects.js` sets `project.icon` to that path unconditionally, so a missing file is a broken image on the project/user/badges pages. Match the existing badges' style: `132.39×132.39` viewBox `0 0 35.028 35.028`, a full-circle background (solid or diagonally split two-tone), and a small hand-drawn flat-shape icon for the theme — no raster images or external fonts/icons.
+**When adding a new project**, also add `website/images/badges/<slug>.svg` (the part of `name` after the last `_`) — [projects.js:39](website/projects.js#L39) sets `project.icon` to that path unconditionally, so a missing file is a broken image on the project/user/badges pages. Match the existing badges' style: `132.39×132.39` viewBox `0 0 35.028 35.028`, a full-circle background (solid or diagonally split two-tone), and a small hand-drawn flat-shape icon for the theme — no raster images or external fonts/icons.
 
 Key perimeter-filtering rule (from docs/DEVELOP.md): `database.osmium_tag_filter` (Osmium tags-filter syntax, `!=` unsupported) and `database.imposm.mapping` should stay selective — focus on the main/anchor tags for the topic, not every possible detail tag, since Osmium/Imposm select "objects existing in OSM" for both the perimeter and for feature counts. Use `database.labels` (Postgres JSON-path over feature tags) to further classify a wide perimeter into sub-populations instead of narrowing the base filter.
 
@@ -60,18 +85,20 @@ Numbered scripts represent an ordered pipeline, split between Node.js generators
 - `20_changes_update.js` → generates `21_changes_update_tmp.sh`: turns OSM history/diffs into each project's changelog tables (`pdm_features_<slug>*`) using Osmium, `opl2features.awk` (applies each project's `osmium_tag_filter`), and the `22_*`–`27_*` SQL scripts (init, populate, boundary, members, geometry, labels).
 - `30_projects_update.js` → generates `31_projects_update_tmp.sh`: daily statistics — feature/mapper counts (`32_projects_counts.sql`), contribution tagging/points (`33_projects_contribs.sql`), project init (`34_projects_init.sql`), and OSM Notes counts fetched live from the OSM API.
 
+The generated `db/*_tmp.sh` / `*_tmp.sql` are gitignored build artifacts — never edit them, edit the generator that emits them.
+
 Contribution tagging model (project level): `add`, `edit-in`, `edit`, `edit-out`, `delete`; at label level: `edit-in`, `edit`. This feeds points/gamification (badges) and the per-team/per-mapper KPIs.
 
-Because daily diffs only contain features actually touched that day, referenced-but-untouched way/relation members are fetched via Overpass (`OVERPASS_URL`) to keep geometries complete; set it to `null` to disable. `database.live` per-project additionally sources missing features from a live-updated table when available — the two mechanisms are combined, not alternatives.
+Because daily diffs only contain features actually touched that day, referenced-but-untouched way/relation members are fetched via Overpass (`OVERPASS_URL`) to keep geometries complete; set it to `null` to disable. `OVERPASS_FATAL` (false on this instance) decides whether a failed Overpass request aborts `update_changes` or only logs a warning — false keeps the nightly run alive at the cost of known statistical errors. `database.live` per-project additionally sources missing features from a live-updated table when available — the mechanisms are combined, not alternatives.
 
 ### Website (`website/`)
 
 Express + Pug server:
 - `index.js` — all routes (project pages, map, stats/counts/contrib/mappers JSON API described in [docs/API.md](docs/API.md), user contribution/ignore endpoints, static/library serving).
 - `projects.js` — loads all projects at boot (see above) and precomputes derived fields (`slug`, `howto` HTML, `tagFilterFeatures`, Osmose label/button maps, iD/JOSM changeset params, NSI brand fields).
-- `utils.js` — shared helpers (map style generation, query param building, i18n-aware helpers).
+- `utils.js` — shared helpers (map style generation, query param building, i18n-aware helpers, soft/hard date resolution).
 - `templates/` — Pug views: `layout.pug` (root layout + CSS), `common/` (head/header/footer shared across pages), `components/` (map, stats blocks, etc.), `pages/` (one file per route).
-- `locales/{en,fr,it}.json` — i18n strings (`i18n` package, default locale `en`).
+- `locales/{en,fr,it}.json` — i18n strings (`i18n` package, default locale `en`). **`it.json` must keep exactly the same key set as `en.json`** — a new user-facing string in a template needs both. `fr.json` is upstream-maintained and may lag.
 
 ### Database
 
