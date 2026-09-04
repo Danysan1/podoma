@@ -173,7 +173,7 @@ if [[ "\$mode" = "init" ]]; then
     process_start_t0=$(date -d now +%s)
     `;
     Object.values(projects).forEach(project => {
-        if (project.statistics.count){
+        if (!project.links?.external_statistics && project.statistics?.count){
             script += `
                 ${PSQL} -v project_id="${project.id}" -f "${__dirname}/34_projects_init.sql"
             `;
@@ -191,6 +191,11 @@ current_year=$(date -d "\$current_ts" +%Y --utc)
 `;
 
 Object.values(projects).forEach(project => {
+	if (project.links?.external_statistics) {
+		console.log(`Project ${project.name} has external statistics link, skipping project update`);
+		return;
+	}
+
     const slug = project.name.split("_").pop();
     // Contributors are counted from the beginning of the project period.
     // When USE_SOFT_DATES is enabled, prefer soft dates over hard dates
