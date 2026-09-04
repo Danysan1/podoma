@@ -45,6 +45,16 @@
 			"source": "stats"
 		}
 	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "fixme",
+		"osmose_tasks": "fixme risolti",
+		"points": {
+			"add": 3,
+			"edit": 2
+		}
+	},
 	"editors": {
 		"all": {
 			"comment": "Risoluzione fixme",
