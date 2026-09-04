@@ -65,7 +65,7 @@ Object.entries(projects).forEach(e => {
 	const slug = name.split("_").pop();
 
 	if (project.links?.external_statistics) {
-		console.log(`Project ${id} has external statistics link, skipping features update`);
+		console.log(`Project ${name} has external statistics link, skipping features update`);
 		return;
 	}
 

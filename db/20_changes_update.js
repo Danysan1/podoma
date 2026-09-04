@@ -254,6 +254,11 @@ let projectPointsLength = 0;
 let projectTeamsLength = 0;
 
 Object.values(projects).forEach(project => {
+	if (project.links?.external_statistics) {
+		console.log(`Project ${project.name} has external statistics link, skipping features update`);
+		return;
+	}
+
     // Soft dates are only stored when they are actually used, so that SQL
     // queries can rely on COALESCE(soft_start_date, start_date) without
     // having to know about the USE_SOFT_DATES setting
@@ -437,6 +442,11 @@ script += `
 
     `;
 Object.values(projects).forEach(project => {
+	if (project.links?.external_statistics) {
+		console.log(`Project ${project.name} has external statistics link, skipping features update`);
+		return;
+	}
+
     // Project files
     const slug = project.name.split("_").pop();
     const oshProjectTags = OSH_PBF_FS.replace(".osh", `.${slug}_tags.osh`);
@@ -590,6 +600,11 @@ else
     `;
 
 Object.values(projects).forEach(project => {
+	if (project.links?.external_statistics) {
+		console.log(`Project ${project.name} has external statistics link, skipping features update`);
+		return;
+	}
+    
     const slug = project.name.split("_").pop();
     const oscProject = OSC_UPDATES_FS.replace("changes", `changes.${slug}`);
     const oscProjectInterm = OSC_UPDATES_FS.replace("changes", `changes.${slug}_interm`);
