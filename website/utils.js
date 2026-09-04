@@ -512,7 +512,17 @@ exports.getBadgesDetails = (projects, badgesRows) => {
 			};
 		}
 
-		if(row.project === "meta" || row.acquired || new Date(projects[row.project].start_date).getTime() <= Date.now() && (projects[row.project].end_date == null || Date.now() <= new Date(projects[row.project].end_date).getTime())) {
+		if(row.project === "meta" || row.acquired) {
+			badges[row.project].badges.push(row);
+			return;
+		}
+
+		// Badges still in progress are only shown while the project is running.
+		// When USE_SOFT_DATES is enabled, prefer soft dates over hard dates
+		const startDate = (CONFIG.USE_SOFT_DATES && projects[row.project].soft_start_date) || projects[row.project].start_date;
+		const endDate = (CONFIG.USE_SOFT_DATES && projects[row.project].soft_end_date) || projects[row.project].end_date;
+
+		if(new Date(startDate).getTime() <= Date.now() && (endDate == null || Date.now() <= new Date(endDate).getTime())) {
 			badges[row.project].badges.push(row);
 		}
 	});

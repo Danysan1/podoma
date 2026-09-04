@@ -53,7 +53,7 @@ La configuration générale de l'outil est à renseigner dans `config.json`. Un 
 - `OSM_PBF_URL`: URL du fichier OSM.PBF (etat courant de la base, exemple `https://download.geofabrik.de/europe/france-latest.osm.pbf`). Ce fichier n'est pas concerné par le processus d'autorisation.
 - `POLY_URL`: URL d'un fichier de polygone dans lequel les projets existent (exemple `https://download.geofabrik.de/europe/france.poly`) Ce fichier n'est pas concerné par le processus d'autorisation.
 - `DB_USE_IMPOSM_UPDATE` : Active ou désactive l'intégration d'imposm3 (permet d'utiliser une base existante et tenue à jour par d'autres moyens, par défaut `true`)
-- `USE_SOFT_DATES` : utiliser soft_start_date et soft_end_date (au lieu de start_date et end_date) pour déterminer si un projet est passé, en cours ou à venir
+- `USE_SOFT_DATES` : utiliser soft_start_date et soft_end_date (au lieu de start_date et end_date) pour déterminer si un projet est passé, en cours ou à venir, et pour délimiter la période sur laquelle les points, le classement et les badges sont calculés. Les dates souples ne sont enregistrées dans la table `pdm_projects` que lorsque ce paramètre est activé, sa modification n'est donc prise en compte qu'au prochain `update_changes`.
 - `WORK_DIR` : dossier de téléchargement et stockage temporaire (doit pouvoir contenir le fichier OSH PBF, exemple `/tmp/pdm`)
 - `OSM_URL` : instance OpenStreetMap à utiliser (exemple `https://www.openstreetmap.org`)
 - `OSM_API_URL` : instance API OpenStreetMap à utiliser (exemple `https://api.openstreetmap.org`)
@@ -307,6 +307,8 @@ Les montant de points attribués sont configurés dans `info.json` :
 ```
 
 Les points sont distingués entre les contributions au niveau du projet et de chaque étiuette.
+
+Les points ne sont comptabilisés que sur la période du projet, qui détermine le classement et les badges attribués à chaque contributeur. Cette période va de `start_date` à `end_date`, ou de `soft_start_date` à `soft_end_date` lorsque `USE_SOFT_DATES` est activé. Les contributions faites en dehors de celle-ci sont toujours collectées et affichées dans les statistiques, mais ne donnent aucun point.
 
 ### Sources de tuiles
 

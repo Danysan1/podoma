@@ -14,6 +14,7 @@ Most day-to-day work in this branch is adding/updating monthly project definitio
 - `italia` is a long-lived integration branch: it carries the Italian projects/badges/locale plus engine changes, and `upstream/main` is merged into it periodically.
 - Engine changes (anything outside `projects/`, `website/locales/it.json`, `website/images/badges/it*.svg`) are developed on a dedicated topic branch off `main` so they can be PR'd upstream, then merged into `italia` — e.g. `OVERPASS_FATAL`, `feature/USE_SOFT_DATES`, `fix_osh_filtering`. Don't commit engine work directly onto `italia`.
 - Node >= 24 is required. `.gitattributes` forces LF on `*.sh` — keep it that way, CRLF breaks the scripts once copied into the Docker image.
+- **Soft dates narrow what is *read*, never what is *computed*.** The pipeline keeps producing counts and contributions over the full hard window (`start_date` → `end_date`); `soft_start_date`/`soft_end_date` are applied when querying or aggregating. Capping generation loses the post-campaign data for good and takes a reprocess to undo, and it only ever bounded the end of the window, never the start. Keep new soft-date logic on the read side.
 
 ### Configuration
 
@@ -72,7 +73,7 @@ Conventions on this branch (follow them when adding a project):
 - Dates follow a fixed pattern around the campaign month M: `soft_start_date` = M-01, `soft_end_date` = (M+1)-01, `start_date` = one month before `soft_start_date`, `end_date` = two months after `soft_end_date`. The hard dates widen the data-collection window; because `config.italia.json` sets `USE_SOFT_DATES: true`, the **soft** dates are what the site uses to decide past/current/next and to bound contribution counting.
 - A single month can host more than one concurrent project when the topic naturally splits (e.g. `2025-12_itaed` + `2025-12_ithydrant`, or `2026-08_itsigns`/`itlanes`/`itdestination`) — each still needs its own unique `id` and its own badge (see below).
 
-**When adding a new project**, also add `website/images/badges/<slug>.svg` (the part of `name` after the last `_`) — [projects.js:39](website/projects.js#L39) sets `project.icon` to that path unconditionally, so a missing file is a broken image on the project/user/badges pages. Match the existing badges' style: `132.39×132.39` viewBox `0 0 35.028 35.028`, a full-circle background (solid or diagonally split two-tone), and a small hand-drawn flat-shape icon for the theme — no raster images or external fonts/icons.
+**When adding a new project**, also add `website/images/badges/<slug>.svg` (the part of `name` after the last `_`) — [projects.js:47](website/projects.js#L47) sets `project.icon` to that path unconditionally, so a missing file is a broken image on the project/user/badges pages. Match the existing badges' style: `132.39×132.39` viewBox `0 0 35.028 35.028`, a full-circle background (solid or diagonally split two-tone), and a small hand-drawn flat-shape icon for the theme — no raster images or external fonts/icons.
 
 Key perimeter-filtering rule (from docs/DEVELOP.md): `database.osmium_tag_filter` (Osmium tags-filter syntax, `!=` unsupported) and `database.imposm.mapping` should stay selective — focus on the main/anchor tags for the topic, not every possible detail tag, since Osmium/Imposm select "objects existing in OSM" for both the perimeter and for feature counts. Use `database.labels` (Postgres JSON-path over feature tags) to further classify a wide perimeter into sub-populations instead of narrowing the base filter.
 
@@ -88,6 +89,14 @@ Numbered scripts represent an ordered pipeline, split between Node.js generators
 The generated `db/*_tmp.sh` / `*_tmp.sql` are gitignored build artifacts — never edit them, edit the generator that emits them.
 
 Contribution tagging model (project level): `add`, `edit-in`, `edit`, `edit-out`, `delete`; at label level: `edit-in`, `edit`. This feeds points/gamification (badges) and the per-team/per-mapper KPIs.
+
+### Points, leaderboard and badges
+
+The whole chain lives in SQL, not in the website: `pdm_user_contribs` (one row per day/user/label/contribution, written by `33_projects_contribs.sql`) → the `pdm_leaderboard` view (points summed per user+project, plus the ranking position) → the `pdm_get_badges(project, userid)` function. The last two are defined in `db/01_setup_schema.sql`; `getBadgesDetails()` in `website/utils.js` only decides which of the returned badges get displayed. Things that are easy to get wrong here:
+
+- **`pdm_user_contribs.ts` is the closing timestamp of the aggregation bucket, not the contribution day**: an edit made on day D is stored with `ts = D+1`, because `33_projects_contribs.sql` joins `fc.ts_start BETWEEN d.ts_past AND d.ts` with `ts_past = ts - 1 day` (or `- 1 month` for the monthly buckets used on long initial ranges). A period filter must therefore be `ts > start AND ts <= end` — `BETWEEN` credits the day before the project started.
+- **`USE_SOFT_DATES` is a website config key and is invisible to SQL.** It reaches the database through `20_changes_update.js`, which writes `soft_start_date`/`soft_end_date` into `pdm_projects` *only* when the setting is enabled; SQL then simply reads `COALESCE(soft_start_date, start_date)`. Consequence: toggling the setting, or editing soft dates in an `info.json`, only takes effect at the next `changes:update` run.
+- **`01_setup_schema.sql` is only executed by the `install` command.** Its views and functions use `CREATE OR REPLACE`, so re-running `install` against a populated database is how you deploy a change to `pdm_leaderboard` or `pdm_get_badges` — the `CREATE TABLE` statements fail harmlessly with "already exists" and psql carries on. No reinit or data reprocessing is needed, since both are computed at query time.
 
 Because daily diffs only contain features actually touched that day, referenced-but-untouched way/relation members are fetched via Overpass (`OVERPASS_URL`) to keep geometries complete; set it to `null` to disable. `OVERPASS_FATAL` (false on this instance) decides whether a failed Overpass request aborts `update_changes` or only logs a warning — false keeps the nightly run alive at the cost of known statistical errors. `database.live` per-project additionally sources missing features from a live-updated table when available — the mechanisms are combined, not alternatives.
 

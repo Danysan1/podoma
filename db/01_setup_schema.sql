@@ -157,6 +157,12 @@ WITH stats AS (
 	SELECT uc.userid, uc.project_id, p.project, SUM(uc.points) AS amount
 	FROM pdm_user_contribs uc
 	JOIn pdm_projects p ON uc.project_id=p.project_id
+	-- Only the points earned during the project period are taken into account.
+	-- soft_start_date/soft_end_date are only filled when USE_SOFT_DATES is enabled.
+	-- Contributions are stored on the timestamp closing their aggregation period
+	-- (a contribution made on day D is stored on D+1), hence the exclusive lower bound.
+	WHERE uc.ts > COALESCE(p.soft_start_date, p.start_date)
+		AND (COALESCE(p.soft_end_date, p.end_date) IS NULL OR uc.ts <= COALESCE(p.soft_end_date, p.end_date))
 	GROUP BY uc.userid, uc.project_id, p.project
 	ORDER BY SUM(uc.points) DESC
 ), scores AS (

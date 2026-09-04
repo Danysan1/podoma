@@ -13,7 +13,10 @@ fs.readdirSync(PROJECTS_PATH).forEach(projectDir => {
 		project.slug = project.name.split("_").pop();
 
 		// Check dates consistency
-		[["start_date", "end_date"], ["soft_start_date", "soft_end_date"]].forEach(([startKey, endKey]) => {
+		[["start_date", "end_date"],
+		["start_date", "soft_start_date"],
+		["soft_start_date", "soft_end_date"],
+		["soft_end_date", "end_date"]].forEach(([startKey, endKey]) => {
 			const start = project[startKey], end = project[endKey];
 			if(start != null && end != null && new Date(end).getTime() < new Date(start).getTime()) {
 				throw new Error(`${endKey} (${end}) is before ${startKey} (${start})`);
