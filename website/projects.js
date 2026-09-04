@@ -24,7 +24,7 @@ fs.readdirSync(PROJECTS_PATH).forEach(projectDir => {
 			}
 		});
 
-		if (project.database?.osmium_tag_filter) {
+		if (project.statistics && project.database?.osmium_tag_filter) {
 			// Filtered features
 			let tagFilterParts = project.database.osmium_tag_filter.split("&");
 			project.database.tagFilterFeatures = "nwr";
@@ -74,8 +74,6 @@ fs.readdirSync(PROJECTS_PATH).forEach(projectDir => {
 			}
 		} else if (!project.links?.external_statistics) {
 			throw new Error("Missing both database.osmium_tag_filter and links.external_statistics in info.json");
-		} else if (!project.statistics) {
-			throw new Error("Missing both statistics and links.external_statistics in info.json");
 		}
 
 		projects[project.name] = project;
