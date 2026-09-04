@@ -53,7 +53,7 @@ The general configuration of the tool is to be filled in `config.json`. There is
 - `OSM_PBF_URL`: URL of the OSM.PBF file (current state, example `https://download.geofabrik.de/europe/france-latest.osm.pbf`). This file isn't covered by authorization process.
 - `POLY_URL`: URL of a polygon file holding the perimeter in which projects are considered (example `https://download.geofabrik.de/europe/france.poly`). This file isn't covered by authorization process.
 - `DB_USE_IMPOSM_UPDATE` : enable or disabled Imposm3 integration (to use an existing database which would be maintained by other means, by default `true`)
-- `USE_SOFT_DATES`: whether to use soft_start_date and soft_end_date (instead of start_date and end_date) to decide whether a projects is past, current or next
+- `USE_SOFT_DATES`: whether to use soft_start_date and soft_end_date (instead of start_date and end_date) to decide whether a projects is past, current or next, and to bound the period over which points, leaderboard and badges are computed. Soft dates are only written to the `pdm_projects` table when this setting is enabled, so changing it is only taken into account by the next `update_changes` run.
 - `WORK_DIR`: download and temporary storage folder (must have capacity to store the OSH PBF file, example `/tmp/pdm`)
 - `OSM_URL`: OpenStreetMap instance to use (example `https://www.openstreetmap.org`)
 - `OSM_API_URL` : API OpenStreetMap instance to use (example `https://www.api.openstreetmap.org`)
@@ -306,6 +306,8 @@ Each project configuration set how many points are given according to contributi
 ```
 
 Points are distinguishsed between project and label contributions.
+
+Points are only counted over the project period, which drives the leaderboard and the badges given to each contributor. That period runs from `start_date` to `end_date`, or from `soft_start_date` to `soft_end_date` when `USE_SOFT_DATES` is enabled. Contributions made outside of it are still collected and displayed in the statistics, but don't give any point.
 
 ### Data sources
 

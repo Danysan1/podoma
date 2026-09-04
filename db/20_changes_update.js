@@ -21,6 +21,7 @@ const COOKIES_FS = CONFIG.WORK_DIR + '/cookie.txt';
 const PSQL = `psql -d ${process.env.DB_URL}`;
 const HAS_BOUNDARY = `${PSQL} -c "SELECT * FROM pdm_boundary LIMIT 1" > /dev/null 2>&1 `;
 const OVERPASS_FATAL = CONFIG.hasOwnProperty("OVERPASS_FATAL") && CONFIG.OVERPASS_FATAL === true;
+const USE_SOFT_DATES = CONFIG.hasOwnProperty("USE_SOFT_DATES") && CONFIG.USE_SOFT_DATES === true;
 
 const pgPool = new Pool({
     connectionString: `${process.env.DB_URL}`
@@ -253,8 +254,11 @@ let projectPointsLength = 0;
 let projectTeamsLength = 0;
 
 Object.values(projects).forEach(project => {
-    const project_soft_start_date = project.soft_start_date ? `'${project.soft_start_date}'` : null,
-        project_soft_end_date = project.soft_end_date ? `'${project.soft_end_date}'` : null,
+    // Soft dates are only stored when they are actually used, so that SQL
+    // queries can rely on COALESCE(soft_start_date, start_date) without
+    // having to know about the USE_SOFT_DATES setting
+    const project_soft_start_date = USE_SOFT_DATES && project.soft_start_date ? `'${project.soft_start_date}'` : null,
+        project_soft_end_date = USE_SOFT_DATES && project.soft_end_date ? `'${project.soft_end_date}'` : null,
         project_end_date = project.end_date ? `'${project.end_date}'` : null;
     projectsQry += `(${project.id}, '${project.name}', '${project.start_date}', ${project_soft_start_date}, ${project_soft_end_date}, ${project_end_date}),`;
     projectLength++;
@@ -285,7 +289,7 @@ Object.values(projects).forEach(project => {
 });
 
 if (projectLength > 0){
-    projectsQry = `${projectsQry.substring(0, projectsQry.length-1)} ON CONFLICT (project_id) DO UPDATE SET start_date=EXCLUDED.start_date, end_date=EXCLUDED.end_date`;
+    projectsQry = `${projectsQry.substring(0, projectsQry.length-1)} ON CONFLICT (project_id) DO UPDATE SET start_date=EXCLUDED.start_date, soft_start_date=EXCLUDED.soft_start_date, soft_end_date=EXCLUDED.soft_end_date, end_date=EXCLUDED.end_date`;
     pgPool.query(projectsQry, (err, res) => {
         if(err?.message?.includes("cannot affect row a second time")) {
             throw new Error(`Error when installing projects: ${err}\n\nMake sure all projects have a distinct id, query was: ${projectsQry}`);
