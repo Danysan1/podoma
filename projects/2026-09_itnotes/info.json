@@ -1,0 +1,13 @@
+{
+	"id": 121,
+	"name": "2026-09_itnotes",
+	"title": "Note",
+	"start_date": "2026-08-01",
+	"soft_start_date": "2026-09-01",
+	"soft_end_date": "2026-10-01",
+	"end_date": "2026-12-01",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-di-settembre-2026-invertiamo-la-tendenza-di-nuovo/147150"
+	}
+}

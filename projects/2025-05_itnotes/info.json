@@ -1,0 +1,13 @@
+{
+	"id": 122,
+	"name": "2025-05_itnotes",
+	"title": "Note",
+	"start_date": "2026-04-01",
+	"soft_start_date": "2026-05-01",
+	"soft_end_date": "2026-06-01",
+	"end_date": "2026-08-01",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025",
+		"osmforum": "https://community.openstreetmap.org/t/idee-per-il-mese-invertiamo-la-tendenza-delle-note/129615"
+	}
+}

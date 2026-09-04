@@ -1,12 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
-  <!-- Background circle split diagonally -->
-  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
-  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
-  <!-- Healthcare icon -->
-  <g transform="translate(17.514,17.514)" fill="none">
-    <!-- White rounded shield/plaque -->
-    <rect x="-11" y="-11" width="22" height="22" rx="3.5" fill="#ffffff" stroke="#e0e0e0" stroke-width="0.5"/>
-    <!-- Red medical cross -->
-    <path d="M-2.6,-8.5 h5.2 a1,1 0 011,1 v3.7 h3.7 a1,1 0 011,1 v5.2 a1,1 0 01-1,1 h-3.7 v3.7 a1,1 0 01-1,1 h-5.2 a1,1 0 01-1,-1 v-3.7 h-3.7 a1,1 0 01-1,-1 v-5.2 a1,1 0 011,-1 h3.7 v-3.7 a1,1 0 011,-1 z" fill="#e53935" stroke="#c62828" stroke-width="0.5" stroke-linejoin="round"/>
-  </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="158.75mm" height="158.75mm" viewBox="0 0 158.75 158.75" version="1.1" id="svg5" xml:space="preserve" inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)" sodipodi:docname="Segnale stradale italiano 1981 - ospedale.svg"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:svg="http://www.w3.org/2000/svg">
+    <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" showgrid="false" inkscape:zoom="0.26142019" inkscape:cx="-986.91687" inkscape:cy="40.165221" inkscape:window-width="1920" inkscape:window-height="991" inkscape:window-x="-9" inkscape:window-y="-9" inkscape:window-maximized="1" inkscape:current-layer="layer1"/>
+    <defs id="defs2"/>
+    <g inkscape:label="Livello 1" inkscape:groupmode="layer" id="layer1" transform="translate(0,-138.24998)">
+        <g id="g4665">
+            <rect style="fill:#00408b;fill-opacity:1;stroke-width:1.42924;paint-order:fill markers stroke" id="rect1566" width="158.75" height="158.75" x="0" y="138.24998"/>
+            <rect style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:2.64583;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke" id="rect1566-9" width="153.45833" height="153.45833" x="2.6458316" y="140.89583" rx="7.9375" ry="7.9375"/>
+            <g id="g4542" transform="matrix(2.3724309,0,0,2.372431,-151.75875,-94.857334)">
+                <g id="g2912">
+                    <path id="rect2472" style="fill:#ffffff;stroke-width:1.14724;paint-order:fill markers stroke" d="m 89.813123,141.74587 c -0.816446,0 -1.473296,0.64902 -1.473296,1.45521 v 10.10739 h 1.83348 v -3.28765 h 15.297773 v 3.51141 h 1.83348 v -10.33115 c 0,-0.80619 -0.65737,-1.45521 -1.47381,-1.45521 z" sodipodi:nodetypes="sccccccccss"/>
+                    <path id="rect2472-1" style="fill:#ffffff;stroke-width:1.11406;paint-order:fill markers stroke" d="m 72.887024,125.88947 c -0.806184,0 -1.455208,0.64903 -1.455208,1.45521 v 5.31957 c 0,0.0924 0.009,0.18271 0.02532,0.27027 h -0.02532 v 7.02231 h 1.476395 v -7.24607 c 0,-0.98981 0.658438,-1.72237 1.588017,-1.72237 h 11.277348 c 2.012145,0 2.604082,1.05224 3.145028,1.59318 h 0.494543 v -5.23689 c 0,-0.80618 -0.649025,-1.45521 -1.455208,-1.45521 z"/>
+                    <path style="fill:#ffffff;stroke-width:1.20766;paint-order:fill markers stroke" d="m 73.579037,136.37845 13.910734,12.61177 v -6.48391 c 0,-0.78365 0.620666,-1.56551 1.878601,-1.56551 h 9.204001 l -6.74391,-4.33863 H 79.349096 c -1.178653,-0.0439 -2.204408,-0.19618 -2.907379,-0.7158 l -2.86268,-2.44994 z" id="path2542" sodipodi:nodetypes="ccsccccccc"/>
+                    <path style="fill:#ffffff;stroke-width:1.20766;paint-order:fill markers stroke" d="m 74.120498,132.97656 2.293039,1.94513 c 0.891306,0.63063 1.719331,0.86979 2.909786,0.86979 h 10.923142 c 1.271233,0.0243 1.493431,-0.68276 0.779262,-1.13859 l -3.162813,-2.34048 c -0.512408,-0.39647 -0.981285,-0.59163 -2.024197,-0.63255 H 75.195853 c -1.396172,0.0616 -1.519615,0.85244 -1.075355,1.2967 z" id="path2548" sodipodi:nodetypes="ccccccccc"/>
+                </g>
+                <g id="g4527">
+                    <path id="rect2857-6" style="fill:#ffffff;fill-opacity:1;stroke-width:1.20765;paint-order:fill markers stroke" d="m 108.74168,-107.39396 h 7.82795 v 7.827428 h 8.40879 v -7.827428 h 7.82743 v -8.40931 h -7.82743 v -7.82743 h -8.40879 v 7.82743 h -7.82795 z" transform="rotate(90)"/>
+                    <path id="rect2758" style="fill:#d40000;fill-opacity:1;stroke-width:1.29903;paint-order:fill markers stroke" d="m 108.24395,109.77056 v 7.64862 h -7.64854 v 6.70916 h 7.64863 v 7.64862 h 6.70915 v -7.64862 h 7.64863 v -6.70916 h -7.64863 l 7e-5,-7.64862 z" sodipodi:nodetypes="ccccccccccccc"/>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg>

@@ -1,23 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
-  <!-- Background circle split diagonally -->
-  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
-  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
-  <!-- Wikidata barcode logo -->
-  <g transform="translate(17.514,17.514)">
-    <!-- Red bars (left group) -->
-    <rect x="-11.5" y="-8" width="1.6" height="16" rx="0.4" fill="#990000"/>
-    <rect x="-9.2" y="-8" width="1.6" height="16" rx="0.4" fill="#990000"/>
-    <!-- Green bars (center-left group) -->
-    <rect x="-6.2" y="-8" width="1.6" height="16" rx="0.4" fill="#339966"/>
-    <rect x="-3.9" y="-8" width="1.6" height="16" rx="0.4" fill="#339966"/>
-    <!-- Blue bars (center-right group) -->
-    <rect x="-0.9" y="-8" width="1.6" height="16" rx="0.4" fill="#006699"/>
-    <rect x="1.4" y="-8" width="1.6" height="16" rx="0.4" fill="#006699"/>
-    <!-- Green bars (right-center group) -->
-    <rect x="4.4" y="-8" width="1.6" height="16" rx="0.4" fill="#339966"/>
-    <rect x="6.7" y="-8" width="1.6" height="16" rx="0.4" fill="#339966"/>
-    <!-- Red bars (right group) -->
-    <rect x="9.7" y="-8" width="1.6" height="16" rx="0.4" fill="#990000"/>
-    <rect x="12" y="-8" width="0.6" height="16" rx="0.3" fill="#990000"/>
-  </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.2" width="1050" height="590">
+  <path d="m 120,545 h 30 V 45 H 120 V 545 z m 60,0 h 90 V 45 H 180 V 545 z M 300,45 V 545 h 90 V 45 h -90 z" style="fill:#990000"/>
+  <path d="m 840,545 h 30 V 45 H 840 V 545 z M 900,45 V 545 h 30 V 45 H 900 z M 420,545 h 30 V 45 H 420 V 545 z M 480,45 V 545 h 30 V 45 h -30 z" style="fill:#339966"/>
+  <path d="m 540,545 h 90 V 45 h -90 V 545 z m 120,0 h 30 V 45 H 660 V 545 z M 720,45 V 545 h 90 V 45 H 720 z" style="fill:#006699"/>
 </svg>
