@@ -107,7 +107,11 @@ Les propriétés dans `info.json` sont les suivantes :
 - `soft_end_date`: date de fin de la période de _forte_ animation communautaire (format AAAA-MM-JJ). Donnée purement à titre informatif, n'affecte pas le traitement des données.
 - `end_date` : date de fin de la mission (format AAAA-MM-JJ)
 - `summary` : résumé de la mission
-- `links` : définition des URL pour les liens vers des pages tierces (wiki OSM, forum OSM ou page de blog) avec ce format "osmwiki|osmblog|osmforum": "projetdumois.fr"
+- `links` : objet contenant une ou plusieurs URL vers des pages tierces
+  - `osmwiki` : wiki OSM
+  - `osmforum` : forum OSM
+  - `osmblog` : page de blog OSM
+  - `external_statistics` : page externe pour les statistiques, si elle est renseignée elle sera utilisée À LA PLACE des statistiques intégrées
 - `database.osmium_tag_filter` : filtre Osmium sur les tags à appliquer pour ne conserver que les objets OSM pertinents (par exemple `nwr/*:covid19`, [syntaxe décrite ici](https://osmcode.org/osmium-tool/manual.html#filtering-by-tags)). Il est possible d'enchaîner plusieurs filtres par & et en répétant l'indication de primitive à chaque niveau. L'opérateur != n'est pour l'instant pas pris en compte.
 - `database.imposm` : configuration pour l'import des données actualisées d'OSM (`types` pour les types de géométrie à prendre en compte, `mapping` pour les attributs, voir [la documentation Imposm](https://imposm.org/docs/imposm3/latest/mapping.html#tags) pour le format de ces champs)
 - `database.compare` : configuration pour la recherche d'objets OpenStreetMap à comparer, suit le format de `database.imposm` avec une propriété supplémentaire `radius` (rayon de rapprochement en mètres)

@@ -64,6 +64,11 @@ Object.entries(projects).forEach(e => {
 	const id = project.id;
 	const slug = name.split("_").pop();
 
+	if (project.links?.external_statistics) {
+		console.log(`Project ${id} has external statistics link, skipping features update`);
+		return;
+	}
+
 	if (IMPOSM_ENABLED) {
 		const tableData = {
 			mapping: project.database.imposm.mapping,
