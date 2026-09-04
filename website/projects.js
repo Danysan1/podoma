@@ -74,6 +74,8 @@ fs.readdirSync(PROJECTS_PATH).forEach(projectDir => {
 			}
 		} else if (!project.links?.external_statistics) {
 			throw new Error("Missing both database.osmium_tag_filter and links.external_statistics in info.json");
+		} else if (!project.statistics) {
+			throw new Error("Missing both statistics and links.external_statistics in info.json");
 		}
 
 		projects[project.name] = project;
