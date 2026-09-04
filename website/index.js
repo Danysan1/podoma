@@ -570,9 +570,15 @@ app.get("/projects/:name/stats", (req, res) => {
         [p.id]
         )
         .then((results) => {
-          const firstItem = results.rows[0],
-            lastItem = results.rows.length > 0 ? results.rows[results.rows.length - 1] : null,
-            secondLastItem = results.rows.length > 1 ? results.rows[results.rows.length - 2] : null;
+          // The whole serie is kept for the chart, but the displayed counts must stop at the end of the project period
+          // When USE_SOFT_DATES is enabled, prefer soft dates over hard dates
+          const endDate = CONFIG.USE_SOFT_DATES && p.soft_end_date || p.end_date;
+          const rowsInPeriod = endDate == null
+            ? results.rows
+            : results.rows.filter((r) => new Date(r.ts).getTime() <= new Date(endDate).getTime());
+          const firstItem = rowsInPeriod[0],
+            lastItem = rowsInPeriod.length > 0 ? rowsInPeriod[rowsInPeriod.length - 1] : null,
+            secondLastItem = rowsInPeriod.length > 1 ? rowsInPeriod[rowsInPeriod.length - 2] : null;
           return {
             osm_counts: results.rows,
             "daily":{
@@ -634,7 +640,7 @@ app.get("/projects/:name/stats", (req, res) => {
   // Fetch mappers count
   allPromises.push(
     pool
-      .query(`SELECT * FROM pdm_mapper_counts WHERE project_id = $1 AND ts <= $2 AND label is null ORDER BY ts DESC limit 2`, [
+      .query(`SELECT * FROM pdm_mapper_counts WHERE project_id = $1 AND ($2::timestamp IS NULL OR ts <= $2) AND label is null ORDER BY ts DESC limit 2`, [
         p.id,
         CONFIG.USE_SOFT_DATES && p.soft_end_date || p.end_date
       ])

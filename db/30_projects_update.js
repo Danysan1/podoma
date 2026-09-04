@@ -16,6 +16,8 @@ const CSV_NOTES_CONTRIBS = (project_slug) => `${CONFIG.WORK_DIR}/user_notes_${pr
 const CSV_NOTES_USERS = (project_slug) => `${CONFIG.WORK_DIR}/usernames_notes_${project_slug}.csv`;
 const OUTPUT_SCRIPT_FS = __dirname+'/31_projects_update_tmp.sh';
 
+const USE_SOFT_DATES = CONFIG.hasOwnProperty("USE_SOFT_DATES") && CONFIG.USE_SOFT_DATES === true;
+
 const PSQL = `psql -d ${process.env.DB_URL}`;
 const HAS_BOUNDARY = `${PSQL} -c "SELECT * FROM pdm_boundary LIMIT 1" > /dev/null 2>&1 `;
 
@@ -190,6 +192,9 @@ current_year=$(date -d "\$current_ts" +%Y --utc)
 
 Object.values(projects).forEach(project => {
     const slug = project.name.split("_").pop();
+    // Contributors are counted from the beginning of the project period.
+    // When USE_SOFT_DATES is enabled, prefer soft dates over hard dates
+    const project_start_date = USE_SOFT_DATES && project.soft_start_date || project.start_date;
     script += `
 IFS='|'
 process_data=\$(${PSQL} -qtAc "SELECT to_char (COALESCE(counts_lastupdate_date, start_date) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as start, to_char (LEAST(end_date, CURRENT_TIMESTAMP) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as end from pdm_projects where project_id=${project.id}")
@@ -252,7 +257,7 @@ else
 
     script += `
     echo "   => [\$((\$(date -d now +%s) - \$process_start_t0))s] Generate user contributions"
-    ${PSQL} -v project_id="${project.id}" -v features_table="pdm_features_${slug}" -v changes_table="pdm_features_${slug}_changes" -v boundary_table="pdm_features_${slug}_boundary" -v labels_table="pdm_features_${slug}_labels"  -v start_date="'\${process_start_ts}'" -v end_date="'\${process_end_ts}'" -v project_start_date="'${project.start_date}'" -v dates_list="\$count_dates_list" -f "${__dirname}/33_projects_contribs.sql"
+    ${PSQL} -v project_id="${project.id}" -v features_table="pdm_features_${slug}" -v changes_table="pdm_features_${slug}_changes" -v boundary_table="pdm_features_${slug}_boundary" -v labels_table="pdm_features_${slug}_labels"  -v start_date="'\${process_start_ts}'" -v end_date="'\${process_end_ts}'" -v project_start_date="'${project_start_date}'" -v dates_list="\$count_dates_list" -f "${__dirname}/33_projects_contribs.sql"
 
     if [ -f '${__dirname}/../projects/${project.name}/extract.sh' ]; then
         echo "   => [\$((\$(date -d now +%s) - \$process_start_t0))s] Extract script"
