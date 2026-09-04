@@ -119,6 +119,10 @@ block content
 
 			if isNext
 				p= __("Progress statistics will be shown at project start on %s.", new Date(CONFIG.USE_SOFT_DATES ? soft_start_date : start_date).toLocaleString(getLocale(), { day: "numeric", month: "long" }))
+			else if links.external_statistics
+				p
+					span=__("Statistics are available")+" "
+					a(href=links.external_statistics target="_blank")= __("at this page")
 			else
 				include ../components/stats.pug
 
