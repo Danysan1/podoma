@@ -197,8 +197,18 @@ Object.values(projects_with_data).forEach(project => {
 	}
 
     const slug = project.name.split("_").pop();
-    // Contributors are counted from the beginning of the project period.
-    // When USE_SOFT_DATES is enabled, prefer soft dates over hard dates
+    /**
+    * Fixed start point ("anchor") that the cumulative mapper count (pdm_mapper_counts.amount, built by 33_projects_contribs.sql) is measured from.
+    * Contributors are counted from the beginning of the project period, so when USE_SOFT_DATES is enabled the soft start date is preferred.
+    *
+    * This is the only soft date applied while WRITING instead of while reading.
+    * Everything else stays on the read side, which is possible because those figures are subtractable:
+    * the site derives its soft-window feature count from the hard-anchored serie by taking the difference between the two endpoints.
+    * COUNT(DISTINCT userid) cannot be re-anchored that way (a mapper active both before and after the soft start would be subtracted out) so a serie anchored at start_date could never yield the soft-window figure.
+    * Note that only this anchor moves: the processing window below still spans the full hard range, and user contributions are still generated over it.
+    *
+    * The gate mirrors the one 20_changes_update.js applies when filling pdm_projects.soft_start_date, keep the two in sync.
+    */
     const project_start_date = USE_SOFT_DATES && project.soft_start_date || project.start_date;
     script += `
 IFS='|'
