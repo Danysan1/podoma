@@ -8,7 +8,7 @@ const compression = require("compression");
 const path = require("path");
 const fs = require("fs");
 const fetch = require("node-fetch").default;
-const projects = require("./projects");
+const { projects } = require("./projects");
 const CONFFILE = require("../config.json");
 const PCKGE = require("../package.json");
 const {
@@ -570,9 +570,15 @@ app.get("/projects/:name/stats", (req, res) => {
         [p.id]
         )
         .then((results) => {
-          const firstItem = results.rows[0],
-            lastItem = results.rows.length > 0 ? results.rows[results.rows.length - 1] : null,
-            secondLastItem = results.rows.length > 1 ? results.rows[results.rows.length - 2] : null;
+          // The whole serie is kept for the chart, but the displayed counts must stop at the end of the project period
+          // When USE_SOFT_DATES is enabled, prefer soft dates over hard dates
+          const endDate = CONFIG.USE_SOFT_DATES && p.soft_end_date || p.end_date;
+          const rowsInPeriod = endDate == null
+            ? results.rows
+            : results.rows.filter((r) => new Date(r.ts).getTime() <= new Date(endDate).getTime());
+          const firstItem = rowsInPeriod[0],
+            lastItem = rowsInPeriod.length > 0 ? rowsInPeriod[rowsInPeriod.length - 1] : null,
+            secondLastItem = rowsInPeriod.length > 1 ? rowsInPeriod[rowsInPeriod.length - 2] : null;
           return {
             osm_counts: results.rows,
             "daily":{
@@ -632,9 +638,14 @@ app.get("/projects/:name/stats", (req, res) => {
   }
 
   // Fetch mappers count
+  // Only the end of the period is bounded here:
+  // amount is already cumulative from the start of the period
+  // (soft date if USE_SOFT_DATES=true, baked in by 33_projects_contribs.sql because a distinct count cannot be re-anchored at read time)
+  // so the last row at or before the end of the period is the mapper count of the whole period.
+  // Limit 2 to also get the previous value, from which the 24h delta shown next to that count is computed.
   allPromises.push(
     pool
-      .query(`SELECT * FROM pdm_mapper_counts WHERE project_id = $1 AND ts <= $2 AND label is null ORDER BY ts DESC limit 2`, [
+      .query(`SELECT * FROM pdm_mapper_counts WHERE project_id = $1 AND ($2::timestamp IS NULL OR ts <= $2) AND label is null ORDER BY ts DESC limit 2`, [
         p.id,
         CONFIG.USE_SOFT_DATES && p.soft_end_date || p.end_date
       ])

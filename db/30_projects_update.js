@@ -1,6 +1,6 @@
 const CONFIG = require('../config.json');
 const fs = require('fs');
-const projects = require('../website/projects');
+const { projects_with_data } = require('../website/projects');
 const { getProjectDays } = require('../website/utils');
 const fetch = require('node-fetch').default;
 const booleanContains = require('@turf/boolean-contains').default;
@@ -15,6 +15,8 @@ const CSV_NOTES = (project_slug) => `${CONFIG.WORK_DIR}/notes_${project_slug}.cs
 const CSV_NOTES_CONTRIBS = (project_slug) => `${CONFIG.WORK_DIR}/user_notes_${project_slug}.csv`;
 const CSV_NOTES_USERS = (project_slug) => `${CONFIG.WORK_DIR}/usernames_notes_${project_slug}.csv`;
 const OUTPUT_SCRIPT_FS = __dirname+'/31_projects_update_tmp.sh';
+
+const USE_SOFT_DATES = CONFIG.hasOwnProperty("USE_SOFT_DATES") && CONFIG.USE_SOFT_DATES === true;
 
 const PSQL = `psql -d ${process.env.DB_URL}`;
 const HAS_BOUNDARY = `${PSQL} -c "SELECT * FROM pdm_boundary LIMIT 1" > /dev/null 2>&1 `;
@@ -170,8 +172,8 @@ if [[ "\$mode" = "init" ]]; then
     echo "== Initial counts for projects"
     process_start_t0=$(date -d now +%s)
     `;
-    Object.values(projects).forEach(project => {
-        if (project.statistics.count){
+    Object.values(projects_with_data).forEach(project => {
+        if (project.statistics?.count){
             script += `
                 ${PSQL} -v project_id="${project.id}" -f "${__dirname}/34_projects_init.sql"
             `;
@@ -188,8 +190,26 @@ current_month=$(date -d "\$current_ts" +%-m --utc)
 current_year=$(date -d "\$current_ts" +%Y --utc)
 `;
 
-Object.values(projects).forEach(project => {
+Object.values(projects_with_data).forEach(project => {
+	if (project.links?.external_statistics) {
+		console.log(`Project ${project.name} has external statistics link, skipping project update`);
+		return;
+	}
+
     const slug = project.name.split("_").pop();
+    /**
+    * Fixed start point ("anchor") that the cumulative mapper count (pdm_mapper_counts.amount, built by 33_projects_contribs.sql) is measured from.
+    * Contributors are counted from the beginning of the project period, so when USE_SOFT_DATES is enabled the soft start date is preferred.
+    *
+    * This is the only soft date applied while WRITING instead of while reading.
+    * Everything else stays on the read side, which is possible because those figures are subtractable:
+    * the site derives its soft-window feature count from the hard-anchored serie by taking the difference between the two endpoints.
+    * COUNT(DISTINCT userid) cannot be re-anchored that way (a mapper active both before and after the soft start would be subtracted out) so a serie anchored at start_date could never yield the soft-window figure.
+    * Note that only this anchor moves: the processing window below still spans the full hard range, and user contributions are still generated over it.
+    *
+    * The gate mirrors the one 20_changes_update.js applies when filling pdm_projects.soft_start_date, keep the two in sync.
+    */
+    const project_start_date = USE_SOFT_DATES && project.soft_start_date || project.start_date;
     script += `
 IFS='|'
 process_data=\$(${PSQL} -qtAc "SELECT to_char (COALESCE(counts_lastupdate_date, start_date) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as start, to_char (LEAST(end_date, CURRENT_TIMESTAMP) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as end from pdm_projects where project_id=${project.id}")
@@ -252,7 +272,7 @@ else
 
     script += `
     echo "   => [\$((\$(date -d now +%s) - \$process_start_t0))s] Generate user contributions"
-    ${PSQL} -v project_id="${project.id}" -v features_table="pdm_features_${slug}" -v changes_table="pdm_features_${slug}_changes" -v boundary_table="pdm_features_${slug}_boundary" -v labels_table="pdm_features_${slug}_labels"  -v start_date="'\${process_start_ts}'" -v end_date="'\${process_end_ts}'" -v project_start_date="'${project.start_date}'" -v dates_list="\$count_dates_list" -f "${__dirname}/33_projects_contribs.sql"
+    ${PSQL} -v project_id="${project.id}" -v features_table="pdm_features_${slug}" -v changes_table="pdm_features_${slug}_changes" -v boundary_table="pdm_features_${slug}_boundary" -v labels_table="pdm_features_${slug}_labels"  -v start_date="'\${process_start_ts}'" -v end_date="'\${process_end_ts}'" -v project_start_date="'${project_start_date}'" -v dates_list="\$count_dates_list" -f "${__dirname}/33_projects_contribs.sql"
 
     if [ -f '${__dirname}/../projects/${project.name}/extract.sh' ]; then
         echo "   => [\$((\$(date -d now +%s) - \$process_start_t0))s] Extract script"

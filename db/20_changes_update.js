@@ -1,6 +1,6 @@
 const CONFIG = require('../config.json');
 const fs = require('fs');
-const projects = require('../website/projects');
+const { projects_with_data } = require('../website/projects');
 const {Pool} = require('pg')
 
 /*
@@ -21,6 +21,7 @@ const COOKIES_FS = CONFIG.WORK_DIR + '/cookie.txt';
 const PSQL = `psql -d ${process.env.DB_URL}`;
 const HAS_BOUNDARY = `${PSQL} -c "SELECT * FROM pdm_boundary LIMIT 1" > /dev/null 2>&1 `;
 const OVERPASS_FATAL = CONFIG.hasOwnProperty("OVERPASS_FATAL") && CONFIG.OVERPASS_FATAL === true;
+const USE_SOFT_DATES = CONFIG.hasOwnProperty("USE_SOFT_DATES") && CONFIG.USE_SOFT_DATES === true;
 
 const pgPool = new Pool({
     connectionString: `${process.env.DB_URL}`
@@ -252,9 +253,11 @@ let projectLength = 0;
 let projectPointsLength = 0;
 let projectTeamsLength = 0;
 
-Object.values(projects).forEach(project => {
-    const project_soft_start_date = project.soft_start_date ? `'${project.soft_start_date}'` : null,
-        project_soft_end_date = project.soft_end_date ? `'${project.soft_end_date}'` : null,
+Object.values(projects_with_data).forEach(project => {
+    // Soft dates are only stored when they are actually used (USE_SOFT_DATES=true).
+    // This way SQL queries can rely on COALESCE(soft_start_date, start_date) without having to know about the USE_SOFT_DATES setting.
+    const project_soft_start_date = USE_SOFT_DATES && project.soft_start_date ? `'${project.soft_start_date}'` : null,
+        project_soft_end_date = USE_SOFT_DATES && project.soft_end_date ? `'${project.soft_end_date}'` : null,
         project_end_date = project.end_date ? `'${project.end_date}'` : null;
     projectsQry += `(${project.id}, '${project.name}', '${project.start_date}', ${project_soft_start_date}, ${project_soft_end_date}, ${project_end_date}),`;
     projectLength++;
@@ -285,7 +288,7 @@ Object.values(projects).forEach(project => {
 });
 
 if (projectLength > 0){
-    projectsQry = `${projectsQry.substring(0, projectsQry.length-1)} ON CONFLICT (project_id) DO UPDATE SET start_date=EXCLUDED.start_date, end_date=EXCLUDED.end_date`;
+    projectsQry = `${projectsQry.substring(0, projectsQry.length-1)} ON CONFLICT (project_id) DO UPDATE SET start_date=EXCLUDED.start_date, soft_start_date=EXCLUDED.soft_start_date, soft_end_date=EXCLUDED.soft_end_date, end_date=EXCLUDED.end_date`;
     pgPool.query(projectsQry, (err, res) => {
         if(err?.message?.includes("cannot affect row a second time")) {
             throw new Error(`Error when installing projects: ${err}\n\nQuery was: ${projectsQry}`);
@@ -432,7 +435,7 @@ script += `
     ${separator}
 
     `;
-Object.values(projects).forEach(project => {
+Object.values(projects_with_data).forEach(project => {
     // Project files
     const slug = project.name.split("_").pop();
     const oshProjectTags = OSH_PBF_FS.replace(".osh", `.${slug}_tags.osh`);
@@ -530,7 +533,7 @@ fi
 
 echo "== Look for earliest date to process"
 IFS='|'
-process_data=\$(${PSQL} -qtAc "with update_days as (select project, COALESCE(changes_lastupdate_date, start_date) as start_date, CURRENT_TIMESTAMP as end_date, extract (day from (CURRENT_TIMESTAMP - COALESCE(changes_lastupdate_date, start_date))) as days from pdm_projects where project_id IN (${Object.values(projects).map(project => project.id).join()})) select to_char(MIN(start_date),'YYYY-MM-DD\\"T\\"HH24:MI:SS\\"Z\\"') as start_date, to_char(MAX(end_date),'YYYY-MM-DD\\"T\\"HH24:MI:SS\\"Z\\"') as end_date, extract (day from (MAX(end_date) - MIN(start_date))) as delta from update_days where days between 0 and 30;")
+process_data=\$(${PSQL} -qtAc "with update_days as (select project, COALESCE(changes_lastupdate_date, start_date) as start_date, CURRENT_TIMESTAMP as end_date, extract (day from (CURRENT_TIMESTAMP - COALESCE(changes_lastupdate_date, start_date))) as days from pdm_projects where project_id IN (${Object.values(projects_with_data).map(project => project.id).join()})) select to_char(MIN(start_date),'YYYY-MM-DD\\"T\\"HH24:MI:SS\\"Z\\"') as start_date, to_char(MAX(end_date),'YYYY-MM-DD\\"T\\"HH24:MI:SS\\"Z\\"') as end_date, extract (day from (MAX(end_date) - MIN(start_date))) as delta from update_days where days between 0 and 30;")
 read -r -a process_qry <<< \$process_data
 process_start_ts=\${process_qry[0]}
 process_start_time=\$(date -d "\$process_start_ts" +%s)
@@ -585,7 +588,7 @@ else
     ${separator}
     `;
 
-Object.values(projects).forEach(project => {
+Object.values(projects_with_data).forEach(project => {    
     const slug = project.name.split("_").pop();
     const oscProject = OSC_UPDATES_FS.replace("changes", `changes.${slug}`);
     const oscProjectInterm = OSC_UPDATES_FS.replace("changes", `changes.${slug}_interm`);
