@@ -191,11 +191,6 @@ current_year=$(date -d "\$current_ts" +%Y --utc)
 `;
 
 Object.values(projects_with_data).forEach(project => {
-	if (project.links?.external_statistics) {
-		console.log(`Project ${project.name} has external statistics link, skipping project update`);
-		return;
-	}
-
     const slug = project.name.split("_").pop();
     /**
     * Fixed start point ("anchor") that the cumulative mapper count (pdm_mapper_counts.amount, built by 33_projects_contribs.sql) is measured from.
