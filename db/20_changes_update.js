@@ -254,9 +254,8 @@ let projectPointsLength = 0;
 let projectTeamsLength = 0;
 
 Object.values(projects_with_data).forEach(project => {
-    // Soft dates are only stored when they are actually used, so that SQL
-    // queries can rely on COALESCE(soft_start_date, start_date) without
-    // having to know about the USE_SOFT_DATES setting
+    // Soft dates are only stored when they are actually used (USE_SOFT_DATES=true).
+    // This way SQL queries can rely on COALESCE(soft_start_date, start_date) without having to know about the USE_SOFT_DATES setting.
     const project_soft_start_date = USE_SOFT_DATES && project.soft_start_date ? `'${project.soft_start_date}'` : null,
         project_soft_end_date = USE_SOFT_DATES && project.soft_end_date ? `'${project.soft_end_date}'` : null,
         project_end_date = project.end_date ? `'${project.end_date}'` : null;
