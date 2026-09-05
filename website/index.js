@@ -8,7 +8,7 @@ const compression = require("compression");
 const path = require("path");
 const fs = require("fs");
 const fetch = require("node-fetch").default;
-const projects = require("./projects");
+const { projects } = require("./projects");
 const CONFFILE = require("../config.json");
 const PCKGE = require("../package.json");
 const {

@@ -1,6 +1,6 @@
 const CONFIG = require('../config.json');
 const fs = require('fs');
-const projects = require('../website/projects');
+const { projects_with_data } = require('../website/projects');
 const { getProjectDays } = require('../website/utils');
 const fetch = require('node-fetch').default;
 const booleanContains = require('@turf/boolean-contains').default;
@@ -172,8 +172,8 @@ if [[ "\$mode" = "init" ]]; then
     echo "== Initial counts for projects"
     process_start_t0=$(date -d now +%s)
     `;
-    Object.values(projects).forEach(project => {
-        if (!project.links?.external_statistics && project.statistics?.count){
+    Object.values(projects_with_data).forEach(project => {
+        if (project.statistics?.count){
             script += `
                 ${PSQL} -v project_id="${project.id}" -f "${__dirname}/34_projects_init.sql"
             `;
@@ -190,7 +190,7 @@ current_month=$(date -d "\$current_ts" +%-m --utc)
 current_year=$(date -d "\$current_ts" +%Y --utc)
 `;
 
-Object.values(projects).forEach(project => {
+Object.values(projects_with_data).forEach(project => {
 	if (project.links?.external_statistics) {
 		console.log(`Project ${project.name} has external statistics link, skipping project update`);
 		return;
