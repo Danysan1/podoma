@@ -69,7 +69,11 @@ Each subdirectory is one thematic campaign, identified by name `<YYYY-MM>_<slug>
 - `extract.sh` (optional) — produces a downloadable CSV export.
 
 Conventions on this branch (follow them when adding a project):
-- `id` is a unique integer allocated sequentially from the 100-block (currently up to 122); ids must never collide across projects.
+- `id` is a unique integer allocated sequentially from the 100-block. It becomes `pdm_projects.project_id`, the **primary key** of that table, so two projects sharing an id break init/update for whichever runs second. Nothing validates this at load time — before picking one, run:
+  ```bash
+  grep -h '^\s*"id"' projects/*/info.json | grep -o '[0-9]\+' | sort -n | uniq -d   # collisions (must be empty)
+  grep -h '^\s*"id"' projects/*/info.json | grep -o '[0-9]\+' | sort -n | tail -1    # next id = this + 1
+  ```
 - Dates follow a fixed pattern around the campaign month M: `soft_start_date` = M-01, `soft_end_date` = (M+1)-01, `start_date` = one month before `soft_start_date`, `end_date` = two months after `soft_end_date`. The hard dates widen the data-collection window; because `config.italia.json` sets `USE_SOFT_DATES: true`, the **soft** dates are what the site uses to decide past/current/next and to bound contribution counting.
 - A single month can host more than one concurrent project when the topic naturally splits (e.g. `2025-12_itaed` + `2025-12_ithydrant`, or `2026-08_itsigns`/`itlanes`/`itdestination`) — each still needs its own unique `id` and its own badge (see below).
 
