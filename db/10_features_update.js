@@ -1,6 +1,6 @@
 const CONFIG = require('../config.json');
 const fs = require('fs');
-const projects = require('../website/projects');
+const { projects_with_data } = require('../website/projects');
 const yaml = require('js-yaml');
 
 /*
@@ -59,15 +59,10 @@ if(IMPOSM_ENABLED) {
 	postUpdateSQL.push(`REFRESH MATERIALIZED VIEW pdm_boundary`);
 }
 
-Object.entries(projects).forEach(e => {
+Object.entries(projects_with_data).forEach(e => {
 	const [ name, project ] = e;
 	const id = project.id;
 	const slug = name.split("_").pop();
-
-	if (project.links?.external_statistics) {
-		console.log(`Project ${name} has external statistics link, skipping features update`);
-		return;
-	}
 
 	if (IMPOSM_ENABLED) {
 		const tableData = {

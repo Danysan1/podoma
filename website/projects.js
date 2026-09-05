@@ -4,7 +4,7 @@ const marked = require('marked').marked;
 const PROJECTS_PATH = __dirname + '/../projects';
 const fetch = require('node-fetch').default;
 
-const projects = {};
+const projects = {}, projects_with_data = {};
 fs.readdirSync(PROJECTS_PATH).forEach(projectDir => {
 	try {
 		const project = JSON.parse(fs.readFileSync(PROJECTS_PATH + '/' + projectDir + '/info.json'));
@@ -72,6 +72,7 @@ fs.readdirSync(PROJECTS_PATH).forEach(projectDir => {
 					return f;
 				});
 			}
+			projects_with_data[project.name] = project;
 		} else if (!project.links?.external_statistics) {
 			throw new Error("Missing both database.osmium_tag_filter and links.external_statistics in info.json");
 		}
@@ -83,4 +84,4 @@ fs.readdirSync(PROJECTS_PATH).forEach(projectDir => {
 	}
 });
 
-module.exports = projects;
+module.exports = { projects, projects_with_data };
