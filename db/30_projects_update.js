@@ -193,7 +193,7 @@ current_year=$(date -d "\$current_ts" +%Y --utc)
 Object.values(projects_with_data).forEach(project => {
     const slug = project.name.split("_").pop();
     /**
-    * Fixed start point ("anchor") that the cumulative mapper count (pdm_mapper_counts.amount, built by 33_projects_contribs.sql) is measured from.
+    * Fixed start point ("anchor") that the cumulative contributor count (pdm_mapper_counts.amount, built by 33_projects_contribs.sql) is measured from.
     * Contributors are counted from the beginning of the project period, so when USE_SOFT_DATES is enabled the soft start date is preferred.
     *
     * This is the only soft date applied while WRITING instead of while reading.
