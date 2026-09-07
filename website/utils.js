@@ -502,12 +502,12 @@ exports.getMapStatsStyle = (p, prjDeltaPerLevel, dailyDeltaPerLevel) => {
 };
 
 // Get badges description
-exports.getBadgesDetails = (projects, badgesRows) => {
+exports.getBadgesDetails = (projects_with_data, badgesRows) => {
 	const badges = { "meta": { project: { name: "General", image: "/images/favicon.svg" }, badges: [] } };
 	badgesRows.forEach(row => {
 		if(!badges[row.project]) {
 			badges[row.project] = {
-				project: { name: projects[row.project].title, date: projects[row.project].month, image: projects[row.project].icon },
+				project: { name: projects_with_data[row.project].title, date: projects_with_data[row.project].month, image: projects_with_data[row.project].icon },
 				badges: [{ id: row.project.split("_").pop(), name: "Participated", description: "They have participated to the project", acquired: true, progress: 100 }]
 			};
 		}
@@ -519,8 +519,8 @@ exports.getBadgesDetails = (projects, badgesRows) => {
 
 		// Badges still in progress are only shown while the project is running.
 		// When USE_SOFT_DATES is enabled, prefer soft dates over hard dates
-		const startDate = (CONFIG.USE_SOFT_DATES && projects[row.project].soft_start_date) || projects[row.project].start_date;
-		const endDate = (CONFIG.USE_SOFT_DATES && projects[row.project].soft_end_date) || projects[row.project].end_date;
+		const startDate = (CONFIG.USE_SOFT_DATES && projects_with_data[row.project].soft_start_date) || projects_with_data[row.project].start_date;
+		const endDate = (CONFIG.USE_SOFT_DATES && projects_with_data[row.project].soft_end_date) || projects_with_data[row.project].end_date;
 
 		if(new Date(startDate).getTime() <= Date.now() && (endDate == null || Date.now() <= new Date(endDate).getTime())) {
 			badges[row.project].badges.push(row);
@@ -528,7 +528,7 @@ exports.getBadgesDetails = (projects, badgesRows) => {
 	});
 
 	// Meta badges
-	if(Object.keys(badges).length - 1 === Object.keys(projects).length) {
+	if(Object.keys(badges).length - 1 === Object.keys(projects_with_data).length) {
 		badges.meta.badges.push({ id: "all", name: "Always present", description: "They have participated to all the projects", acquired: true, progress: 100 });
 	}
 	if(badges.meta.badges.length === 0) {
