@@ -38,14 +38,14 @@ block content
 					h1.font-italic.mb-0= title
 					p.pdm-project-date.text-capitalize.mb-0.mb-md-2= new Date(month).toLocaleString(getLocale(), { month: 'long', year: 'numeric' })
 
-			if !isHardEnded
+			if isHardEnded
+				p= __("Ended project")
+			else if !links.external_statistics
 				div.btn-over-wide.d-flex.justify-content-center.align-items-center
 					a.pdm-wide-link.map(href=`/projects/${name}/map`)
 					a.btn.btn-primary.btn-lg(style="color: white")
 						i.fa.fa-pen.mr-2
 						| #{__("Contribute")}
-			else
-				p= __("Ended project")
 
 			p.lead.mb-0.mt-md-2= summary
 
@@ -88,9 +88,10 @@ block content
 			if !isHardEnded
 				div.mt-3!= howto
 				div.text-center
-					a.btn.btn-primary.btn-lg.m-1(style="color: white" href=`/projects/${name}/map`)
-						i.fa.fa-pen.mr-2
-						| #{__("Contribute")}
+					if !links.external_statistics
+						a.btn.btn-primary.btn-lg.m-1(style="color: white" href=`/projects/${name}/map`)
+							i.fa.fa-pen.mr-2
+							| #{__("Contribute")}
 					if links.osmwiki
 						a.btn.btn-secondary.btn-lg.m-1(href=links.osmwiki target="_blank" role="button")
 							i.fa.fa-book.mr-2
