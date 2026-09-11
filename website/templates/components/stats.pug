@@ -330,17 +330,32 @@ script.
 				}
 			} : undefined;
 			const zoomOpts = {
+				pan: {
+					enabled: true,
+					mode: 'x',
+				},
 				zoom: {
 					wheel: {
-						enabled: true,
-					},
-					drag: {
 						enabled: true,
 					},
 					pinch: {
 						enabled: true,
 					},
 					mode: 'x',
+				},
+				limits: {
+					x: {
+						min: 'original',
+						max: 'original'
+					}
+				}
+			};
+			const transitionsOpts = {
+				zoom: {
+					animation: {
+						duration: 100,
+						easing: "easeOutQuad"
+					}
 				}
 			};
 
@@ -355,6 +370,7 @@ script.
 					},
 					options: {
 						responsive: true,
+						transitions: transitionsOpts,
 						plugins: {
 							annotation: annotationOpts,
 							zoom: zoomOpts,
@@ -397,6 +413,7 @@ script.
 					},
 					options: {
 						responsive: true,
+						transitions: transitionsOpts,
 						plugins: {
 							annotation: annotationOpts,
 							zoom: zoomOpts,
