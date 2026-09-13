@@ -32,7 +32,8 @@
 	"Progress": "Progression",
 	"Notes": "Notes",
 	"Frequent keys": "Clés fréquentes",
-	"Last update: ": "Dernière mise à jour : ",
+	"Last update: ": "Mise à jour : ",
+	"Counts: ": "Dénombrements : ",
 	"contributors": "personnes contributrices",
 	"Total amount": "Nombre total",
 	"Total": "Total",
@@ -167,5 +168,6 @@
 	"70+ points": "70+ points",
 	"100+ points": "100+ points",
 	"500+ points": "500+ points",
-	"Top contributor": "N°1 des contributions"
+	"Top contributor": "N°1 des contributions",
+	"Statistics updated everyday out of the day before": "Statistiques mis à jour quotidiennement à partir de la veille"
 }
