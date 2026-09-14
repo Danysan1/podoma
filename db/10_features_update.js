@@ -1,6 +1,6 @@
 const CONFIG = require('../config.json');
 const fs = require('fs');
-const { projects_with_data } = require('../website/projects');
+const { projects } = require('../website/projects');
 const yaml = require('js-yaml');
 
 /*
@@ -59,7 +59,7 @@ if(IMPOSM_ENABLED) {
 	postUpdateSQL.push(`REFRESH MATERIALIZED VIEW pdm_boundary`);
 }
 
-Object.entries(projects_with_data).forEach(e => {
+Object.entries(projects).forEach(e => {
 	const [ name, project ] = e;
 	const id = project.id;
 	const slug = name.split("_").pop();

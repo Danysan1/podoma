@@ -307,8 +307,8 @@ let promises_projectStats = (pool, project) => {
   allPromises.push(
     pool
       .query(`SELECT * FROM pdm_mapper_counts WHERE project_id = $1 AND ($2::timestamp IS NULL OR ts <= $2) AND label is null ORDER BY ts DESC limit 2`, [
-        p.id,
-        CONFIG.USE_SOFT_DATES && p.soft_end_date || p.end_date,
+        project.id,
+        CONFIG.USE_SOFT_DATES && project.soft_end_date || project.end_date,
       ])
       .then((results) => ({
         "daily": {
