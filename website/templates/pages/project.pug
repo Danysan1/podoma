@@ -78,7 +78,7 @@ block content
 				i.fa.fa-question-circle.mr-2(style="font-size: 2.1rem")
 				| #{__("How to contribute")}
 			if isNext
-				p= __("This project will start on %s, but it's never too soon to start! You can already improve data using our tools or improve the documentation.", new Date(CONFIG.USE_SOFT_DATES && soft_start_date || start_date).toLocaleString(getLocale(), { day: "numeric", month: "long" }))
+				p= __("This project will start on %s, but it's never too soon to start! You can already improve data using our tools or improve the documentation.", new Date(use_soft_dates && soft_start_date || start_date).toLocaleString(getLocale(), { day: "numeric", month: "long" }))
 			else if !isActive
 				if isHardEnded
 					p= __("This project is done, but mapping in OpenStreetMap never ends! You can contribute on other topics.")
@@ -119,7 +119,7 @@ block content
 				| #{__("Statistics")}
 
 			if isNext
-				p= __("Progress statistics will be shown at project start on %s.", new Date(CONFIG.USE_SOFT_DATES && soft_start_date || start_date).toLocaleString(getLocale(), { day: "numeric", month: "long" }))
+				p= __("Progress statistics will be shown at project start on %s.", new Date(use_soft_dates && soft_start_date || start_date).toLocaleString(getLocale(), { day: "numeric", month: "long" }))
 			else if links.external_statistics
 				p
 					span=__("Statistics are available")+" "
@@ -146,21 +146,7 @@ block content
 					a(href=CONFIG.OSM_URL target="_blank")= __("Find all data directly on OpenStreetMap website.")
 
 	//- Other projects
-	if projectsToDisplay && projectsToDisplay.length > 0
+	if projectsList && projectsList.length > 0
 		a#projects
 		div.container-fluid.py-5
-			div.container.blog-post
-				h2.blog-post-title
-					i.fa.fa-share.mr-2(style="font-size: 2.1rem")
-					| #{__("Other projects")}
-				p= __("Find other projects, their tools, statistics and data.")
-					div.row.align-items-center
-						each proj in projectsToDisplay
-							div.col-md-6.col-lg-4.h-100
-								div.media.mb-3
-									a.align-self-center.mr-3(href=`/projects/${proj.name}`)
-										img(src=proj.icon alt="" style="max-width: 100px")
-									div.media-body.align-self-center
-										a.text-decoration-none(href=`/projects/${proj.name}`)
-											| #{proj.title}
-											span.text-muted.d-block= new Date(proj.month).toLocaleString(getLocale(), { month: 'long', year: 'numeric' })
+			include ../components/projects_list.pug

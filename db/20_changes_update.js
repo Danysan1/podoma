@@ -1,6 +1,6 @@
 const CONFIG = require('../config.json');
 const fs = require('fs');
-const { projects_with_data } = require('../website/projects');
+const { projects } = require('../website/projects');
 const {Pool} = require('pg')
 
 /*
@@ -253,11 +253,11 @@ let projectLength = 0;
 let projectPointsLength = 0;
 let projectTeamsLength = 0;
 
-Object.values(projects_with_data).forEach(project => {
-    // Soft dates are only stored when they are actually used (USE_SOFT_DATES=true).
-    // This way SQL queries can rely on COALESCE(soft_start_date, start_date) without having to know about the USE_SOFT_DATES setting.
-    const project_soft_start_date = USE_SOFT_DATES && project.soft_start_date ? `'${project.soft_start_date}'` : null,
-        project_soft_end_date = USE_SOFT_DATES && project.soft_end_date ? `'${project.soft_end_date}'` : null,
+Object.values(projects).forEach(project => {
+    // Soft dates are only stored when they are actually used (project.use_soft_dates=true).
+    // This way SQL queries can rely on COALESCE(soft_start_date, start_date) without having to know about the use_soft_dates setting.
+    const project_soft_start_date = project.use_soft_dates && project.soft_start_date ? `'${project.soft_start_date}'` : null,
+        project_soft_end_date = project.use_soft_dates && project.soft_end_date ? `'${project.soft_end_date}'` : null,
         project_end_date = project.end_date ? `'${project.end_date}'` : null;
     projectsQry += `(${project.id}, '${project.name}', '${project.start_date}', ${project_soft_start_date}, ${project_soft_end_date}, ${project_end_date}),`;
     projectLength++;
@@ -291,9 +291,9 @@ if (projectLength > 0){
     projectsQry = `${projectsQry.substring(0, projectsQry.length-1)} ON CONFLICT (project_id) DO UPDATE SET start_date=EXCLUDED.start_date, soft_start_date=EXCLUDED.soft_start_date, soft_end_date=EXCLUDED.soft_end_date, end_date=EXCLUDED.end_date`;
     pgPool.query(projectsQry, (err, res) => {
         if(err?.message?.includes("cannot affect row a second time")) {
-            throw new Error(`Error when installing projects: ${err}\n\nQuery was: ${projectsQry}`);
+            throw new Error(`Error when installing projects: ${err}\n\nMake sure all projects have a distinct id, query was: ${projectsQry}`);
         } else if (err) {
-            throw new Error(`Error when installing projects: ${err}\n\nQuery was: ${projectsQry}`);
+            throw new Error(`Error when installing projects: ${err}`);
         }
         console.log(projectLength+" project(s) installed");
     });
@@ -510,7 +510,7 @@ Object.values(projects_with_data).forEach(project => {
         script += `
             echo "   => [\$((\$(date -d now +%s) - \$process_start_t0))s] Seek for all changes related to selected features and convert to OPL"
             rm -f "${oplProject}"
-            osmium getid ${getIdOptions} "\$history_osh" -I "${oshProjectTags}" -f opl,history=true -o "${oplProject}"
+            osmium getid ${getIdOptions} "\$history_osh" -I "${oshProjectTags}" -f opl,history=true -o "${oplProject}" || { echo "osmium getid failed, check ${oshProjectTags}"; exit 1; }
             rm -f "${csvFeatures}" "${csvMembers}" "${oshProjectTags}"
         fi
 

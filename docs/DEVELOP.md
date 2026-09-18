@@ -102,10 +102,11 @@ The properties in `info.json` are as follows:
 - `id`: Unique integer identifier
 - `name`: mission identifier (authorized characters: A-Z, 0-9, \_ and -)
 - `title`: name of the mission (short enough)
-- `start_date`: start date of the mission (format YYYYY-MM-DD)
-- `soft_start_date`: start date of the _strong_ community animation period (format YYYYY-MM-DD). This is only informational, it doesn't affect backend processing.
-- `soft_end_date`: end date of the _strong_ community animation period (format YYYYY-MM-DD). This is only informational, it doesn't affect backend processing.
-- `end_date`: end date of the mission (format YYYYY-MM-DD)
+- `start_date`: start date of the mission (format YYYY-MM-DD)
+- `soft_start_date`: start date of the _strong_ community animation period (format YYYY-MM-DD). Ignored unless `use_soft_dates` is enabled. Data collection still starts at `start_date` either way.
+- `soft_end_date`: end date of the _strong_ community animation period (format YYYY-MM-DD). Ignored unless `use_soft_dates` is enabled. Data collection still runs until `end_date` either way.
+- `use_soft_dates`: whether to use `soft_start_date` and `soft_end_date` (instead of `start_date` and `end_date`) to decide whether this project is past, current or next, and to bound the period over which points, leaderboard and badges are computed. Changing it is only taken into account by the next `update_changes` run and applies to contributor counts only in dates processed after the change.
+- `end_date`: end date of the mission (format YYYY-MM-DD)
 - `summary`: summary of the mission
 - `links`: object with one or more URLs to third party pages
   - `osmwiki`: OSM wiki
@@ -311,7 +312,7 @@ Each project configuration set how many points are given according to contributi
 
 Points are distinguishsed between project and label contributions.
 
-Points are only counted over the project period, which drives the leaderboard and the badges given to each contributor. That period runs from `start_date` to `end_date`, or from `soft_start_date` to `soft_end_date` when `USE_SOFT_DATES` is enabled. Contributions made outside of it are still collected and displayed in the statistics, but don't give any point.
+Points are only counted over the project period, which drives the leaderboard and the badges given to each contributor. That period runs from `start_date` to `end_date`, or from `soft_start_date` to `soft_end_date` when `use_soft_dates` is enabled for the project. Contributions made outside of it are still collected and displayed in the statistics, but don't give any point.
 
 ### Data sources
 
@@ -740,7 +741,7 @@ tags json
 geom GEOMETRY(Geometry, 3857)
 ```
 
-Optionally, if the compare mode is enabled for a given project, a supplemntary view called `pdm_project_${project_id}_compare` that conforms to the given structure for `pdm_project_${project_id}` is needed.
+Optionally, if the compare mode is enabled for a given project, a supplemntary view called `pdm_project_${project_slug}_compare` that conforms to the given structure for `pdm_project_${project_slug}` is needed.
 
 #### Replace by the changelog
 If you accept to only have a daily update to most statsitics, which means without instant update when some features get edited along the day, it is possible to create a materialized view as such:

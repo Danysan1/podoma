@@ -103,8 +103,9 @@ Les propriétés dans `info.json` sont les suivantes :
 - `name` : identifiant de la mission (caractères autorisés : A-Z, 0-9, \_ et -)
 - `title` : nom de la mission (assez court)
 - `start_date` : date de début de la mission (format AAAA-MM-JJ)
-- `soft_start_date`: date de début de la période de _forte_ animation communautaire (format AAAA-MM-JJ). Donnée purement à titre informatif, n'affecte pas le traitement des données.
-- `soft_end_date`: date de fin de la période de _forte_ animation communautaire (format AAAA-MM-JJ). Donnée purement à titre informatif, n'affecte pas le traitement des données.
+- `soft_start_date` : date de début de la période de _forte_ animation communautaire (format AAAA-MM-JJ). Ignorée sauf si `use_soft_dates` est activé. La collecte des données commence toujours à `start_date`.
+- `soft_end_date` : date de fin de la période de _forte_ animation communautaire (format AAAA-MM-JJ). Ignorée sauf si `use_soft_dates` est activé. La collecte des données se poursuit toujours jusqu'à `end_date`.
+- `use_soft_dates` : utiliser `soft_start_date` et `soft_end_date` (au lieu de `start_date` et `end_date`) pour déterminer si ce projet est passé, en cours ou à venir, et pour délimiter la période sur laquelle les points, le classement et les badges sont calculés. Sa modification n'est prise en compte qu'au prochain `update_changes` et ne s'applique aux décomptes de contributeurs que pour les dates traitées après la modification.
 - `end_date` : date de fin de la mission (format AAAA-MM-JJ)
 - `summary` : résumé de la mission
 - `links` : objet contenant une ou plusieurs URL vers des pages tierces
@@ -312,7 +313,7 @@ Les montant de points attribués sont configurés dans `info.json` :
 
 Les points sont distingués entre les contributions au niveau du projet et de chaque étiuette.
 
-Les points ne sont comptabilisés que sur la période du projet, qui détermine le classement et les badges attribués à chaque contributeur. Cette période va de `start_date` à `end_date`, ou de `soft_start_date` à `soft_end_date` lorsque `USE_SOFT_DATES` est activé. Les contributions faites en dehors de celle-ci sont toujours collectées et affichées dans les statistiques, mais ne donnent aucun point.
+Les points ne sont comptabilisés que sur la période du projet, qui détermine le classement et les badges attribués à chaque contributeur. Cette période va de `start_date` à `end_date`, ou de `soft_start_date` à `soft_end_date` lorsque `use_soft_dates` est activé pour ce projet. Les contributions faites en dehors de celle-ci sont toujours collectées et affichées dans les statistiques, mais ne donnent aucun point.
 
 ### Sources de tuiles
 
@@ -735,7 +736,7 @@ tags json
 geom GEOMETRY(Geometry, 3857)
 ```
 
-Optionellement, si le mode compare est activé dans un projet donné, une vue supplémentaire appelée `pdm_project_${project_id}_compare` conforme à ce qui doit être comparé est nécessaire. Elle a la même structure que ci-dessus.
+Optionellement, si le mode compare est activé dans un projet donné, une vue supplémentaire appelée `pdm_project_${project_slug}_compare` conforme à ce qui doit être comparé est nécessaire. Elle a la même structure que ci-dessus.
 
 #### Remplacé par le journal des modifications
 Dans le cas où vous accepteriez une mise à jour quotidienne de la vue des objets actuels, c'est à dire sans prise en compte immédiate des objets contribués pendant la journée, il est possible de créer manuellement une vue matérialisée comme suit :

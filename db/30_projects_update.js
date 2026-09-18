@@ -1,6 +1,6 @@
 const CONFIG = require('../config.json');
 const fs = require('fs');
-const { projects_with_data } = require('../website/projects');
+const { projects } = require('../website/projects');
 const { getProjectDays } = require('../website/utils');
 const fetch = require('node-fetch').default;
 const booleanContains = require('@turf/boolean-contains').default;
@@ -172,7 +172,7 @@ if [[ "\$mode" = "init" ]]; then
     echo "== Initial counts for projects"
     process_start_t0=$(date -d now +%s)
     `;
-    Object.values(projects_with_data).forEach(project => {
+    Object.values(projects).forEach(project => {
         if (project.statistics?.count){
             script += `
                 ${PSQL} -v project_id="${project.id}" -f "${__dirname}/34_projects_init.sql"
@@ -198,8 +198,8 @@ Object.values(projects_with_data).forEach(project => {
 
     const slug = project.name.split("_").pop();
     /**
-    * Fixed start point ("anchor") that the cumulative mapper count (pdm_mapper_counts.amount, built by 33_projects_contribs.sql) is measured from.
-    * Contributors are counted from the beginning of the project period, so when USE_SOFT_DATES is enabled the soft start date is preferred.
+    * Fixed start point ("anchor") that the cumulative contributor count (pdm_mapper_counts.amount, built by 33_projects_contribs.sql) is measured from.
+    * Contributors are counted from the beginning of the project period, so when project.use_soft_dates is enabled the soft start date is preferred.
     *
     * This is the only soft date applied while WRITING instead of while reading.
     * Everything else stays on the read side, which is possible because those figures are subtractable:
@@ -209,7 +209,7 @@ Object.values(projects_with_data).forEach(project => {
     *
     * The gate mirrors the one 20_changes_update.js applies when filling pdm_projects.soft_start_date, keep the two in sync.
     */
-    const project_start_date = USE_SOFT_DATES && project.soft_start_date || project.start_date;
+    const project_start_date = project.use_soft_dates && project.soft_start_date || project.start_date;
     script += `
 IFS='|'
 process_data=\$(${PSQL} -qtAc "SELECT to_char (COALESCE(counts_lastupdate_date, start_date) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as start, to_char (LEAST(end_date, CURRENT_TIMESTAMP) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as end from pdm_projects where project_id=${project.id}")

@@ -33,6 +33,7 @@
 	"Notes": "Notes",
 	"Frequent keys": "Frequent keys",
 	"Last update: ": "Last update: ",
+	"Counts: ": "Counts: ",
 	"contributors": "contributors",
 	"Total amount": "Total amount",
 	"Total": "Total",
@@ -167,5 +168,6 @@
 	"70+ points": "70+ points",
 	"100+ points": "100+ points",
 	"500+ points": "500+ points",
-	"Top contributor": "Top contributor"
+	"Top contributor": "Top contributor",
+	"Statistics updated everyday out of the day before": "Statistics updated everyday out of the day before"
 }
