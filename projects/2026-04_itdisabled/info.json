@@ -6,6 +6,7 @@
 	"soft_start_date": "2026-04-01",
 	"soft_end_date": "2026-05-01",
 	"end_date": "2026-07-01",
+	"use_soft_dates": true,
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Aprile:_parcheggi_per_disabili",
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-aprile-2026-parcheggi-per-disabili/142759"

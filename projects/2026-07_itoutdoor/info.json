@@ -6,6 +6,7 @@
 	"soft_start_date": "2026-07-01",
 	"soft_end_date": "2026-08-01",
 	"end_date": "2026-10-01",
+	"use_soft_dates": true,
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026",
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-luglio-2026-gite-fuori-porta/144994"

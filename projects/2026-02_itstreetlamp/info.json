@@ -6,6 +6,7 @@
 	"soft_start_date": "2026-02-01",
 	"soft_end_date": "2026-03-01",
 	"end_date": "2026-05-01",
+	"use_soft_dates": true,
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Febbraio:_lampioni",
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-febbraio-2026-lampioni/141180"

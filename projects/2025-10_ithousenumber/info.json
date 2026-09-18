@@ -6,6 +6,7 @@
 	"soft_start_date": "2025-10-01",
 	"soft_end_date": "2025-11-01",
 	"end_date": "2026-01-01",
+	"use_soft_dates": true,
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Ottobre:_Numeri_civici",
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-ottobre-2025-numeri-civici/136286"

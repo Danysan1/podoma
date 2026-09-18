@@ -4,6 +4,7 @@
 	"title": "Alberi monumentali",
 	"start_date": "2025-03-01",
 	"end_date": "2025-07-01",
+	"use_soft_dates": true,
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#4%C2%B0_settimana_Aprile:_ref:masaf=*",
 		"osmforum": "https://community.openstreetmap.org/t/idee-per-il-weekend-alberi-monumentali/129202"

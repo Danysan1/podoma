@@ -6,6 +6,7 @@
 	"soft_start_date": "2025-11-01",
 	"soft_end_date": "2025-12-01",
 	"end_date": "2026-02-01",
+	"use_soft_dates": true,
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Novembre:_Attivit%C3%A0_commerciali",
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-novembre-2025-attivita-commerciali/137550"

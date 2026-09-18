@@ -4,6 +4,7 @@
 	"title": "fixme=*",
 	"start_date": "2025-05-01",
 	"end_date": "2025-09-01",
+	"use_soft_dates": true,
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Giugno:_fixme=*",
 		"osmforum": "https://community.openstreetmap.org/t/idee-per-il-weekend-alberi-monumentali/129202"
