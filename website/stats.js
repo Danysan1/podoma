@@ -335,21 +335,33 @@ let promises_projectsSummary = (pool) => {
   allPromises.push(
     pool.query(
       `
-      SELECT distinct
-      fc.project_id,
-      fc.label,
-      first_value(fc.ts) over project as ts,
-      nth_value(fc.ts, 2) over project as ts_prev,
-      first_value(fc.amount) over project as features,
-      nth_value(fc.amount, 2) over project as features_prev,
-      first_value(fc.amount) over project - nth_value(fc.amount, 2) over project as features_delta,
-      first_value(mc.amount) over project as mappers,
-      nth_value(mc.amount, 2) over project as mappers_prev,
-      first_value(mc.amount) over project - nth_value(mc.amount, 2) over project as mappers_delta
-      FROM pdm_feature_counts fc
-      JOIN pdm_mapper_counts mc ON mc.project_id=fc.project_id AND mc.ts=fc.ts and coalesce(mc.label,'_global')=coalesce(fc.label,'_global')
-      WHERE fc.label is null
-      WINDOW project as (PARTITION BY mc.project_id, mc.label order by mc.ts desc ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+      SELECT
+        s.project_id,
+        s.label,
+        s.ts,
+        s.ts_prev,
+        s.features,
+        s.features_prev,
+        CASE WHEN s.fresh THEN s.features - s.features_prev ELSE NULL END as features_delta,
+        s.mappers,
+        s.mappers_prev,
+        CASE WHEN s.fresh THEN s.mappers - s.mappers_prev ELSE NULL END as mappers_delta
+      FROM (
+        SELECT distinct
+          fc.project_id,
+          fc.label,
+          first_value(fc.ts) over project as ts,
+          nth_value(fc.ts, 2) over project as ts_prev,
+          nth_value(fc.ts, 2) over project >= CURRENT_DATE - INTERVAL '1 day' as fresh, -- The delta is only meaningful when the two latest data points are recent enough to be considered "fresh" (yesterday or today)
+          first_value(fc.amount) over project as features,
+          nth_value(fc.amount, 2) over project as features_prev,
+          first_value(mc.amount) over project as mappers,
+          nth_value(mc.amount, 2) over project as mappers_prev
+        FROM pdm_feature_counts fc
+        JOIN pdm_mapper_counts mc ON mc.project_id=fc.project_id AND mc.ts=fc.ts and coalesce(mc.label,'_global')=coalesce(fc.label,'_global')
+        WHERE fc.label is null
+        WINDOW project as (PARTITION BY mc.project_id, mc.label order by mc.ts desc ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+      ) s
       `
     )
     .then((results) => {
