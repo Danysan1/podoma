@@ -79,6 +79,7 @@ function processPromises (res) {
 * Utils for rendering
 */
 function getMetricStyle (delta) {
+  if (delta === null) return {};
   if (delta > 0) return { text: "text-success", icon: "fa-arrow-trend-up" };
   if (delta < 0) return { text: "text-warning", icon: "fa-arrow-trend-down" };
   return { text: "text-secondary", icon: "fa-equals" };
