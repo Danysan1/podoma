@@ -16,8 +16,6 @@ const CSV_NOTES_CONTRIBS = (project_slug) => `${CONFIG.WORK_DIR}/user_notes_${pr
 const CSV_NOTES_USERS = (project_slug) => `${CONFIG.WORK_DIR}/usernames_notes_${project_slug}.csv`;
 const OUTPUT_SCRIPT_FS = __dirname+'/31_projects_update_tmp.sh';
 
-const USE_SOFT_DATES = CONFIG.hasOwnProperty("USE_SOFT_DATES") && CONFIG.USE_SOFT_DATES === true;
-
 const PSQL = `psql -d ${process.env.DB_URL}`;
 const HAS_BOUNDARY = `${PSQL} -c "SELECT * FROM pdm_boundary LIMIT 1" > /dev/null 2>&1 `;
 
@@ -190,12 +188,7 @@ current_month=$(date -d "\$current_ts" +%-m --utc)
 current_year=$(date -d "\$current_ts" +%Y --utc)
 `;
 
-Object.values(projects_with_data).forEach(project => {
-	if (project.links?.external_statistics) {
-		console.log(`Project ${project.name} has external statistics link, skipping project update`);
-		return;
-	}
-
+Object.values(projects).forEach(project => {
     const slug = project.name.split("_").pop();
     /**
     * Fixed start point ("anchor") that the cumulative contributor count (pdm_mapper_counts.amount, built by 33_projects_contribs.sql) is measured from.

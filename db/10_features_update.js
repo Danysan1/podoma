@@ -59,7 +59,7 @@ if(IMPOSM_ENABLED) {
 	postUpdateSQL.push(`REFRESH MATERIALIZED VIEW pdm_boundary`);
 }
 
-Object.entries(projects_with_data).forEach(e => {
+Object.entries(projects).forEach(e => {
 	const [ name, project ] = e;
 	const id = project.id;
 	const slug = name.split("_").pop();

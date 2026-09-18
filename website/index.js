@@ -264,7 +264,7 @@ app.get("/projects/:name/map", async (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects_with_data[req.params.name]) {
+  if (!req.params.name || !projects[req.params.name]) {
     return res.redirect("/error/404");
   }
 
@@ -296,7 +296,7 @@ app.get("/projects/:name/issues", (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects_with_data[req.params.name]) {
+  if (!req.params.name || !projects[req.params.name]) {
     return res.redirect("/error/404");
   }
 
@@ -314,7 +314,7 @@ app.get("/projects/:name/stats", (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects_with_data[req.params.name]) {
+  if (!req.params.name || !projects[req.params.name]) {
     return res.redirect("/error/404");
   }
 
@@ -531,7 +531,7 @@ app.get("/projects/:name/counts", (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects_with_data[req.params.name]) {
+  if (!req.params.name || !projects[req.params.name]) {
     return res.redirect("/error/404");
   }
 
@@ -546,7 +546,7 @@ app.get("/projects/:name/counts/boundary/:boundary", (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects_with_data[req.params.name] || !req.params.boundary) {
+  if (!req.params.name || !projects[req.params.name] || !req.params.boundary) {
     return res.redirect("/error/404");
   }
 
@@ -561,7 +561,7 @@ app.get("/projects/:name/contrib", (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects_with_data[req.params.name]) {
+  if (!req.params.name || !projects[req.params.name]) {
     return res.redirect("/error/404");
   }
 
@@ -576,7 +576,7 @@ app.get("/projects/:name/contrib/team/:team", (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects_with_data[req.params.name]) {
+  if (!req.params.name || !projects[req.params.name]) {
     return res.redirect("/error/404");
   }
 
@@ -591,7 +591,7 @@ app.get("/projects/:name/contrib/mapper/:user", (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects_with_data[req.params.name]) {
+  if (!req.params.name || !projects[req.params.name]) {
     return res.redirect("/error/404");
   }
 
@@ -606,7 +606,7 @@ app.get("/projects/:name/mappers", (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects_with_data[req.params.name]) {
+  if (!req.params.name || !projects[req.params.name]) {
     return res.redirect("/error/404");
   }
 
@@ -621,7 +621,7 @@ app.get("/projects/:name/mappers/boundary/:boundary", (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects_with_data[req.params.name] || !req.params.boundary) {
+  if (!req.params.name || !projects[req.params.name] || !req.params.boundary) {
     return res.redirect("/error/404");
   }
 
@@ -636,7 +636,7 @@ app.get("/projects/:name/mappers/team/:team", (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects_with_data[req.params.name] || !req.params.boundary) {
+  if (!req.params.name || !projects[req.params.name] || !req.params.boundary) {
     return res.redirect("/error/404");
   }
 
@@ -655,7 +655,7 @@ app.post("/projects/:name/contribute/:userid", (req, res) => {
   const all = foldProjects(projects_including_external);
   if (
     !req.params.name ||
-    !projects_with_data[req.params.name] ||
+    !projects[req.params.name] ||
     all.current.length < 1 ||
     all.current.find((p) => p.name === req.params.name) === undefined
   ) {
@@ -679,7 +679,7 @@ app.post("/projects/:name/contribute/:userid", (req, res) => {
   ) {
     return res.redirect("/error/400");
   }
-  const p = projects_with_data[req.params.name];
+  const p = projects[req.params.name];
 
   // Update user name in DB
   pool
@@ -748,7 +748,7 @@ app.post("/projects/:name/ignore/:osmtype/:osmid", (req, res) => {
   }
 
   // Check project exists
-  if (!req.params.name || !projects_with_data[req.params.name]) {
+  if (!req.params.name || !projects[req.params.name]) {
     return res.redirect("/error/404");
   }
   // Check OSM ID
@@ -761,7 +761,7 @@ app.post("/projects/:name/ignore/:osmtype/:osmid", (req, res) => {
     return res.redirect("/error/400");
   }
 
-  const p = projects_with_data[req.params.name];
+  const p = projects[req.params.name];
 
   pool
     .query(
@@ -817,7 +817,7 @@ app.get("/users/:name", (req, res) => {
               CONFIG,
               username: req.params.name,
               userid,
-              badges: getBadgesDetails(projects_with_data, res2.rows),
+              badges: getBadgesDetails(projects, res2.rows),
             });
           })
           .catch((e) => {

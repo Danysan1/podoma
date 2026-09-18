@@ -502,12 +502,12 @@ exports.getMapStatsStyle = (p, prjDeltaPerLevel, dailyDeltaPerLevel) => {
 };
 
 // Get badges description
-exports.getBadgesDetails = (projects_with_data, badgesRows) => {
+exports.getBadgesDetails = (projects, badgesRows) => {
 	const badges = { "meta": { project: { name: "General", image: "/images/favicon.svg" }, badges: [] } };
 	badgesRows.forEach(row => {
 		if(!badges[row.project]) {
 			badges[row.project] = {
-				project: { name: projects_with_data[row.project].title, date: projects_with_data[row.project].month, image: projects_with_data[row.project].icon },
+				project: { name: projects[row.project].title, date: projects[row.project].month, image: projects[row.project].icon },
 				badges: [{ id: row.project.split("_").pop(), name: "Participated", description: "They have participated to the project", acquired: true, progress: 100 }]
 			};
 		}
@@ -528,7 +528,7 @@ exports.getBadgesDetails = (projects_with_data, badgesRows) => {
 	});
 
 	// Meta badges
-	if(Object.keys(badges).length - 1 === Object.keys(projects_with_data).length) {
+	if(Object.keys(badges).length - 1 === Object.keys(projects).length) {
 		badges.meta.badges.push({ id: "all", name: "Always present", description: "They have participated to all the projects", acquired: true, progress: 100 });
 	}
 	if(badges.meta.badges.length === 0) {
