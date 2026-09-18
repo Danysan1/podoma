@@ -16,8 +16,6 @@ const CSV_NOTES_CONTRIBS = (project_slug) => `${CONFIG.WORK_DIR}/user_notes_${pr
 const CSV_NOTES_USERS = (project_slug) => `${CONFIG.WORK_DIR}/usernames_notes_${project_slug}.csv`;
 const OUTPUT_SCRIPT_FS = __dirname+'/31_projects_update_tmp.sh';
 
-const USE_SOFT_DATES = CONFIG.hasOwnProperty("USE_SOFT_DATES") && CONFIG.USE_SOFT_DATES === true;
-
 const PSQL = `psql -d ${process.env.DB_URL}`;
 const HAS_BOUNDARY = `${PSQL} -c "SELECT * FROM pdm_boundary LIMIT 1" > /dev/null 2>&1 `;
 
@@ -194,7 +192,7 @@ Object.values(projects).forEach(project => {
     const slug = project.name.split("_").pop();
     /**
     * Fixed start point ("anchor") that the cumulative contributor count (pdm_mapper_counts.amount, built by 33_projects_contribs.sql) is measured from.
-    * Contributors are counted from the beginning of the project period, so when USE_SOFT_DATES is enabled the soft start date is preferred.
+    * Contributors are counted from the beginning of the project period, so when project.use_soft_dates is enabled the soft start date is preferred.
     *
     * This is the only soft date applied while WRITING instead of while reading.
     * Everything else stays on the read side, which is possible because those figures are subtractable:
@@ -204,7 +202,7 @@ Object.values(projects).forEach(project => {
     *
     * The gate mirrors the one 20_changes_update.js applies when filling pdm_projects.soft_start_date, keep the two in sync.
     */
-    const project_start_date = USE_SOFT_DATES && project.soft_start_date || project.start_date;
+    const project_start_date = project.use_soft_dates && project.soft_start_date || project.start_date;
     script += `
 IFS='|'
 process_data=\$(${PSQL} -qtAc "SELECT to_char (COALESCE(counts_lastupdate_date, start_date) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as start, to_char (LEAST(end_date, CURRENT_TIMESTAMP) at time zone 'UTC', 'YYYY-MM-DD\\"T\\"00:00:00\\"Z\\"') as end from pdm_projects where project_id=${project.id}")

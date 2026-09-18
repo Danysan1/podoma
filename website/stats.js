@@ -301,14 +301,14 @@ let promises_projectStats = (pool, project) => {
   // Fetch mappers count
   // Only the end of the period is bounded here:
   // amount is already cumulative from the start of the period
-  // (soft date if USE_SOFT_DATES=true, baked in by 33_projects_contribs.sql because a distinct count cannot be re-anchored at read time)
+  // (soft date if project.use_soft_dates=true, baked in by 33_projects_contribs.sql because a distinct count cannot be re-anchored at read time)
   // so the last row at or before the end of the period is the mapper count of the whole period.
   // Limit 2 to also get the previous value, from which the 24h delta shown next to that count is computed.
   allPromises.push(
     pool
       .query(`SELECT * FROM pdm_mapper_counts WHERE project_id = $1 AND ($2::timestamp IS NULL OR ts <= $2) AND label is null ORDER BY ts DESC limit 2`, [
         project.id,
-        CONFIG.USE_SOFT_DATES && project.soft_end_date || project.end_date,
+        project.use_soft_dates && project.soft_end_date || project.end_date,
       ])
       .then((results) => ({
         "daily": {

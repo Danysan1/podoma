@@ -233,7 +233,7 @@ app.get("/projects/:name", (req, res) => {
     all.past &&
     all.past.length > 0 &&
     all.past.some((p) =>{
-      const endDate = CONFIG.USE_SOFT_DATES && p.soft_end_date || p.end_date;
+      const endDate = p.use_soft_dates && p.soft_end_date || p.end_date;
       return p.name === req.params.name && 
         endDate != null && 
         new Date(endDate + "T23:59:59Z").getTime() >= recentPastThreshold;
@@ -323,7 +323,7 @@ app.get("/projects/:name/stats", (req, res) => {
   const osmUserAuthentified =
     typeof req.query.osm_user === "string" &&
     req.query.osm_user.trim().length > 0;
-  const startDate = CONFIG.USE_SOFT_DATES && p.soft_start_date || p.start_date;
+  const startDate = p.use_soft_dates && p.soft_start_date || p.start_date;
   const daysToKeep = (day) => {
     if (
       Date.now() - new Date(startDate).getTime() <

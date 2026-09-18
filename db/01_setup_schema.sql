@@ -158,7 +158,7 @@ WITH stats AS (
 	FROM pdm_user_contribs uc
 	JOIn pdm_projects p ON uc.project_id=p.project_id
 	-- Only the points earned during the project period are taken into account.
-	-- soft_start_date/soft_end_date are only filled when USE_SOFT_DATES is enabled.
+	-- soft_start_date/soft_end_date are only filled when the project's use_soft_dates is enabled.
 	-- Contributions are stored on the timestamp closing their aggregation period
 	-- (a contribution made on day D is stored on D+1), hence the exclusive lower bound.
 	WHERE uc.ts > COALESCE(p.soft_start_date, p.start_date)

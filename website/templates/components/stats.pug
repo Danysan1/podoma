@@ -141,7 +141,7 @@ script.
 				softEndDate = "#{soft_end_date || ''}",
 				softStartDateObj = new Date(softStartDate),
 				softEndDateObj = new Date(softEndDate),
-				useSoftDates = "#{CONFIG.USE_SOFT_DATES || ''}" === "true"  && !isNaN(softStartDateObj) && !isNaN(softEndDateObj),
+				useSoftDates = "#{use_soft_dates || ''}" === "true"  && !isNaN(softStartDateObj) && !isNaN(softEndDateObj),
 				isDailyDateToday = res.daily?.ts && (new Date().getTime() - new Date(res.daily.ts).getTime()) <= 24 * 60 * 60 * 1000;
 
 			if (useSoftDates && res.osm_counts?.length > 1) {

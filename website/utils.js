@@ -51,9 +51,9 @@ exports.foldProjects = (projects) => {
 	Object.values(projects).forEach(project => {
 		const slug = project.name.split("_").pop();
 
-		// When USE_SOFT_DATES is enabled, prefer soft dates over hard dates
-		const startDate = (CONFIG.USE_SOFT_DATES && project.soft_start_date) || project.start_date;
-		const endDate = (CONFIG.USE_SOFT_DATES && project.soft_end_date) || project.end_date;
+		// When use_soft_dates is enabled for the project, prefer soft dates over hard dates
+		const startDate = (project.use_soft_dates && project.soft_start_date) || project.start_date;
+		const endDate = (project.use_soft_dates && project.soft_end_date) || project.end_date;
 
 		// Check dates
 		if(new Date(startDate).getTime() <= Date.now() && ((endDate == null && project.soft_end_date == null) || Date.now() <= new Date(endDate+"T23:59:59Z").getTime() || Date.now() <= new Date(project.soft_end_date+"T23:59:59Z").getTime())) {
@@ -518,9 +518,9 @@ exports.getBadgesDetails = (projects, badgesRows) => {
 		}
 
 		// Badges still in progress are only shown while the project is running.
-		// When USE_SOFT_DATES is enabled, prefer soft dates over hard dates
-		const startDate = (CONFIG.USE_SOFT_DATES && projects[row.project].soft_start_date) || projects[row.project].start_date;
-		const endDate = (CONFIG.USE_SOFT_DATES && projects[row.project].soft_end_date) || projects[row.project].end_date;
+		// When use_soft_dates is enabled for the project, prefer soft dates over hard dates
+		const startDate = (projects[row.project].use_soft_dates && projects[row.project].soft_start_date) || projects[row.project].start_date;
+		const endDate = (projects[row.project].use_soft_dates && projects[row.project].soft_end_date) || projects[row.project].end_date;
 
 		if(new Date(startDate).getTime() <= Date.now() && (endDate == null || Date.now() <= new Date(endDate).getTime())) {
 			badges[row.project].badges.push(row);
