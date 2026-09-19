@@ -137,23 +137,24 @@ script.
 				blocks.appendChild(b);
 			};
 
-			const softStartDate = "#{soft_start_date || ''}",
+			const osmCounts = res.chart?.[0]?.data,
+				softStartDate = "#{soft_start_date || ''}",
 				softEndDate = "#{soft_end_date || ''}",
 				softStartDateObj = new Date(softStartDate),
 				softEndDateObj = new Date(softEndDate),
 				useSoftDates = "#{use_soft_dates || ''}" === "true"  && !isNaN(softStartDateObj) && !isNaN(softEndDateObj),
 				isDailyDateToday = res.daily?.ts && (new Date().getTime() - new Date(res.daily.ts).getTime()) <= 24 * 60 * 60 * 1000;
 
-			if (useSoftDates && res.osm_counts?.length > 1) {
+			if (useSoftDates && osmCounts?.length > 1) {
 				// Showing added element count between soft dates
-				const startIndex = res.osm_counts.findIndex(x => new Date(x.ts) >= softStartDateObj),
-					endIndex = res.osm_counts.findIndex(x => new Date(x.ts) >= softEndDateObj),
-					softStartItem = res.osm_counts[Math.max(0, startIndex)],
-					softEndItem = res.osm_counts[endIndex >= 0 ? endIndex : res.osm_counts.length - 1],
-					softDateRange = new Intl.DateTimeFormat().formatRange(new Date(softStartItem.ts), new Date(softEndItem.ts));
+				const startIndex = osmCounts.findIndex(x => new Date(x.x) >= softStartDateObj),
+					endIndex = osmCounts.findIndex(x => new Date(x.x) >= softEndDateObj),
+					softStartItem = osmCounts[Math.max(0, startIndex)],
+					softEndItem = osmCounts[endIndex >= 0 ? endIndex : osmCounts.length - 1],
+					softDateRange = new Intl.DateTimeFormat().formatRange(new Date(softStartItem.x), new Date(softEndItem.x));
 				addBlock(
 					"plus",
-					numberFormat.format(softEndItem.amount - softStartItem.amount),
+					numberFormat.format(softEndItem.y - softStartItem.y),
 					`#{__('%s added (%s)', title.toLowerCase(), "${softDateRange}")}`,
 					isDailyDateToday && res.daily && res.past ? { "24h": res.daily.added - res.past.added } : null
 				);
@@ -165,7 +166,10 @@ script.
 					`#{__('%s added since %s', title.toLowerCase(), "${(new Date(res.daily.ts_start)).toLocaleDateString()}")}`,
 					isDailyDateToday && res.past ?  {"24h": res.daily.added - res.past.added } : null
 				);
+			} else {
+				console.debug("No added element count to show in stats");
 			}
+
 			if(res.current?.count) {
 				addBlock(
 					"location-dot",
@@ -180,7 +184,10 @@ script.
 					`#{__('%s in OSM on the last update', title.toLowerCase())}`,
 					null
 				);
+			} else {
+				console.debug("No current or daily element count to show in stats");
 			}
+
 			if(res.tasksSolved !== undefined) {
 				addBlock("triangle-exclamation", numberFormat.format(res.tasksSolved), "#{statistics.osmose_tasks}", null);
 			}
@@ -408,20 +415,12 @@ script.
 			}
 
 			// Evolution chart
-			if(res.osm_counts?.length) {
+			if(res.chart?.length) {
 				const ctx = document.getElementById("stats-chart").getContext("2d");
 				const myChart = new Chart(ctx, {
 					type: "line",
 					data: {
-						datasets: [
-							{
-							label: "#{__('Count in OSM')}",
-							data: res.osm_counts.map((r) => ({ x: r.ts, y: r.amount })),
-							fill: false,
-							borderColor: "#388E3C",
-							lineTension: 0,
-							},
-						]
+						datasets: res.chart
 					},
 					options: {
 						responsive: true,
@@ -445,6 +444,9 @@ script.
 						}
 					}
 				});
+			} else {
+				console.debug("No chart data to show in stats");
+				document.getElementById("stats-chart-container").classList.add("d-none");
 			}
 
 			// Keys chart
