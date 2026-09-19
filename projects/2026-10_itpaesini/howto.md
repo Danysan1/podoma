@@ -1,4 +1,4 @@
-Mappiamo 30 paesini italiani tra i 700 e i 1000 abitanti ancora privi di edifici mappati su OpenStreetMap, ispirati dal progetto americano [UnmappedSmallTownUSA](https://en.osm.town/@SmallTownUSA). L'elenco dei paesini scelti, con lo stato di avanzamento, si trova [sulla OSM wiki](https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Ottobre:_#PaesiniNonMappati_v2).
+Mappiamo 31 paesini italiani sotto i 1000 abitanti ancora privi di edifici mappati su OpenStreetMap, ispirati dal progetto americano [UnmappedSmallTownUSA](https://en.osm.town/@SmallTownUSA). L'elenco dei paesini scelti, con lo stato di avanzamento, si trova [sulla OSM wiki](https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Ottobre:_#PaesiniNonMappati_v2).
 
 Per ciascun paesino si tratta di tracciare da zero (o completare) edifici, strade e punti di interesse. Strumenti utili:
 
