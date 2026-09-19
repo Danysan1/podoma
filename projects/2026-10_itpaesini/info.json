@@ -1,12 +1,11 @@
 {
 	"id": 126,
 	"name": "2026-10_itpaesini",
-	"title": "Paesini non mappati",
+	"title": "#PaesiniNonMappati v2",
 	"start_date": "2026-10-01",
 	"end_date": "2026-11-01",
 	"links": {
-		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Settembre:_#PaesiniNonMappati",
-		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-settembre-2025-paesininonmappati/135057",
-		"external_statistics": "https://umap.openstreetmap.fr/it/map/paesininonmappati_1278374"
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Ottobre:_#PaesiniNonMappati_v2",
+		"external_statistics": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#Ottobre:_#PaesiniNonMappati_v2"
 	}
 }
