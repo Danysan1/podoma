@@ -28,7 +28,7 @@ block content
 	div.container
 		//- Project summary
 		div#summary.jumbotron.py-2.px-3.pb-3.p-md-5.mb-3.text-white.rounded.bg-dark.position-relative
-			img.position-absolute.pdm-project-badge(src=icon alt="" width="100")
+			img.position-absolute.pdm-project-badge.project-icon(src=icon alt="Project icon")
 			div.col-8.px-0
 				if isActive
 					h1.font-italic= __("Currently: %s", title.toLowerCase())
