@@ -66,11 +66,13 @@ script.
 		.then(res => res.json())
 		.then(res => {
 			// Last stats update time
-			const statsUpdateBlock = document.getElementById("stats-update");
-			document.getElementById("stats-changes-update").innerHTML = new Date(res.lastUpdate).toLocaleDateString();
-			document.getElementById("stats-counts-update").innerHTML = new Date(res.lastCount).toLocaleDateString();
-			statsUpdateBlock.classList.remove("d-none");
-			statsUpdateBlock.classList.add("d-block");
+			if(res.lastUpdate && res.lastCount) {
+				const statsUpdateBlock = document.getElementById("stats-update");
+				document.getElementById("stats-changes-update").innerHTML = new Date(res.lastUpdate).toLocaleDateString();
+				document.getElementById("stats-counts-update").innerHTML = new Date(res.lastCount).toLocaleDateString();
+				statsUpdateBlock.classList.remove("d-none");
+				statsUpdateBlock.classList.add("d-block");
+			}
 
 			// Blocks for small stats
 			const blocks = document.getElementById("stats-blocks");
@@ -108,7 +110,7 @@ script.
 							const sd = document.createElement("div")
 							sd.classList.add(dVal > 0 ? "text-success" : "text-danger")
 							sd.appendChild(addIcon(dVal > 0 ? "arrow-trend-up" : "arrow-trend-down"));
-							sd.appendChild(document.createTextNode(dClass+" "+dVal));
+							sd.appendChild(document.createTextNode(" " + dClass + " " + dVal));
 							d.appendChild(sd);
 						}else{
 							dLen--;
@@ -135,10 +137,70 @@ script.
 				blocks.appendChild(b);
 			};
 
-			if(res.past && res.daily && res.daily.added) { addBlock("plus", numberFormat.format(res.daily.added), `#{__('%s added since %s', title.toLowerCase(), "${(new Date(res.daily.ts_start)).toLocaleDateString()}")}`, {"24h": res.daily.added - res.past.added}); }
-			if(res.daily && res.current && res.current.count) { addBlock("location-dot", numberFormat.format(res.current.count), "#{__('%s currently in OSM', title.toLowerCase())}", {"live": res.current.count - res.daily.count}); }
-			if(res.tasksSolved !== undefined) { addBlock("triangle-exclamation", numberFormat.format(res.tasksSolved), "#{statistics.osmose_tasks}", null); }
-			if(res.past && res.daily && res.daily.nbContributors) { addBlock("users", numberFormat.format(res.daily.nbContributors), "#{__("contributors")}", {"24h": res.daily.nbContributors - res.past.nbContributors}); }
+			const osmCounts = res.chart?.[0]?.data,
+				softStartDate = "#{soft_start_date || ''}",
+				softEndDate = "#{soft_end_date || ''}",
+				softStartDateObj = new Date(softStartDate),
+				softEndDateObj = new Date(softEndDate),
+				useSoftDates = "#{use_soft_dates || ''}" === "true"  && !isNaN(softStartDateObj) && !isNaN(softEndDateObj),
+				isDailyDateToday = res.daily?.ts && (new Date().getTime() - new Date(res.daily.ts).getTime()) <= 24 * 60 * 60 * 1000;
+
+			if (useSoftDates && osmCounts?.length > 1) {
+				// Showing added element count between soft dates
+				const startIndex = osmCounts.findIndex(x => new Date(x.x) >= softStartDateObj),
+					endIndex = osmCounts.findIndex(x => new Date(x.x) >= softEndDateObj),
+					softStartItem = osmCounts[Math.max(0, startIndex)],
+					softEndItem = osmCounts[endIndex >= 0 ? endIndex : osmCounts.length - 1],
+					softDateRange = new Intl.DateTimeFormat().formatRange(new Date(softStartItem.x), new Date(softEndItem.x));
+				addBlock(
+					"plus",
+					numberFormat.format(softEndItem.y - softStartItem.y),
+					`#{__('%s added (%s)', title.toLowerCase(), "${softDateRange}")}`,
+					isDailyDateToday && res.daily && res.past ? { "24h": res.daily.added - res.past.added } : null
+				);
+			} else if (res.daily?.added) {
+				// Showing added element count in the whole project duration 
+				addBlock(
+					"plus",
+					numberFormat.format(res.daily.added),
+					`#{__('%s added since %s', title.toLowerCase(), "${(new Date(res.daily.ts_start)).toLocaleDateString()}")}`,
+					isDailyDateToday && res.past ?  {"24h": res.daily.added - res.past.added } : null
+				);
+			} else {
+				console.debug("No added element count to show in stats");
+			}
+
+			if(res.current?.count) {
+				addBlock(
+					"location-dot",
+					numberFormat.format(res.current.count),
+					"#{__('%s currently in OSM', title.toLowerCase())}",
+					res.daily?.count ? {"live": res.current.count - res.daily.count} : null
+				);
+			} else if (res.daily?.count) {
+				addBlock(
+					"location-dot",
+					numberFormat.format(res.daily.count),
+					`#{__('%s in OSM on the last update', title.toLowerCase())}`,
+					null
+				);
+			} else {
+				console.debug("No current or daily element count to show in stats");
+			}
+
+			if(res.tasksSolved !== undefined) {
+				addBlock("triangle-exclamation", numberFormat.format(res.tasksSolved), "#{statistics.osmose_tasks}", null);
+			}
+			
+			if (res.daily?.nbContributors) {
+				addBlock(
+					"users",
+					numberFormat.format(res.daily.nbContributors),
+					"#{__('contributors')}",
+					isDailyDateToday && res.past ? { "24h": res.daily.nbContributors - res.past.nbContributors } : null
+				);
+			}
+			
 
 			// Leaderboard
 			if(res.leaderboard && res.leaderboard.length > 0) {
@@ -274,6 +336,48 @@ script.
 
 			const dateFmt = #{isActive || isNext || isRecentPast || "false"} ? "DD/MM" : "MM/YYYY";
 
+			const annotationOpts = (softStartDate && softEndDate) ? {
+				annotations: {
+					softRange: {
+						type: "box",
+						xMin: softStartDate,
+						xMax: softEndDate,
+						backgroundColor: "rgba(33, 150, 243, 0.1)",
+						borderColor: "rgba(33, 150, 243, 0.3)",
+						borderWidth: 1
+					}
+				}
+			} : undefined;
+			const zoomOpts = {
+				pan: {
+					enabled: true,
+					mode: 'x',
+				},
+				zoom: {
+					wheel: {
+						enabled: true,
+					},
+					pinch: {
+						enabled: true,
+					},
+					mode: 'x',
+				},
+				limits: {
+					x: {
+						min: 'original',
+						max: 'original'
+					}
+				}
+			};
+			const transitionsOpts = {
+				zoom: {
+					animation: {
+						duration: 100,
+						easing: "easeOutQuad"
+					}
+				}
+			};
+
 			// Notes count + chart
 			if(res.chartNotes) {
 				addBlock("pencil", numberFormat.format(res.openedNotes),`#{__("notes opened")} (${res.statClosedNotes} #{__("resolved")})`, null);
@@ -285,6 +389,11 @@ script.
 					},
 					options: {
 						responsive: true,
+						transitions: transitionsOpts,
+						plugins: {
+							annotation: annotationOpts,
+							zoom: zoomOpts,
+						},
 						scales: {
 							x: {
 								type: 'time',
@@ -306,29 +415,39 @@ script.
 			}
 
 			// Evolution chart
-			const ctx = document.getElementById("stats-chart").getContext("2d");
-			const myChart = new Chart(ctx, {
-				type: "line",
-				data: {
-					datasets: res.chart
-				},
-				options: {
-					responsive: true,
-					scales: {
-						x: {
-							type: 'time',
-							bounds: 'ticks',
-							time: {
-								tooltipFormat: "DD/MM/YYYY",
-								displayFormats: { day: dateFmt },
-								round: "day",
-								unit: "day"
-							}
+			if(res.chart?.length) {
+				const ctx = document.getElementById("stats-chart").getContext("2d");
+				const myChart = new Chart(ctx, {
+					type: "line",
+					data: {
+						datasets: res.chart
+					},
+					options: {
+						responsive: true,
+						transitions: transitionsOpts,
+						plugins: {
+							annotation: annotationOpts,
+							zoom: zoomOpts,
 						},
-						y: res.pctTasksDone === undefined || parseInt(res.pctTasksDone) >= 30 ? yAxeLinear : yAxeLogarithmic
+						scales: {
+							x: {
+								type: 'time',
+								bounds: 'ticks',
+								time: {
+									tooltipFormat: "DD/MM/YYYY",
+									displayFormats: { day: dateFmt },
+									round: "day",
+									unit: "day"
+								}
+							},
+							y: res.pctTasksDone === undefined || parseInt(res.pctTasksDone) >= 30 ? yAxeLinear : yAxeLogarithmic
+						}
 					}
-				}
-			});
+				});
+			} else {
+				console.debug("No chart data to show in stats");
+				document.getElementById("stats-chart-container").classList.add("d-none");
+			}
 
 			// Keys chart
 			if(res.chartKeys) {

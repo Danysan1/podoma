@@ -101,11 +101,17 @@ The properties in `info.json` are as follows:
 - `id`: Unique integer identifier
 - `name`: mission identifier (authorized characters: A-Z, 0-9, \_ and -)
 - `title`: name of the mission (short enough)
-- `start_date`: start date of the mission (format YYYYY-MM-DD)
-- `end_date`: end date of the mission (format YYYYY-MM-DD)
-- `soft_end_date`: end date of the _strong_ community animation period (format YYYYY-MM-DD). This is only informational, it doesn't affect backend processing.
+- `start_date`: start date of the mission (format YYYY-MM-DD)
+- `soft_start_date`: start date of the _strong_ community animation period (format YYYY-MM-DD). Ignored unless `use_soft_dates` is enabled. Data collection still starts at `start_date` either way.
+- `soft_end_date`: end date of the _strong_ community animation period (format YYYY-MM-DD). Ignored unless `use_soft_dates` is enabled. Data collection still runs until `end_date` either way.
+- `use_soft_dates`: whether to use `soft_start_date` and `soft_end_date` (instead of `start_date` and `end_date`) to decide whether this project is past, current or next, and to bound the period over which points, leaderboard and badges are computed. Changing it is only taken into account by the next `update_changes` run and applies to contributor counts only in dates processed after the change.
+- `end_date`: end date of the mission (format YYYY-MM-DD)
 - `summary`: summary of the mission
-- `links`: definition of the URLs for links to third party pages (OSM wiki, OSM forum or blog page) with this format "osmwiki|osmblog|osmforum": "projetdumois.fr"
+- `links`: object with one or more URLs to third party pages
+  - `osmwiki`: OSM wiki
+  - `osmforum`: OSM forum
+  - `osmblog`: OSM blog page
+  - `external_statistics`: External page for statistics, if specified it will be used INSTEAD of the built-in statistics
 - `database.osmium_tag_filter` : Osmium filter on the tags to be applied to keep only the relevant OSM objects (for example `nwr/*:covid19`, [syntax described here](https://osmcode.org/osmium-tool/manual.html#filtering-by-tags)). It is possible to list many filters using `&` character and same syntax.
 - `database.imposm`: configuration for importing updated OSM data (`types` for geometry types to be taken into account, `mapping` for attributes, see [the Imposm documentation](https://imposm.org/docs/imposm3/latest/mapping.html#tags) for the format of these fields)
 - `database.compare`: configuration for the search of OpenStreetMap objects to compare, follows the format of `database.imposm` with an additional property `radius` (reconciliation radius in meters)
@@ -304,6 +310,8 @@ Each project configuration set how many points are given according to contributi
 ```
 
 Points are distinguishsed between project and label contributions.
+
+Points are only counted over the project period, which drives the leaderboard and the badges given to each contributor. That period runs from `start_date` to `end_date`, or from `soft_start_date` to `soft_end_date` when `use_soft_dates` is enabled for the project. Contributions made outside of it are still collected and displayed in the statistics, but don't give any point.
 
 ### Data sources
 
@@ -732,7 +740,7 @@ tags json
 geom GEOMETRY(Geometry, 3857)
 ```
 
-Optionally, if the compare mode is enabled for a given project, a supplemntary view called `pdm_project_${project_id}_compare` that conforms to the given structure for `pdm_project_${project_id}` is needed.
+Optionally, if the compare mode is enabled for a given project, a supplemntary view called `pdm_project_${project_slug}_compare` that conforms to the given structure for `pdm_project_${project_slug}` is needed.
 
 #### Replace by the changelog
 If you accept to only have a daily update to most statsitics, which means without instant update when some features get edited along the day, it is possible to create a materialized view as such:

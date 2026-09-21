@@ -10,6 +10,8 @@ CREATE TABLE pdm_projects(
 	project_id int primary key,
 	project VARCHAR,
 	start_date TIMESTAMP NOT NULL,
+	soft_start_date TIMESTAMP NULL,
+	soft_end_date TIMESTAMP NULL,
 	end_date TIMESTAMP NULL,
 	changes_lastupdate_date TIMESTAMP NULL,
 	counts_lastupdate_date TIMESTAMP NULL
@@ -155,6 +157,12 @@ WITH stats AS (
 	SELECT uc.userid, uc.project_id, p.project, SUM(uc.points) AS amount
 	FROM pdm_user_contribs uc
 	JOIn pdm_projects p ON uc.project_id=p.project_id
+	-- Only the points earned during the project period are taken into account.
+	-- soft_start_date/soft_end_date are only filled when the project's use_soft_dates is enabled.
+	-- Contributions are stored on the timestamp closing their aggregation period
+	-- (a contribution made on day D is stored on D+1), hence the exclusive lower bound.
+	WHERE uc.ts > COALESCE(p.soft_start_date, p.start_date)
+		AND (COALESCE(p.soft_end_date, p.end_date) IS NULL OR uc.ts <= COALESCE(p.soft_end_date, p.end_date))
 	GROUP BY uc.userid, uc.project_id, p.project
 	ORDER BY SUM(uc.points) DESC
 ), scores AS (
@@ -215,7 +223,7 @@ BEGIN
 		-- Badges related to amount of contributions
 		IF nb_contributions < 3 THEN
 			id := '1_edit';
-			name := '1er point';
+			name := '1st point';
 			description := 'Lancez-vous dans l''aventure';
 			acquired := nb_contributions >= 1;
 			progress := acquired::INT * 100;
@@ -303,7 +311,7 @@ BEGIN
 		LIMIT 1;
 
 		id := 'best_contributor';
-		name := 'N°1 des contributions';
+		name := 'Top contributor';
 		acquired := result_userid = the_userid;
 
 		IF acquired THEN

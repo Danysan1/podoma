@@ -102,10 +102,16 @@ Les propriétés dans `info.json` sont les suivantes :
 - `name` : identifiant de la mission (caractères autorisés : A-Z, 0-9, \_ et -)
 - `title` : nom de la mission (assez court)
 - `start_date` : date de début de la mission (format AAAA-MM-JJ)
+- `soft_start_date` : date de début de la période de _forte_ animation communautaire (format AAAA-MM-JJ). Ignorée sauf si `use_soft_dates` est activé. La collecte des données commence toujours à `start_date`.
+- `soft_end_date` : date de fin de la période de _forte_ animation communautaire (format AAAA-MM-JJ). Ignorée sauf si `use_soft_dates` est activé. La collecte des données se poursuit toujours jusqu'à `end_date`.
+- `use_soft_dates` : utiliser `soft_start_date` et `soft_end_date` (au lieu de `start_date` et `end_date`) pour déterminer si ce projet est passé, en cours ou à venir, et pour délimiter la période sur laquelle les points, le classement et les badges sont calculés. Sa modification n'est prise en compte qu'au prochain `update_changes` et ne s'applique aux décomptes de contributeurs que pour les dates traitées après la modification.
 - `end_date` : date de fin de la mission (format AAAA-MM-JJ)
-- `soft_end_date`: date de fin de la période de _forte_ animation communautaire (format AAAA-MM-JJ). Donnée purement à titre informatif, n'affecte pas le traitement des données.
 - `summary` : résumé de la mission
-- `links` : définition des URL pour les liens vers des pages tierces (wiki OSM, forum OSM ou page de blog) avec ce format "osmwiki|osmblog|osmforum": "projetdumois.fr"
+- `links` : objet contenant une ou plusieurs URL vers des pages tierces
+  - `osmwiki` : wiki OSM
+  - `osmforum` : forum OSM
+  - `osmblog` : page de blog OSM
+  - `external_statistics` : page externe pour les statistiques, si elle est renseignée elle sera utilisée À LA PLACE des statistiques intégrées
 - `database.osmium_tag_filter` : filtre Osmium sur les tags à appliquer pour ne conserver que les objets OSM pertinents (par exemple `nwr/*:covid19`, [syntaxe décrite ici](https://osmcode.org/osmium-tool/manual.html#filtering-by-tags)). Il est possible d'enchaîner plusieurs filtres par & et en répétant l'indication de primitive à chaque niveau. L'opérateur != n'est pour l'instant pas pris en compte.
 - `database.imposm` : configuration pour l'import des données actualisées d'OSM (`types` pour les types de géométrie à prendre en compte, `mapping` pour les attributs, voir [la documentation Imposm](https://imposm.org/docs/imposm3/latest/mapping.html#tags) pour le format de ces champs)
 - `database.compare` : configuration pour la recherche d'objets OpenStreetMap à comparer, suit le format de `database.imposm` avec une propriété supplémentaire `radius` (rayon de rapprochement en mètres)
@@ -305,6 +311,8 @@ Les montant de points attribués sont configurés dans `info.json` :
 ```
 
 Les points sont distingués entre les contributions au niveau du projet et de chaque étiuette.
+
+Les points ne sont comptabilisés que sur la période du projet, qui détermine le classement et les badges attribués à chaque contributeur. Cette période va de `start_date` à `end_date`, ou de `soft_start_date` à `soft_end_date` lorsque `use_soft_dates` est activé pour ce projet. Les contributions faites en dehors de celle-ci sont toujours collectées et affichées dans les statistiques, mais ne donnent aucun point.
 
 ### Sources de tuiles
 
@@ -727,7 +735,7 @@ tags json
 geom GEOMETRY(Geometry, 3857)
 ```
 
-Optionellement, si le mode compare est activé dans un projet donné, une vue supplémentaire appelée `pdm_project_${project_id}_compare` conforme à ce qui doit être comparé est nécessaire. Elle a la même structure que ci-dessus.
+Optionellement, si le mode compare est activé dans un projet donné, une vue supplémentaire appelée `pdm_project_${project_slug}_compare` conforme à ce qui doit être comparé est nécessaire. Elle a la même structure que ci-dessus.
 
 #### Remplacé par le journal des modifications
 Dans le cas où vous accepteriez une mise à jour quotidienne de la vue des objets actuels, c'est à dire sans prise en compte immédiate des objets contribués pendant la journée, il est possible de créer manuellement une vue matérialisée comme suit :

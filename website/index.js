@@ -8,7 +8,7 @@ const compression = require("compression");
 const path = require("path");
 const fs = require("fs");
 const fetch = require("node-fetch").default;
-const projects = require("./projects");
+const { projects_including_external, projects } = require("./projects");
 const CONFFILE = require("../config.json");
 const PCKGE = require("../package.json");
 const {
@@ -79,6 +79,7 @@ function processPromises (res) {
 * Utils for rendering
 */
 function getMetricStyle (delta) {
+  if (delta === null) return {};
   if (delta > 0) return { text: "text-success", icon: "fa-arrow-trend-up" };
   if (delta < 0) return { text: "text-warning", icon: "fa-arrow-trend-down" };
   return { text: "text-secondary", icon: "fa-equals" };
@@ -108,7 +109,7 @@ app.get("/", (req, res) => {
     return res.status(503).render("pages/maintenance");
   }
 
-  const p = foldProjects(projects);
+  const p = foldProjects(projects_including_external);
   const nbProjects =
     (p.current ? p.current.length : 0) +
     (p.next ? p.next.length : 0) +
@@ -207,35 +208,38 @@ app.get("/projects/:name", (req, res) => {
     return res.redirect("/");
   }
 
-  if (!req.params.name || !projects[req.params.name]) {
+  if (!req.params.name || !projects_including_external[req.params.name]) {
     return res.redirect("/error/404");
   }
 
-  const p = projects[req.params.name];
-  const all = foldProjects(projects);
+  const p = projects_including_external[req.params.name];
+  const all = foldProjects(projects_including_external);
   const toDisplay = all.past
     .reverse()
     .concat(all.current.filter((p) => p.name !== req.params.name));
   const isActive =
     all.current.length > 0 &&
-    all.current.find((p) => p.name === req.params.name) !== undefined;
+    all.current.some((p) => p.name === req.params.name);
   const isNext =
-    all.next && all.next.find((p) => p.name === req.params.name) !== undefined;
-  const isHardEnded = all.past.find(p => (
+    all.next && all.next.some((p) => p.name === req.params.name);
+  const isHardEnded = all.past.some(p => (
     p.id === req.params.id
     && p.end_date != null
     && new Date(p.end_date + "T23:59:59Z").getTime() < Date.now()
-  )) !== undefined;
+  ));
   
+  const RECENT_PAST_DAYS = 30,
+    recentPastThreshold = Date.now() - RECENT_PAST_DAYS * 24 * 60 * 60 * 1000;
   const isRecentPast =
     all.past &&
     all.past.length > 0 &&
-    all.past.find(
-      (p) =>
-        p.name === req.params.name && p.end_date != null && 
-        new Date(p.end_date + "T23:59:59Z").getTime() >=
-          Date.now() - 30 * 24 * 60 * 60 * 1000,
-    ) !== undefined;
+    all.past.some((p) =>{
+      const endDate = p.use_soft_dates && p.soft_end_date || p.end_date;
+      return p.name === req.params.name && 
+        endDate != null && 
+        new Date(endDate + "T23:59:59Z").getTime() >= recentPastThreshold;
+    });
+  
   res.render(
     "pages/project",
     Object.assign(
@@ -266,7 +270,7 @@ app.get("/projects/:name/map", async (req, res) => {
   }
 
   const p = projects[req.params.name];
-  const all = foldProjects(projects);
+  const all = foldProjects(projects_including_external);
   const isActive =
     all.current.length > 0 &&
     all.current.find((p) => p.name === req.params.name) !== undefined;
@@ -298,7 +302,7 @@ app.get("/projects/:name/issues", (req, res) => {
   }
 
   const p = projects[req.params.name];
-  const all = foldProjects(projects);
+  const all = foldProjects(projects_including_external);
   const isActive =
     all.current.length > 0 &&
     all.current.find((p) => p.name === req.params.name) !== undefined;
@@ -320,9 +324,10 @@ app.get("/projects/:name/stats", (req, res) => {
   const osmUserAuthentified =
     typeof req.query.osm_user === "string" &&
     req.query.osm_user.trim().length > 0;
+  const startDate = p.use_soft_dates && p.soft_start_date || p.start_date;
   const daysToKeep = (day) => {
     if (
-      Date.now() - new Date(p.start_date).getTime() <
+      Date.now() - new Date(startDate).getTime() <
       1000 * 60 * 60 * 24 * 60
     ) {
       return true;
@@ -342,7 +347,7 @@ app.get("/projects/:name/stats", (req, res) => {
           const params = {
             item: ds.item,
             class: ds.class,
-            start_date: p.start_date,
+            start_date: startDate,
             country: ds.country,
           };
           return fetch(
@@ -648,7 +653,7 @@ app.post("/projects/:name/contribute/:userid", (req, res) => {
   }
 
   // Check project is active
-  const all = foldProjects(projects);
+  const all = foldProjects(projects_including_external);
   if (
     !req.params.name ||
     !projects[req.params.name] ||
@@ -796,7 +801,7 @@ app.get("/users/:name", (req, res) => {
         const userid = res1.rows[0].userid;
 
         // Fetch badges
-        const sql = Object.entries(projects)
+        const sql = Object.entries(projects_including_external)
           .map(
             (e) =>
               `SELECT '${e[0]}' AS project, * FROM pdm_get_badges('${e[0]}', $1)`,
@@ -860,6 +865,15 @@ const authorized = {
   },
   "chartjs-adapter-moment": {
     "chartjs-adapter-moment.js": "dist/chartjs-adapter-moment.min.js",
+  },
+  "chartjs-plugin-annotation": {
+    "annotation.js": "dist/chartjs-plugin-annotation.min.js",
+  },
+  "hammerjs": {
+    "hammer.js": "hammer.min.js",
+  },
+  "chartjs-plugin-zoom": {
+    "zoom.js": "dist/chartjs-plugin-zoom.min.js",
   },
   "maplibre-gl": {
     "maplibre-gl.js": "dist/maplibre-gl.js",

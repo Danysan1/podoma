@@ -50,16 +50,21 @@ exports.foldProjects = (projects) => {
 	const prjs = { past: [], current: [], next: [] };
 	Object.values(projects).forEach(project => {
 		const slug = project.name.split("_").pop();
+
+		// When use_soft_dates is enabled for the project, prefer soft dates over hard dates
+		const startDate = (project.use_soft_dates && project.soft_start_date) || project.start_date;
+		const endDate = (project.use_soft_dates && project.soft_end_date) || project.end_date;
+
 		// Check dates
-		if(new Date(project.start_date).getTime() <= Date.now() && ((project.end_date == null && project.soft_end_date == null) || Date.now() <= new Date(project.end_date+"T23:59:59Z").getTime() || Date.now() <= new Date(project.soft_end_date+"T23:59:59Z").getTime())) {
+		if(new Date(startDate).getTime() <= Date.now() && ((endDate == null && project.soft_end_date == null) || Date.now() <= new Date(endDate+"T23:59:59Z").getTime() || Date.now() <= new Date(project.soft_end_date+"T23:59:59Z").getTime())) {
 			prjs.current.push(project);
 		}
-		else if(Date.now() <= new Date(project.start_date).getTime()) {
+		else if(Date.now() <= new Date(startDate).getTime()) {
 			prjs.next.push(project);
 		}
 		else if(
-			(project.end_date != null && new Date(project.end_date+"T23:59:59Z").getTime() < Date.now())
-			|| (project.end_date == null && project.soft_end_date != null && new Date(project.soft_end_date+"T23:59:59Z").getTime() < Date.now())
+			(endDate != null && new Date(endDate+"T23:59:59Z").getTime() < Date.now())
+			|| (endDate == null && project.soft_end_date != null && new Date(project.soft_end_date+"T23:59:59Z").getTime() < Date.now())
 		) {
 			prjs.past.push({
 				id: project.id,
@@ -507,7 +512,17 @@ exports.getBadgesDetails = (projects, badgesRows) => {
 			};
 		}
 
-		if(row.project === "meta" || row.acquired || new Date(projects[row.project].start_date).getTime() <= Date.now() && (projects[row.project].end_date == null || Date.now() <= new Date(projects[row.project].end_date).getTime())) {
+		if(row.project === "meta" || row.acquired) {
+			badges[row.project].badges.push(row);
+			return;
+		}
+
+		// Badges still in progress are only shown while the project is running.
+		// When use_soft_dates is enabled for the project, prefer soft dates over hard dates
+		const startDate = (projects[row.project].use_soft_dates && projects[row.project].soft_start_date) || projects[row.project].start_date;
+		const endDate = (projects[row.project].use_soft_dates && projects[row.project].soft_end_date) || projects[row.project].end_date;
+
+		if(new Date(startDate).getTime() <= Date.now() && (endDate == null || Date.now() <= new Date(endDate).getTime())) {
 			badges[row.project].badges.push(row);
 		}
 	});

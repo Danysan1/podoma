@@ -1,6 +1,6 @@
 const CONFIG = require('../config.json');
 const fs = require('fs');
-const projects = require('../website/projects');
+const { projects } = require('../website/projects');
 const yaml = require('js-yaml');
 
 /*

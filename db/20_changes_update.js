@@ -1,6 +1,6 @@
 const CONFIG = require('../config.json');
 const fs = require('fs');
-const projects = require('../website/projects');
+const { projects } = require('../website/projects');
 const {Pool} = require('pg')
 
 /*
@@ -131,7 +131,7 @@ function macroChangesCsv (mode, project, oplProject, csvFeatures, csvUsers, csvM
                 echo "data=(\${missing_features_qry_res[0]} \${missing_features_qry_res[1]} \${missing_features_qry_res[2]}); (._;>>;); out meta;" > ${CONFIG.WORK_DIR}/missing_osm.overpass
 
                 curl -d @${CONFIG.WORK_DIR}/missing_osm.overpass --retry 3 --retry-delay 35 --retry-max-time 250 -f -o "${CONFIG.WORK_DIR}/missing_osm.xml" -A "Podoma/1.0 (${CONFIG.WEBSITE_URL})" -X POST ${CONFIG.OVERPASS_URL} || true
-                if [[ -f "${CONFIG.WORK_DIR}/missing_osm.xml" ]]; then
+                if [[ -s "${CONFIG.WORK_DIR}/missing_osm.xml" ]]; then
                     osmium cat -f opl -o "${CONFIG.WORK_DIR}/missing_osm.opl" "${CONFIG.WORK_DIR}/missing_osm.xml"
                     echo "  [\$((\$(date -d now +%s) - \$process_start_t0))s] \$(wc -l < ${CONFIG.WORK_DIR}/missing_osm.opl) features has been retrieved from overpass"
                     mawk -f ${OPL2FTS_FS} -v tagfilter="${project.database.osmium_tag_filter}" -v output_main="${CONFIG.WORK_DIR}/missing_osm.csv" -v output_users="${csvUsers}" ${awk_param_members} "${CONFIG.WORK_DIR}/missing_osm.opl"
@@ -245,7 +245,7 @@ function macroChangesCsv (mode, project, oplProject, csvFeatures, csvUsers, csvM
 // Beware of async queries
 console.log("Projects installation");
 
-let projectsQry = "INSERT INTO pdm_projects (project_id, project, start_date, end_date) VALUES ";
+let projectsQry = "INSERT INTO pdm_projects (project_id, project, start_date, soft_start_date, soft_end_date, end_date) VALUES ";
 let projectPointsQry = "INSERT INTO pdm_projects_points (project_id, contrib, label, points) VALUES ";
 let projectTeamsQry = "INSERT INTO pdm_projects_teams (project_id, team, username) VALUES ";
 let projectLength = 0;
@@ -253,14 +253,12 @@ let projectPointsLength = 0;
 let projectTeamsLength = 0;
 
 Object.values(projects).forEach(project => {
-    let project_end_date = project.end_date;
-    if (project_end_date != null){
-        project_end_date = `'${project_end_date}'`;
-    }
-    else {
-        project_end_date = null;
-    }
-    projectsQry += `(${project.id}, '${project.name}', '${project.start_date}', ${project_end_date}),`;
+    // Soft dates are only stored when they are actually used (project.use_soft_dates=true).
+    // This way SQL queries can rely on COALESCE(soft_start_date, start_date) without having to know about the use_soft_dates setting.
+    const project_soft_start_date = project.use_soft_dates && project.soft_start_date ? `'${project.soft_start_date}'` : null,
+        project_soft_end_date = project.use_soft_dates && project.soft_end_date ? `'${project.soft_end_date}'` : null,
+        project_end_date = project.end_date ? `'${project.end_date}'` : null;
+    projectsQry += `(${project.id}, '${project.name}', '${project.start_date}', ${project_soft_start_date}, ${project_soft_end_date}, ${project_end_date}),`;
     projectLength++;
 
     if (project.statistics.hasOwnProperty("points") && project.statistics.points){
@@ -289,9 +287,11 @@ Object.values(projects).forEach(project => {
 });
 
 if (projectLength > 0){
-    projectsQry = `${projectsQry.substring(0, projectsQry.length-1)} ON CONFLICT (project_id) DO UPDATE SET start_date=EXCLUDED.start_date, end_date=EXCLUDED.end_date`;
+    projectsQry = `${projectsQry.substring(0, projectsQry.length-1)} ON CONFLICT (project_id) DO UPDATE SET start_date=EXCLUDED.start_date, soft_start_date=EXCLUDED.soft_start_date, soft_end_date=EXCLUDED.soft_end_date, end_date=EXCLUDED.end_date`;
     pgPool.query(projectsQry, (err, res) => {
-        if (err){
+        if(err?.message?.includes("cannot affect row a second time")) {
+            throw new Error(`Error when installing projects: ${err}\n\nMake sure all projects have a distinct id, query was: ${projectsQry}`);
+        } else if (err) {
             throw new Error(`Error when installing projects: ${err}`);
         }
         console.log(projectLength+" project(s) installed");
@@ -509,7 +509,7 @@ Object.values(projects).forEach(project => {
         script += `
             echo "   => [\$((\$(date -d now +%s) - \$process_start_t0))s] Seek for all changes related to selected features and convert to OPL"
             rm -f "${oplProject}"
-            osmium getid ${getIdOptions} "\$history_osh" -I "${oshProjectTags}" -f opl,history=true -o "${oplProject}"
+            osmium getid ${getIdOptions} "\$history_osh" -I "${oshProjectTags}" -f opl,history=true -o "${oplProject}" || { echo "osmium getid failed, check ${oshProjectTags}"; exit 1; }
             rm -f "${csvFeatures}" "${csvMembers}" "${oshProjectTags}"
         fi
 

@@ -1034,3 +1034,9 @@ input:checked + .slider:before {
 		width: 250px;
 	}
 }
+
+.project-icon {
+	width: 100px;
+	max-width: 100px;
+	max-height: 100px;
+}
