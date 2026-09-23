@@ -64,7 +64,16 @@
 					{ "v": "other", "l": "Altro" }
 				] },
 				{ "type": "text", "name": "Nome", "tag": "name", "optional": true },
-				{ "type": "text", "name": "Materiale", "tag": "material", "optional": true },
+				{ "type": "select", "name": "Materiale", "tag": "material", "optional": true, "values": [
+					{ "v": "wood", "l": "Legno" },
+					{ "v": "metal", "l": "Metallo" },
+					{ "v": "steel", "l": "Acciaio" },
+					{ "v": "aluminium", "l": "Alluminio" },
+					{ "v": "stone", "l": "Pietra" },
+					{ "v": "concrete", "l": "Cemento" },
+					{ "v": "plastic", "l": "Plastica" },
+					{ "v": "fiberglass", "l": "Vetroresina" }
+				] },
 				{ "type": "number", "name": "Altezza (m)", "tag": "height", "optional": true },
 				{ "type": "text", "name": "Artista / produttore", "tag": "artist_name", "optional": true },
 				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Info pratiche, stato di conservazione...", "optional": true }

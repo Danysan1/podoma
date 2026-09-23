@@ -81,7 +81,13 @@
 					{ "l": "Area picnic", "tags": { "tourism": "picnic_site" } },
 					{ "l": "Tavolo da picnic", "tags": { "leisure": "picnic_table" } }
 				] },
-				{ "type": "text", "name": "Materiale", "tag": "material", "optional": true },
+				{ "type": "select", "name": "Materiale", "tag": "material", "optional": true, "values": [
+					{ "v": "wood", "l": "Legno" },
+					{ "v": "metal", "l": "Metallo" },
+					{ "v": "concrete", "l": "Cemento" },
+					{ "v": "stone", "l": "Pietra" },
+					{ "v": "plastic", "l": "Plastica" }
+				] },
 				{ "type": "3states", "name": "Coperto/riparato", "tag": "covered" },
 				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "optional": true }
 			],
