@@ -60,6 +60,21 @@
 		"all": {
 			"comment": "Aggiunta alberi monumentali",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "denotation": "natural_monument", "natural": "tree", "source": "*" } },
+				{ "type": "text", "name": "Nome", "tag": "name", "optional": true },
+				{ "type": "text", "name": "Specie (nome scientifico)", "tag": "species", "optional": true },
+				{ "type": "number", "name": "Altezza (m)", "tag": "height", "optional": true },
+				{ "type": "number", "name": "Circonferenza del tronco (m)", "tag": "circumference", "optional": true },
+				{ "type": "text", "name": "Riferimento vincolo MASAF", "tag": "ref:masaf", "optional": true },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Stato di conservazione, info pratiche...", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi un albero monumentale mancante",
+				"edit": "Completa questo albero monumentale"
+			}
 		}
 	}
 }

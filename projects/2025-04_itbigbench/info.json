@@ -53,6 +53,26 @@
 		"all": {
 			"comment": "Aggiunta panchine giganti",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "tourism": "giant_furniture", "source": "*" } },
+				{ "type": "select", "name": "Tipo di oggetto", "tag": "giant_furniture", "values": [
+					{ "v": "bench", "l": "Panchina" },
+					{ "v": "chair", "l": "Sedia" },
+					{ "v": "table", "l": "Tavolo" },
+					{ "v": "other", "l": "Altro" }
+				] },
+				{ "type": "text", "name": "Nome", "tag": "name", "optional": true },
+				{ "type": "text", "name": "Materiale", "tag": "material", "optional": true },
+				{ "type": "number", "name": "Altezza (m)", "tag": "height", "optional": true },
+				{ "type": "text", "name": "Artista / produttore", "tag": "artist_name", "optional": true },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Info pratiche, stato di conservazione...", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi una panchina gigante mancante",
+				"edit": "Completa questa panchina gigante"
+			}
 		}
 	}
 }

@@ -72,6 +72,37 @@
 		"all": {
 			"comment": "Aggiunta attività commerciali",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "source": "*" } },
+				{ "type": "select", "name": "Tipo di attività", "tag": "_select1", "values": [
+					{ "l": "Negozio (generico)", "tags": { "shop": "yes" } },
+					{ "l": "Farmacia", "tags": { "shop": "", "amenity": "pharmacy" } },
+					{ "l": "Ristorante", "tags": { "shop": "", "amenity": "restaurant" } },
+					{ "l": "Fast food", "tags": { "shop": "", "amenity": "fast_food" } },
+					{ "l": "Bar", "tags": { "shop": "", "amenity": "bar" } },
+					{ "l": "Pub", "tags": { "shop": "", "amenity": "pub" } },
+					{ "l": "Bar/caffetteria", "tags": { "shop": "", "amenity": "cafe" } },
+					{ "l": "Banca / bancomat", "tags": { "shop": "", "amenity": "bank" } },
+					{ "l": "Distributore di carburante", "tags": { "shop": "", "amenity": "fuel" } },
+					{ "l": "Studio dentistico", "tags": { "shop": "", "amenity": "dentist" } }
+				] },
+				{ "type": "text", "name": "Nome", "tag": "name" },
+				{ "type": "text", "name": "Operatore / gestore", "tag": "operator", "optional": true },
+				{ "type": "text", "name": "Telefono", "tag": "phone", "optional": true },
+				{ "type": "text", "name": "Sito web ufficiale", "tag": "website", "optional": true },
+				{ "type": "select", "name": "Accessibilità in sedia a rotelle", "tag": "wheelchair", "optional": true, "values": [
+					{ "v": "yes", "l": "Completamente accessibile" },
+					{ "v": "limited", "l": "Parzialmente accessibile" },
+					{ "v": "no", "l": "Non accessibile" }
+				] },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Orari, info pratiche...", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi un'attività commerciale mancante",
+				"edit": "Completa questa attività commerciale"
+			}
 		}
 	}
 }

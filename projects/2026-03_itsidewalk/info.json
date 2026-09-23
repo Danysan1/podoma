@@ -64,6 +64,29 @@
 		"all": {
 			"comment": "Aggiunta marciapiedi",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "footway": "sidewalk", "source": "*" } },
+				{ "type": "select", "name": "Superficie", "tag": "surface", "optional": true, "values": [
+					{ "v": "asphalt", "l": "Asfalto" },
+					{ "v": "paving_stones", "l": "Pavimentazione a lastre" },
+					{ "v": "concrete", "l": "Cemento" },
+					{ "v": "gravel", "l": "Ghiaia" },
+					{ "v": "unpaved", "l": "Non pavimentato" }
+				] },
+				{ "type": "select", "name": "Accessibilità in sedia a rotelle", "tag": "wheelchair", "optional": true, "values": [
+					{ "v": "yes", "l": "Completamente accessibile" },
+					{ "v": "limited", "l": "Parzialmente accessibile" },
+					{ "v": "no", "l": "Non accessibile" }
+				] },
+				{ "type": "3states", "name": "Presente pavimentazione tattile per non vedenti", "tag": "tactile_paving" },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi un marciapiede mancante",
+				"edit": "Completa questo marciapiede"
+			}
 		}
 	}
 }

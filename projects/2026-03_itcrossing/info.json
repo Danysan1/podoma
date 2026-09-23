@@ -67,6 +67,23 @@
 		"all": {
 			"comment": "Aggiunta attraversamenti",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "highway": "crossing", "source": "*" } },
+				{ "type": "select", "name": "Tipo di attraversamento", "tag": "crossing", "optional": true, "values": [
+					{ "v": "marked", "l": "Segnalato (strisce pedonali)" },
+					{ "v": "unmarked", "l": "Non segnalato" },
+					{ "v": "traffic_signals", "l": "Con semaforo" }
+				] },
+				{ "type": "3states", "name": "Presente isola salvagente/spartitraffico centrale", "tag": "crossing:island" },
+				{ "type": "3states", "name": "Presente pavimentazione tattile per non vedenti", "tag": "tactile_paving" },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi un attraversamento mancante",
+				"edit": "Completa questo attraversamento"
+			}
 		}
 	}
 }

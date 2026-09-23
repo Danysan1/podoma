@@ -61,6 +61,24 @@
 		"all": {
 			"comment": "Aggiunta idranti",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "emergency": "fire_hydrant", "source": "*" } },
+				{ "type": "select", "name": "Tipo di idrante", "tag": "fire_hydrant:type", "optional": true, "values": [
+					{ "v": "pillar", "l": "Idrante soprasuolo" },
+					{ "v": "underground", "l": "Idrante sottosuolo" },
+					{ "v": "wall", "l": "Idrante a muro" },
+					{ "v": "pond", "l": "Riserva idrica / vasca" }
+				] },
+				{ "type": "text", "name": "Riferimento", "tag": "ref", "optional": true },
+				{ "type": "text", "name": "Gestore", "tag": "operator", "optional": true },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Info pratiche...", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi un idrante mancante",
+				"edit": "Completa questo idrante"
+			}
 		}
 	}
 }
