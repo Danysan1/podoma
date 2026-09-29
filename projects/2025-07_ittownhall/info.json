@@ -55,11 +55,6 @@
 		"points": {
 			"add": 2,
 			"edit": 2
-		},
-		"points_labels": {
-			"gendarmerie": {
-				"edit-in": 1
-			}
 		}
 	},
 	"editors": {
@@ -70,16 +65,16 @@
 		"pdm": {
 			"fields": [
 				{ "type": "hidden", "tags": { "amenity": "townhall", "source": "*" } },
-				{ "type": "text", "name": "Nome", "tag": "name", "optional": true },
+				{ "type": "text", "name": "Nome", "tag": "name", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:name", "optional": true },
 				{ "type": "text", "name": "Telefono", "tag": "phone", "optional": true },
 				{ "type": "text", "name": "Sito web ufficiale", "tag": "website", "optional": true },
-				{ "type": "email", "name": "Indirizzo email di contatto", "tag": "email", "optional": true },
-				{ "type": "select", "name": "Accessibilità in sedia a rotelle", "tag": "wheelchair", "optional": true, "values": [
+				{ "type": "email", "name": "Indirizzo email di contatto", "tag": "email", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:email", "optional": true },
+				{ "type": "select", "name": "Accessibilità in sedia a rotelle", "tag": "wheelchair", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:wheelchair", "optional": true, "values": [
 					{ "v": "yes", "l": "Completamente accessibile" },
 					{ "v": "limited", "l": "Parzialmente accessibile" },
 					{ "v": "no", "l": "Non accessibile" }
 				] },
-				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Orari, info pratiche...", "optional": true }
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:note", "description": "Orari, info pratiche...", "optional": true }
 			],
 			"title": {
 				"add": "Aggiungi un municipio mancante",

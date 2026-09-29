@@ -88,16 +88,16 @@
 					{ "l": "Distributore di carburante", "tags": { "shop": "", "amenity": "fuel" } },
 					{ "l": "Studio dentistico", "tags": { "shop": "", "amenity": "dentist" } }
 				] },
-				{ "type": "text", "name": "Nome", "tag": "name" },
-				{ "type": "text", "name": "Operatore / gestore", "tag": "operator", "optional": true },
+				{ "type": "text", "name": "Nome", "tag": "name", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:name" },
+				{ "type": "text", "name": "Operatore / gestore", "tag": "operator", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:operator", "optional": true },
 				{ "type": "text", "name": "Telefono", "tag": "phone", "optional": true },
 				{ "type": "text", "name": "Sito web ufficiale", "tag": "website", "optional": true },
-				{ "type": "select", "name": "Accessibilità in sedia a rotelle", "tag": "wheelchair", "optional": true, "values": [
+				{ "type": "select", "name": "Accessibilità in sedia a rotelle", "tag": "wheelchair", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:wheelchair", "optional": true, "values": [
 					{ "v": "yes", "l": "Completamente accessibile" },
 					{ "v": "limited", "l": "Parzialmente accessibile" },
 					{ "v": "no", "l": "Non accessibile" }
 				] },
-				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Orari, info pratiche...", "optional": true }
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:note", "description": "Orari, info pratiche...", "optional": true }
 			],
 			"title": {
 				"add": "Aggiungi un'attività commerciale mancante",

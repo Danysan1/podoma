@@ -77,8 +77,8 @@
 					{ "v": "ceiling", "l": "Soffitto" },
 					{ "v": "other", "l": "Altro" }
 				] },
-				{ "type": "number", "name": "Altezza (m)", "tag": "height", "optional": true },
-				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "optional": true }
+				{ "type": "number", "name": "Altezza (m)", "tag": "height", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:height", "optional": true },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:note", "optional": true }
 			],
 			"title": {
 				"add": "Aggiungi un lampione mancante",

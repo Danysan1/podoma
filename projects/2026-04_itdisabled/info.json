@@ -25,6 +25,18 @@
 					"disabled"
 				]
 			}
+		},
+		"compare": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"amenity": [
+					"parking"
+				]
+			},
+			"radius": 100
 		}
 	},
 	"datasources": [
@@ -32,6 +44,11 @@
 			"source": "osm",
 			"name": "Parcheggi per persone con disabilità in OSM",
 			"description": "Questo parcheggio per persone con disabilità esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "osm-compare",
+			"name": "Parcheggio senza posti per disabili mappati",
+			"description": "In questo parcheggio non sono ancora mappati posti riservati alle persone con disabilità. Verifica sul posto: se ci sono, aggiungi capacity:disabled al parcheggio oppure mappa i singoli stalli (parking_space=disabled); se non ci sono, puoi indicare capacity:disabled=no."
 		},
 		{
 			"source": "background",
@@ -68,9 +85,9 @@
 		"pdm": {
 			"fields": [
 				{ "type": "hidden", "tags": { "parking_space": "disabled", "source": "*" } },
-				{ "type": "number", "name": "Numero di posti riservati", "tag": "capacity:disabled", "optional": true },
-				{ "type": "3states", "name": "A pagamento", "tag": "fee" },
-				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "optional": true }
+				{ "type": "number", "name": "Numero di posti riservati", "tag": "capacity:disabled", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:capacity:disabled", "optional": true },
+				{ "type": "3states", "name": "A pagamento", "tag": "fee", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:fee" },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:note", "optional": true }
 			],
 			"title": {
 				"add": "Aggiungi un parcheggio per persone con disabilità mancante",

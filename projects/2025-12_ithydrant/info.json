@@ -71,9 +71,9 @@
 					{ "v": "wall", "l": "Idrante a muro" },
 					{ "v": "pond", "l": "Riserva idrica / vasca" }
 				] },
-				{ "type": "text", "name": "Riferimento", "tag": "ref", "optional": true },
-				{ "type": "text", "name": "Gestore", "tag": "operator", "optional": true },
-				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Info pratiche...", "optional": true }
+				{ "type": "text", "name": "Riferimento", "tag": "ref", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:ref", "optional": true },
+				{ "type": "text", "name": "Gestore", "tag": "operator", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:operator", "optional": true },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:note", "description": "Info pratiche...", "optional": true }
 			],
 			"title": {
 				"add": "Aggiungi un idrante mancante",
