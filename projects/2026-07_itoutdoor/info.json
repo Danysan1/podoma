@@ -70,6 +70,31 @@
 		"all": {
 			"comment": "Aggiunta elementi outdoor",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "source": "*" } },
+				{ "type": "select", "name": "Tipo di elemento", "tag": "_select1", "values": [
+					{ "l": "Fontanella", "tags": { "amenity": "drinking_water" } },
+					{ "l": "Panchina", "tags": { "amenity": "bench" } },
+					{ "l": "Cestino dei rifiuti", "tags": { "amenity": "waste_basket" } },
+					{ "l": "Area picnic", "tags": { "tourism": "picnic_site" } },
+					{ "l": "Tavolo da picnic", "tags": { "leisure": "picnic_table" } }
+				] },
+				{ "type": "select", "name": "Materiale", "tag": "material", "optional": true, "values": [
+					{ "v": "wood", "l": "Legno" },
+					{ "v": "metal", "l": "Metallo" },
+					{ "v": "concrete", "l": "Cemento" },
+					{ "v": "stone", "l": "Pietra" },
+					{ "v": "plastic", "l": "Plastica" }
+				] },
+				{ "type": "3states", "name": "Coperto/riparato", "tag": "covered" },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi un elemento outdoor mancante",
+				"edit": "Completa questo elemento outdoor"
+			}
 		}
 	}
 }

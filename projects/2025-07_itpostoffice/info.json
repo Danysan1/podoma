@@ -61,6 +61,25 @@
 		"all": {
 			"comment": "Aggiunta uffici postali",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "amenity": "post_office", "source": "*" } },
+				{ "type": "text", "name": "Nome", "tag": "name", "optional": true },
+				{ "type": "text", "name": "Operatore / gestore", "tag": "operator", "optional": true },
+				{ "type": "text", "name": "Telefono", "tag": "phone", "optional": true },
+				{ "type": "text", "name": "Sito web ufficiale", "tag": "website", "optional": true },
+				{ "type": "select", "name": "Accessibilità in sedia a rotelle", "tag": "wheelchair", "optional": true, "values": [
+					{ "v": "yes", "l": "Completamente accessibile" },
+					{ "v": "limited", "l": "Parzialmente accessibile" },
+					{ "v": "no", "l": "Non accessibile" }
+				] },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Orari, info pratiche...", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi un ufficio postale mancante",
+				"edit": "Completa questo ufficio postale"
+			}
 		}
 	}
 }

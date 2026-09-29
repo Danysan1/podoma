@@ -64,6 +64,24 @@
 		"all": {
 			"comment": "Aggiunta fermate",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "highway": "bus_stop", "public_transport": "platform", "bus": "yes", "shelter": "*", "source": "*" } },
+				{ "type": "text", "name": "Nome", "tag": "name", "optional": true },
+				{ "type": "3states", "name": "Pensilina", "tag": "shelter" },
+				{ "type": "3states", "name": "Illuminazione", "tag": "lit" },
+				{ "type": "select", "name": "Accessibilità in sedia a rotelle", "tag": "wheelchair", "values": [
+					{ "v": "yes", "l": "Completamente" },
+					{ "v": "limited", "l": "Parzialmente" },
+					{ "v": "no", "l": "Per niente" }
+				] },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Info pratiche...", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi una fermata mancante",
+				"edit": "Completa questa fermata"
+			}
 		}
 	}
 }

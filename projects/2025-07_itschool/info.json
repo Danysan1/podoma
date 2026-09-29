@@ -62,6 +62,36 @@
 		"all": {
 			"comment": "Aggiunta scuole",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "amenity": "school", "start_date": "*", "source": "*" } },
+				{ "type": "text", "name": "Nome", "tag": "name" },
+				{ "type": "select", "name": "Grado di istruzione", "tag": "isced:level", "optional": true, "values": [
+					{ "v": "0", "l": "Scuola dell'infanzia" },
+					{ "v": "1", "l": "Scuola primaria" },
+					{ "v": "2", "l": "Scuola secondaria di primo grado" },
+					{ "v": "3", "l": "Scuola secondaria di secondo grado" }
+				] },
+				{ "type": "text", "name": "Operatore / gestore", "tag": "operator", "optional": true },
+				{ "type": "select", "name": "Tipo di gestore", "tag": "operator:type", "optional": true, "values": [
+					{ "v": "public", "l": "Pubblico" },
+					{ "v": "private", "l": "Privato" }
+				] },
+				{ "type": "text", "name": "Telefono", "tag": "contact:phone", "optional": true },
+				{ "type": "text", "name": "Sito web ufficiale", "tag": "contact:website", "optional": true },
+				{ "type": "email", "name": "Indirizzo email di contatto", "tag": "contact:email", "optional": true },
+				{ "type": "select", "name": "Accessibilità in sedia a rotelle", "tag": "wheelchair", "optional": true, "values": [
+					{ "v": "yes", "l": "Completamente accessibile" },
+					{ "v": "limited", "l": "Parzialmente accessibile" },
+					{ "v": "no", "l": "Non accessibile" }
+				] },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Orari, info pratiche...", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi una scuola mancante",
+				"edit": "Completa questa scuola"
+			}
 		}
 	}
 }

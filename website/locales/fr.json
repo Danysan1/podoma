@@ -1,4 +1,5 @@
 {
+	"Ended project": "Projet terminé",
 	"Logout": "Se déconnecter",
 	"Register / Login": "S'inscrire / Se connecter",
 	"An error happened during login, please retry": "Une erreur s'est produite à la connexion, veuillez réessayer",
@@ -22,6 +23,7 @@
 	"Data": "Données",
 	"Contribute": "Contribuer",
 	"How to contribute": "Comment contribuer",
+	"This project is done, but mapping in OpenStreetMap never ends! You can contribute on other topics.": "Ce projet du mois est terminé, mais la cartographie dans OpenStreetMap ne s'arrête pas ! Vous pouvez contribuer sur d'autres sujets.",
 	"This project is done, but mapping in OpenStreetMap never ends! You can continue to improve data using our tools and documentation.": "Ce projet du mois est terminé, mais la cartographie dans OpenStreetMap ne s'arrête pas ! Vous pouvez continuer à enrichir les données à l'aide de nos outils et de la documentation.",
 	"Full documentation": "Documentation complète",
 	"Podium": "Podium",

@@ -61,6 +61,29 @@
 		"all": {
 			"comment": "Aggiunta lampioni",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "highway": "street_lamp", "source": "*" } },
+				{ "type": "select", "name": "Sorgente luminosa", "tag": "light_source", "optional": true, "values": [
+					{ "v": "led", "l": "LED" },
+					{ "v": "sodium", "l": "Vapori di sodio" },
+					{ "v": "incandescent", "l": "Incandescenza" },
+					{ "v": "other", "l": "Altro" }
+				] },
+				{ "type": "select", "name": "Supporto", "tag": "support", "optional": true, "values": [
+					{ "v": "pole", "l": "Palo" },
+					{ "v": "wall", "l": "Muro" },
+					{ "v": "ceiling", "l": "Soffitto" },
+					{ "v": "other", "l": "Altro" }
+				] },
+				{ "type": "number", "name": "Altezza (m)", "tag": "height", "optional": true },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi un lampione mancante",
+				"edit": "Completa questo lampione"
+			}
 		}
 	}
 }

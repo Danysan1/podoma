@@ -118,6 +118,26 @@
 		"all": {
 			"comment": "Aggiunta defibrillatori",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "emergency": "defibrillator", "source": "*" } },
+				{ "type": "3states", "name": "All'interno di un edificio?", "tag": "indoor" },
+				{ "type": "textarea", "name": "Posizione precisa", "tag": "defibrillator:location", "description": "Esempio: dietro il bancone della reception" },
+				{ "type": "text", "name": "Operatore / gestore", "tag": "operator", "optional": true },
+				{ "type": "number", "name": "Piano dove si trova", "tag": "level", "description": "0 per il piano terra, 1 per il 1° piano... solo per interni", "optional": true },
+				{ "type": "select", "name": "Diritto d'accesso", "tag": "access", "optional": true, "values": [
+					{ "v": "yes", "l": "Accesso pubblico, senza vincoli" },
+					{ "v": "permissive", "l": "Accesso possibile, con autorizzazione" },
+					{ "v": "customers", "l": "Accesso riservato a clienti o utenti" },
+					{ "v": "private", "l": "Accesso privato" }
+				] },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Orari, modello, info pratiche...", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi un defibrillatore mancante",
+				"edit": "Completa questo defibrillatore"
+			}
 		}
 	}
 }

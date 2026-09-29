@@ -64,6 +64,18 @@
 		"all": {
 			"comment": "Aggiunta parcheggi per persone con disabilità",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "parking_space": "disabled", "source": "*" } },
+				{ "type": "number", "name": "Numero di posti riservati", "tag": "capacity:disabled", "optional": true },
+				{ "type": "3states", "name": "A pagamento", "tag": "fee" },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi un parcheggio per persone con disabilità mancante",
+				"edit": "Completa questo parcheggio per persone con disabilità"
+			}
 		}
 	}
 }

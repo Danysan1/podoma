@@ -62,6 +62,23 @@
 		"all": {
 			"comment": "Aggiunta fontanelle",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "amenity": "drinking_water", "source": "*" } },
+				{ "type": "3states", "name": "Adatta a riempire borracce", "tag": "bottle" },
+				{ "type": "select", "name": "Diritto d'accesso", "tag": "access", "optional": true, "values": [
+					{ "v": "yes", "l": "Accesso pubblico, senza vincoli" },
+					{ "v": "permissive", "l": "Accesso possibile, con autorizzazione" },
+					{ "v": "customers", "l": "Accesso riservato a clienti o utenti" },
+					{ "v": "private", "l": "Accesso privato" }
+				] },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "description": "Orari, info pratiche...", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi una fontanella mancante",
+				"edit": "Completa questa fontanella"
+			}
 		}
 	}
 }
