@@ -1,0 +1,66 @@
+{
+	"id": 127,
+	"name": "2026-11_itfuel",
+	"title": "Distributori di carburante",
+	"start_date": "2026-10-01",
+	"soft_start_date": "2026-11-01",
+	"soft_end_date": "2026-12-01",
+	"end_date": "2027-02-01",
+	"use_soft_dates": true,
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"
+	},
+	"database": {
+		"osmium_tag_filter": "nwr/amenity=fuel",
+		"imposm": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"amenity": [
+					"fuel"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Distributori in OSM",
+			"description": "Questo distributore esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "distributori",
+		"osmose_tasks": "distributori completati",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Aggiunta distributori di carburante",
+			"hashtags": "progettodelmese"
+		}
+	}
+}

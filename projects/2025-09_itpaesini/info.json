@@ -1,12 +1,44 @@
 {
-	"id": 125,
+	"id": 108,
 	"name": "2025-09_itpaesini",
 	"title": "#PaesiniNonMappati",
 	"start_date": "2025-09-01",
 	"end_date": "2025-10-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Settembre:_#PaesiniNonMappati",
-		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-settembre-2025-paesininonmappati/135057",
-		"external_statistics": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2025#Settembre:_#PaesiniNonMappati"
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-settembre-2025-paesininonmappati/135057"
+	},
+	"database": {
+		"osmium_tag_filter": "nwr/building=*",
+		"imposm": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"building": [
+					"__any__"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Edifici in OSM",
+			"description": "Questo edificio esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "edifici",
+		"points": {
+			"add": 1,
+			"edit": 1
+		}
 	}
 }

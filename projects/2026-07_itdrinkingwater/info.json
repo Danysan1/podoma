@@ -1,0 +1,104 @@
+{
+	"id": 120,
+	"name": "2026-07_itdrinkingwater",
+	"title": "Fontanelle",
+	"start_date": "2026-06-01",
+	"soft_start_date": "2026-07-01",
+	"soft_end_date": "2026-08-01",
+	"end_date": "2026-10-01",
+	"use_soft_dates": true,
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-luglio-2026-gite-fuori-porta/144994"
+	},
+	"database": {
+		"osmium_tag_filter": "nw/amenity=drinking_water",
+		"imposm": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"amenity": [
+					"drinking_water"
+				]
+			}
+		},
+		"compare": {
+			"types": [
+				"point",
+				"polygon"
+			],
+			"mapping": {
+				"amenity": [
+					"grave_yard"
+				],
+				"landuse": [
+					"cemetery"
+				]
+			},
+			"radius": 150
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Fontanelle in OSM",
+			"description": "Questa fontanella esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "osm-compare",
+			"name": "Cimitero senza fontanella",
+			"description": "I cimiteri dispongono quasi sempre di fontanelle o rubinetti d'acqua. Nessuna fontanella è mappata nelle vicinanze: verifica sul posto (o con le foto stradali) e aggiungila a OSM."
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": false,
+		"feature_name": "fontanelle",
+		"osmose_tasks": "fontanelle completate",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Aggiunta fontanelle",
+			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "amenity": "drinking_water", "source": "*" } },
+				{ "type": "3states", "name": "Adatta a riempire borracce", "tag": "bottle" },
+				{ "type": "select", "name": "Diritto d'accesso", "tag": "access", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:access", "optional": true, "values": [
+					{ "v": "yes", "l": "Accesso pubblico, senza vincoli" },
+					{ "v": "permissive", "l": "Accesso possibile, con autorizzazione" },
+					{ "v": "customers", "l": "Accesso riservato a clienti o utenti" },
+					{ "v": "private", "l": "Accesso privato" }
+				] },
+				{ "type": "textarea", "name": "Altre informazioni", "tag": "note", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:note", "description": "Orari, info pratiche...", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi una fontanella mancante",
+				"edit": "Completa questa fontanella"
+			}
+		}
+	}
+}

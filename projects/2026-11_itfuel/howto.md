@@ -1,0 +1,6 @@
+- Taggare con [`amenity`](https://wiki.openstreetmap.org/wiki/IT:Key:amenity)=[`fuel`](https://wiki.openstreetmap.org/wiki/IT:Tag:amenity%3Dfuel) (+ [`brand`](https://wiki.openstreetmap.org/wiki/IT:Key:brand)=\*, [`operator`](https://wiki.openstreetmap.org/wiki/IT:Key:operator)=\*, [`name`](https://wiki.openstreetmap.org/wiki/IT:Key:name)=\*, [`opening_hours`](https://wiki.openstreetmap.org/wiki/IT:Key:opening_hours)=\*, [`self_service`](https://wiki.openstreetmap.org/wiki/Key:self_service)=\*, ...)
+- Indicare i carburanti disponibili con i tag `fuel:*` (es. `fuel:diesel`=yes, `fuel:octane_95`=yes, `fuel:lpg`=yes, `fuel:cng`=yes)
+- Tracciare il distributore come punto o come area (il perimetro dell'area di servizio), evitando di duplicarlo
+- Il codice MISE a cinque cifre assegnato a ogni stazione di servizio va in [`ref:mise`](https://wiki.openstreetmap.org/wiki/IT:Tag:amenity%3Dfuel)=\*
+- Servizi aggiuntivi (autolavaggio, bagni, minimarket) vanno mappati come elementi separati: `amenity=car_wash`, `amenity=toilets`, `shop=convenience`
+- Foto stradali georeferenziate: [Panoramax](https://explore.panoramax.fr/), [Mapillary](https://www.mapillary.com/), Bing Streetside

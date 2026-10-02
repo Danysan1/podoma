@@ -1,47 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
-  <defs>
-    <clipPath id="circle-clip-lanes">
-      <circle cx="17.514" cy="17.514" r="17.514"/>
-    </clipPath>
-  </defs>
-  <!-- Background circle split diagonally (same light blue as itshop.svg) -->
-  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
-  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
-  <!-- Motorway exit: two lanes running straight, one lane leaving the carriageway, with lane-direction arrows painted at the start of each lane -->
-  <g clip-path="url(#circle-clip-lanes)">
-    <g transform="translate(17.514,17.514)">
-      <!-- Three-lane approach carriageway -->
-      <rect x="-7.5" y="4" width="15" height="12" fill="#6b6b6b"/>
-      <!-- Lane dividers within the approach (dashed) -->
-      <rect x="-2.9" y="4.5" width="0.8" height="2.5" fill="#fff"/>
-      <rect x="-2.9" y="9" width="0.8" height="2.5" fill="#fff"/>
-      <rect x="-2.9" y="13.5" width="0.8" height="2.5" fill="#fff"/>
-      <rect x="2.1" y="4.5" width="0.8" height="2.5" fill="#fff"/>
-      <rect x="2.1" y="9" width="0.8" height="2.5" fill="#fff"/>
-      <rect x="2.1" y="13.5" width="0.8" height="2.5" fill="#fff"/>
-      <!-- Two through lanes continuing straight -->
-      <rect x="-7.5" y="-13" width="10" height="17" fill="#6b6b6b"/>
-      <rect x="-2.9" y="-11" width="0.8" height="3" fill="#fff"/>
-      <rect x="-2.9" y="-6" width="0.8" height="3" fill="#fff"/>
-      <rect x="-2.9" y="-1" width="0.8" height="3" fill="#fff"/>
-      <!-- Exit ramp lane peeling off to the right -->
-      <path d="M 5 4 Q 5 -2 11 -6" fill="none" stroke="#6b6b6b" stroke-width="5" stroke-linecap="round"/>
-      <!-- Lane-direction road markings, painted at the start of each lane -->
-      <!-- Left through lane: straight arrow -->
-      <g transform="translate(-5,10.1)">
-        <rect x="-0.3" y="0" width="0.6" height="5.4" fill="#fff"/>
-        <path d="M -1.3,0 L 1.3,0 L 0,-2.8 Z" fill="#fff"/>
-      </g>
-      <!-- Middle through lane: straight arrow -->
-      <g transform="translate(0,10.1)">
-        <rect x="-0.3" y="0" width="0.6" height="5.4" fill="#fff"/>
-        <path d="M -1.3,0 L 1.3,0 L 0,-2.8 Z" fill="#fff"/>
-      </g>
-      <!-- Exit lane: elbow arrow bending 45 degrees toward the ramp, kept within the lane, head matches the straight arrows -->
-      <path d="M 5,15.5 L 5,10.5 L 5.3,10.2" fill="none" stroke="#fff" stroke-width="0.6" stroke-linecap="round"/>
-      <g transform="translate(5.3,10.2) rotate(45)">
-        <path d="M -1.3,0 L 1.3,0 L 0,-2.8 Z" fill="#fff"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns="http://www.w3.org/2000/svg"
+   width="451.52359"
+   height="450.84424"
+   viewBox="0 0 451.52359 450.84424"
+   version="1.1">
+  <g transform="translate(-3.2983378,-87.762639)">
+
+    <!-- White background -->
+    <path
+       d="m 4.6413578,88.536656 448.6271922,0 0,448.627234 -448.6271922,0 0,-448.627234 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+
+    <!-- Outer black border of sign -->
+    <path
+       d="m 4.6413378,88.536656 448.6272022,0 0,448.627224 -448.6272022,0 0,-448.627224 z"
+       style="fill:none;stroke:#000000;stroke-width:0.19;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+
+    <!-- Yellow centre stripe -->
+    <path
+       d="m 215.4173,150.79355 27.06323,0 0,324.46324 -27.06323,0 0,-324.46324 z"
+       style="fill:#ffd500;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+
+    <!-- Right rounded-corner border arc -->
+    <g transform="matrix(6.0314757,0,0,-6.0314757,229.28488,525.65821)">
+      <path
+         d="m 0,0 0,-1.29 30.684,0 c 3.198,0 5.778,2.58 5.778,5.778 l 0,61.534 c 0,3.198 -2.58,5.778 -5.778,5.778 L 0,71.8 l 0,-1.234 30.684,0 c 2.469,0 4.488,-2.019 4.488,-4.544 l 0,-61.534 C 35.172,1.963 33.153,0 30.684,0 L 0,0 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    </g>
+
+    <!-- Left rounded-corner border arc -->
+    <g transform="matrix(6.0314757,0,0,-6.0314757,229.28488,100.0411)">
+      <path
+         d="m 0,0 0,1.234 -30.852,0 c -3.141,0 -5.721,-2.58 -5.721,-5.778 l 0,-61.534 c 0,-3.198 2.58,-5.778 5.721,-5.778 l 30.852,0 0,1.29 -30.852,0 c -2.469,0 -4.487,1.963 -4.487,4.488 l 0,61.534 c 0,2.525 2.018,4.544 4.487,4.544 L 0,0 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    </g>
+
+    <!-- Down arrow — left (bike) lane -->
+    <g transform="matrix(6.0314757,0,0,-6.0314757,114.92746,150.79051)">
+      <path
+         d="m 0,0 -2.917,0 0,-35.845 c 0,-0.224 -0.224,-0.505 -0.504,-0.505 l -0.113,0 -6.227,1.347 c -0.28,0 -0.561,-0.169 -0.617,-0.449 -0.056,-0.112 0,-0.225 0.056,-0.393 L 0,-53.795 l 10.266,17.95 c 0.168,0.281 0.056,0.617 -0.169,0.786 -0.112,0.056 -0.28,0.056 -0.392,0.056 L 3.478,-36.35 c -0.281,-0.056 -0.561,0.169 -0.617,0.393 l 0,0.112 L 2.861,0 0,0 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    </g>
+
+    <!-- Up arrow — right lane (motor traffic) -->
+    <g transform="matrix(6.0314757,0,0,-6.0314757,342.96671,475.25375)">
+      <path
+         d="m 0,0 2.861,0 0,35.845 c 0,0.224 0.281,0.505 0.561,0.505 l 0.112,0 6.227,-1.347 c 0.28,-0.056 0.504,0.169 0.561,0.449 0.056,0.112 0,0.28 -0.057,0.393 L 0,53.795 -10.322,35.845 c -0.112,-0.281 -0.056,-0.617 0.225,-0.729 0.112,-0.113 0.224,-0.113 0.336,-0.113 l 6.227,1.347 c 0.281,0.056 0.617,-0.169 0.673,-0.393 l 0,-0.112 L -2.861,0 0,0 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    </g>
+
+    <!--
+      Blue bike sign — RIGHT lane (mirrored from left).
+      Mirrored centre: left ↔ right, top ↔ bottom.
+        Original: from-left=110.286, from-right=338.341, from-top=169.843, from-bottom=278.784
+        Mirrored: new x = 4.641 + 338.341 = 342.982
+                  new y = 88.537 + 278.784 = 367.321
+      Scale unchanged: 0.2568.
+    -->
+    <g transform="translate(342.982,367.321) scale(0.2568) translate(-300,-300)">
+      <g transform="translate(306.93244,371.51351)">
+        <circle
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.597824"
+           cx="-6.9324298" cy="-71.513512" r="299.70108" />
+        <circle
+           style="fill:#00408b;fill-opacity:1;stroke:#00408b;stroke-width:0.577897;stroke-opacity:1"
+           cx="-6.9324298" cy="-71.513512" r="289.71106" />
+        <path
+           style="fill:#ffffff;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.352259"
+           d="m 115.96913,-170.32756 c 0.11272,-4.29052 -3.27249,-7.85891 -7.55949,-7.96811 l -42.52124,0.24658 c -3.46975,-0.10215 -6.35828,2.63843 -6.44987,6.10818 -0.081,3.15625 2.17697,5.82989 5.19583,6.35828 l 15.88338,3.93474 -10.1028,19.72653 -146.23135,0.1867 1.91911,-3.34999 -6.78487,-21.76259 c 0.11765,-4.49131 3.85477,-8.03856 8.34714,-7.91879 l 37.51351,0.14443 c 4.62235,0.14795 8.35947,-3.39578 8.47713,-7.89062 0.11765,-4.4913 -3.4289,-8.22878 -7.92126,-8.34502 l -36.86466,0.0599 c -12.72255,-0.1409 -23.08497,9.69418 -23.41151,22.15008 -0.16979,6.49214 2.42143,12.41714 6.70631,16.64778 l -30.89174,51.5426 c -9.73046,-4.73084 -19.93507,-7.18609 -30.70646,-7.4679 -43.08591,-1.12723 -78.93007,32.88694 -80.05835,75.9718 -1.12864,43.08837 32.88553,78.93077 75.97179,80.06152 43.08591,1.12723 78.93007,-32.88694 80.05836,-75.97179 0.69219,-26.42651 -11.83381,-50.12652 -31.56386,-64.76642 l 10.50015,-17.46503 81.71609,69.95168 c -1.1614,2.3848 -1.88916,5.40014 -1.97265,8.58104 -0.33148,12.66021 9.66318,23.19277 22.32374,23.52741 l 52.95023,-4.07212 c 7.92584,33.61965 37.6671,58.95767 73.78426,59.90172 43.08486,1.13076 78.93078,-32.88342 80.05801,-75.97179 1.12723,-43.08486 -32.88694,-78.93078 -75.9718,-80.05801 -12.27272,-0.32055 -23.96068,2.20867 -34.42279,6.98883 L 82.5855,-135.77793 c 0,0 12.73418,-22.27337 12.47351,-22.28041 8.4507,1.99731 15.31272,3.67406 15.21056,3.67054 2.86387,-0.1092 5.24162,-2.36718 5.3156,-5.22401 l 0.0317,0.78554 0.28181,-10.71926 0.0176,-0.6552 z m -269.72224,127.67291 c -5.92853,1.05326 -10.50086,6.15398 -10.66466,12.40658 -0.1874,7.14735 5.45474,13.09349 12.60173,13.28018 7.14699,0.1867 13.09278,-5.45297 13.27983,-12.60032 0.0437,-1.66618 0.0328,-3.2584 -0.50162,-4.73436 l 25.07101,-42.81362 c 14.66738,11.26526 23.64436,29.05436 23.12725,48.79498 -0.87713,33.48931 -28.73733,59.92638 -62.22558,59.04925 -33.4886,-0.87712 -59.92638,-28.73732 -59.04925,-62.22311 0.87712,-33.4893 28.73697,-59.92637 62.22557,-59.04925 7.83954,0.20431 15.29264,1.88811 22.0997,4.77664 l -25.71212,43.24689 z M 8.74206,-53.88468 c -3.16505,-0.081 -6.19695,0.47908 -8.97029,1.56756 l -84.68141,-71.86445 145.96504,-0.53544 -38.14547,71.00142 -14.68851,-0.2642 z m 90.02976,-23.9783 c -9.51452,7.50665 -16.74289,17.81376 -20.41695,29.71309 l 41.07697,3.36055 -20.62127,-33.12648 z m -9.1517,-14.88648 c -14.03049,10.49028 -24.43623,25.60574 -28.91698,43.1553 l -24.02515,-2.07128 36.55855,-67.32735 16.48574,26.47934 z m 23.74581,6.53793 c 7.65812,-3.19851 15.70725,-4.87527 24.54192,-4.6463 33.48578,0.87713 59.92638,28.73733 59.04925,62.22663 C 196.07997,4.85811 168.21977,31.29518 134.73047,30.41805 107.6241,29.71001 85.13938,11.32207 78.0167,-13.41711 l 59.5565,-4.73437 c 6.54146,-0.46146 11.68093,-5.70308 11.85353,-12.24806 0.16556,-6.35828 -4.41733,-11.73728 -10.52199,-12.7377 l -25.98618,-42.89463 z" />
       </g>
     </g>
+
   </g>
 </svg>

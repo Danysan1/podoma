@@ -1,55 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
-  <defs>
-    <clipPath id="circle-clip">
-      <circle cx="17.514" cy="17.514" r="17.514"/>
-    </clipPath>
-  </defs>
-  <!-- Background circle: asphalt road -->
-  <circle cx="17.514" cy="17.514" r="17.514" fill="#505050"/>
-  <g clip-path="url(#circle-clip)">
-    <g transform="translate(17.514,17.514)">
-      <!-- Sidewalk area (right side) -->
-      <rect x="2" y="-18" width="16" height="36" fill="#c8beb0"/>
-      <!-- Curb edge -->
-      <rect x="1" y="-18" width="1.5" height="36" fill="#9e9688"/>
-      <!-- Tile grid lines - horizontal -->
-      <line x1="2" y1="-14" x2="18" y2="-14" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="2" y1="-8" x2="18" y2="-8" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="2" y1="-2" x2="18" y2="-2" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="2" y1="4" x2="18" y2="4" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="2" y1="10" x2="18" y2="10" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="2" y1="16" x2="18" y2="16" stroke="#b0a696" stroke-width="0.3"/>
-      <!-- Tile grid lines - vertical (offset pattern) -->
-      <line x1="10" y1="-18" x2="10" y2="-14" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="6" y1="-14" x2="6" y2="-8" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="14" y1="-14" x2="14" y2="-8" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="10" y1="-8" x2="10" y2="-2" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="6" y1="-2" x2="6" y2="4" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="14" y1="-2" x2="14" y2="4" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="10" y1="4" x2="10" y2="10" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="6" y1="10" x2="6" y2="16" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="14" y1="10" x2="14" y2="16" stroke="#b0a696" stroke-width="0.3"/>
-      <line x1="10" y1="16" x2="10" y2="18" stroke="#b0a696" stroke-width="0.3"/>
-      <!-- Road marking - dashed center line -->
-      <rect x="-10" y="-14" width="0.8" height="4" rx="0.2" fill="#e0e0e0" opacity="0.6"/>
-      <rect x="-10" y="-6" width="0.8" height="4" rx="0.2" fill="#e0e0e0" opacity="0.6"/>
-      <rect x="-10" y="2" width="0.8" height="4" rx="0.2" fill="#e0e0e0" opacity="0.6"/>
-      <rect x="-10" y="10" width="0.8" height="4" rx="0.2" fill="#e0e0e0" opacity="0.6"/>
-      <!-- Walking person silhouette on sidewalk -->
-      <g transform="translate(9, -1)">
-        <!-- Head -->
-        <circle cx="0" cy="-5.5" r="1.5" fill="#5d5d5d"/>
-        <!-- Body -->
-        <line x1="0" y1="-4" x2="0" y2="2" stroke="#5d5d5d" stroke-width="1.2" stroke-linecap="round"/>
-        <!-- Left arm -->
-        <line x1="0" y1="-2.5" x2="-2.2" y2="0" stroke="#5d5d5d" stroke-width="1" stroke-linecap="round"/>
-        <!-- Right arm -->
-        <line x1="0" y1="-2.5" x2="2.2" y2="-0.5" stroke="#5d5d5d" stroke-width="1" stroke-linecap="round"/>
-        <!-- Left leg -->
-        <line x1="0" y1="2" x2="-1.8" y2="5.5" stroke="#5d5d5d" stroke-width="1" stroke-linecap="round"/>
-        <!-- Right leg -->
-        <line x1="0" y1="2" x2="1.8" y2="5.5" stroke="#5d5d5d" stroke-width="1" stroke-linecap="round"/>
-      </g>
-    </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="602mm"
+   height="602mm"
+   viewBox="0 0 602 602"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="g1">
+    <circle
+       style="fill:#000000;stroke-width:1.60533;stroke-linecap:round;paint-order:fill markers stroke"
+       id="path1-0"
+       cx="301"
+       cy="301"
+       r="301" />
+    <circle
+       style="fill:#00408b;stroke-width:1.6;stroke-linecap:round;paint-order:fill markers stroke"
+       id="path1"
+       cx="301"
+       cy="301"
+       r="300" />
+    <path
+       style="fill:#ffffff;stroke-width:5.89049;paint-order:markers stroke fill"
+       d="m 271.20238,248.62076 5.3655,26.31366 -87.88316,181.13028 c 0,0 -9.3872,19.29416 9.59369,30.14496 18.98117,10.8509 32.04807,-9.70718 32.04807,-9.70718 l 76.8977,-157.62657 53.6489,152.00618 c 0,0 11.425,26.84464 33.5951,18.1385 22.1703,-8.70594 11.1131,-34.99958 11.1131,-34.99958 l -63.1071,-178.32013 v -9.96345 l 6.647,-28.86833 c 0.6754,-1.22487 2.6649,-1.74777 3.8324,-0.76616 l 18.1365,19.55901 v 34.79922 c 0,11.03766 9.4543,17.9131 18.9089,18.00323 9.4542,0.0887 18.9086,-6.60517 18.9086,-18.00323 v -37.57958 c 0,-6.80977 -2.7926,-12.15683 -5.8813,-15.24573 l -73.5766,-79.19657 c -4.3399,-4.94573 -13.5575,-5.19264 -18.3938,-2.55485 l -22.5085,10.59304 c -4.5575,2.01885 -7.1269,4.95107 -10.1486,8.58378 l -80.55621,102.40485 c -16.52463,18.17676 13.78021,40.91244 27.57301,25.04165 l 41.954,-54.39748 c 1.2607,-1.62678 3.3255,-1.07893 3.8328,0.50979 z"
+       id="path1683-8-4-4-7" />
+    <circle
+       style="fill:none;stroke:#ffffff;stroke-width:10;paint-order:markers fill stroke"
+       id="path2"
+       cx="301"
+       cy="301"
+       r="295" />
+    <ellipse
+       style="fill:#ffffff;stroke-width:6.35731;paint-order:markers stroke fill"
+       id="path2679-7-6-1-2"
+       cx="286.4668"
+       cy="122.60898"
+       rx="29.570992"
+       ry="29.570974" />
   </g>
 </svg>

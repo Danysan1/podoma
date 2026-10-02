@@ -1,5 +1,5 @@
 {
-	"id": 119,
+	"id": 121,
 	"name": "2026-07_itoutdoor",
 	"title": "Outdoor",
 	"start_date": "2026-06-01",
@@ -12,7 +12,7 @@
 		"osmforum": "https://community.openstreetmap.org/t/progetto-del-mese-luglio-2026-gite-fuori-porta/144994"
 	},
 	"database": {
-		"osmium_tag_filter": "nw/amenity=drinking_water nw/amenity=bench nw/amenity=waste_basket nw/tourism=picnic_site nw/leisure=picnic_table",
+		"osmium_tag_filter": "nw/amenity=bench nw/amenity=waste_basket nw/tourism=picnic_site nw/leisure=picnic_table",
 		"imposm": {
 			"types": [
 				"point",
@@ -20,7 +20,6 @@
 			],
 			"mapping": {
 				"amenity": [
-					"drinking_water",
 					"bench",
 					"waste_basket"
 				],
@@ -75,7 +74,6 @@
 			"fields": [
 				{ "type": "hidden", "tags": { "source": "*" } },
 				{ "type": "select", "name": "Tipo di elemento", "tag": "_select1", "values": [
-					{ "l": "Fontanella", "tags": { "amenity": "drinking_water" } },
 					{ "l": "Panchina", "tags": { "amenity": "bench" } },
 					{ "l": "Cestino dei rifiuti", "tags": { "amenity": "waste_basket" } },
 					{ "l": "Area picnic", "tags": { "tourism": "picnic_site" } },
