@@ -47,12 +47,16 @@ fs.readdirSync(PROJECTS_PATH).forEach(projectDir => {
 					};
 					project.osmoseButtons[`${ds.item}_${ds.class || "all"}`] = ds.buttons;
 				});
-			project.idParams = queryParams(Object.assign({}, project.editors.all, project.editors.iD));
-			project.josmParams = queryParams(Object.assign({ changeset_comment: project.editors.all.comment, changeset_hashtags: project.editors.all.hashtags.split(",").join(" #") }, project.editors.JOSM));
+			
+			if (project.editors?.all && project.editors?.iD)
+				project.idParams = queryParams(Object.assign({}, project.editors.all, project.editors.iD));
+			
+			if(project.editors?.all && project.editors?.JOSM)
+				project.josmParams = queryParams(Object.assign({ changeset_comment: project.editors.all.comment, changeset_hashtags: project.editors.all.hashtags.split(",").join(" #") }, project.editors.JOSM));
 
-			// Replace NSI editors fields by actual value
-			if (project.editors && project.editors.pdm && project.editors.pdm.fields) {
-				project.editors.pdm.fields.map(async (f, id) => {
+			if (project.editors?.pdm?.fields) {
+				// Replace NSI editors fields by actual value
+				project.editors.pdm.fields.forEach(async (f, id) => {
 					if (f.type === "nsi") {
 						const nsi = await (await fetch(`https://github.com/osmlab/name-suggestion-index/raw/main/data/${f.path}.json`)).json();
 						f.type = "select";
@@ -72,6 +76,7 @@ fs.readdirSync(PROJECTS_PATH).forEach(projectDir => {
 					return f;
 				});
 			}
+			
 			projects[project.name] = project;
 		} else if (!project.links?.external_statistics) {
 			throw new Error("Missing both database.osmium_tag_filter and links.external_statistics in info.json");
