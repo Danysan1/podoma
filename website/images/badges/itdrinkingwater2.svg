@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
+  <!-- Background circle split diagonally -->
+  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
+  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
+  <!-- Drinking water tap icon -->
+  <g transform="translate(17.514,17.514)" fill="none">
+    <!-- Green grass ground -->
+    <ellipse cx="0" cy="13" rx="13" ry="3" fill="#66bb6a"/>
+    <ellipse cx="0" cy="12.5" rx="11" ry="2.2" fill="#81c784"/>
+    <!-- Grass blades -->
+    <path d="M-8,11 L-7.5,9 L-7,11" fill="#4caf50" stroke="none"/>
+    <path d="M-5,11.5 L-4.5,9.5 L-4,11.5" fill="#4caf50" stroke="none"/>
+    <path d="M5,11.5 L5.5,9.5 L6,11.5" fill="#4caf50" stroke="none"/>
+    <path d="M8,11 L8.5,9 L9,11" fill="#4caf50" stroke="none"/>
+    <path d="M-1,12 L-0.5,10 L0,12" fill="#4caf50" stroke="none"/>
+    <!-- Pillar -->
+    <rect x="-3" y="-6" width="6" height="18" rx="1" fill="#78909c" stroke="#546e7a" stroke-width="0.5"/>
+    <!-- Pillar highlight -->
+    <rect x="-2" y="-5.5" width="2" height="17" rx="0.5" fill="#90a4ae" opacity="0.5"/>
+    <!-- Top cap -->
+    <rect x="-4" y="-7" width="8" height="1.5" rx="0.5" fill="#607d8b" stroke="#455a64" stroke-width="0.4"/>
+    <!-- Spout arm -->
+    <path d="M3,-1 L7,-1 Q8.5,-1 8.5,0.5 L8.5,2" fill="none" stroke="#607d8b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Spout opening -->
+    <circle cx="8.5" cy="2.5" r="1" fill="#546e7a" stroke="#455a64" stroke-width="0.3"/>
+    <!-- Water stream (straight down) -->
+    <line x1="8.5" y1="3.5" x2="8.5" y2="10" stroke="#42a5f5" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>
+    <line x1="8" y1="3.8" x2="8" y2="9.5" stroke="#64b5f6" stroke-width="0.4" stroke-linecap="round" opacity="0.5"/>
+    <!-- Splash drops at bottom -->
+    <circle cx="7.5" cy="10.5" r="0.5" fill="#42a5f5" opacity="0.6"/>
+    <circle cx="9.5" cy="10.5" r="0.4" fill="#42a5f5" opacity="0.5"/>
+    <circle cx="8.5" cy="11" r="0.3" fill="#64b5f6" opacity="0.5"/>
+    <!-- Button -->
+    <circle cx="-3.5" cy="1" r="1" fill="#546e7a" stroke="#455a64" stroke-width="0.3"/>
+    <circle cx="-3.5" cy="1" r="0.5" fill="#607d8b"/>
+  </g>
+</svg>

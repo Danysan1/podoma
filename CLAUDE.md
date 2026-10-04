@@ -75,6 +75,10 @@ Conventions on this branch (follow them when adding a project):
   grep -h '^\s*"id"' projects/*/info.json | grep -o '[0-9]\+' | sort -n | uniq -d   # collisions (must be empty)
   grep -h '^\s*"id"' projects/*/info.json | grep -o '[0-9]\+' | sort -n | tail -1    # next id = this + 1
   ```
+- **The slug (the part of `name` after the last `_`) must be unique across all projects**, not just `id`. Per-project DB objects are named from the slug alone (`pdm_features_<slug>`, `pdm_project_<slug>_compare_tiles_filtered`, …), so a repeated topic in a later year (e.g. `2025-07_itdrinkingwater` + `2026-07_itdrinkingwater`) collides during DB init with `relation "…" already exists`; the badge file `<slug>.svg` would be shared too. Give the newer project a distinct slug (suffix a number, e.g. `2026-07_itdrinkingwater2`, directory and `name` renamed together, plus its own `<slug>.svg` badge). Check before adding:
+  ```bash
+  for d in projects/*/; do n=$(basename $d); echo "${n##*_}"; done | sort | uniq -d   # slug collisions (must be empty)
+  ```
 - Dates follow a fixed pattern around the campaign month M: `soft_start_date` = M-01, `soft_end_date` = (M+1)-01, `start_date` = one month before `soft_start_date`, `end_date` = two months after `soft_end_date`. The hard dates widen the data-collection window; every project on this branch also sets `use_soft_dates: true` at the top level of `info.json`, so the **soft** dates are what the site uses to decide past/current/next and to bound contribution counting for that project.
 - A single month can host more than one concurrent project when the topic naturally splits (e.g. `2025-12_itaed` + `2025-12_ithydrant`, or `2026-08_itsigns`/`itlanes`/`itdestination`) — each still needs its own unique `id` and its own badge (see below).
 
