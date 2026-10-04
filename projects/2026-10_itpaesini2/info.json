@@ -6,39 +6,7 @@
 	"end_date": "2026-11-01",
 	"links": {
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#%E2%AD%90_Ottobre:_#PaesiniNonMappati_v2",
-		"osmforum": "https://community.openstreetmap.org/t/progetto-di-ottobre-2026-paesininonmappati-v2/148276"
-	},
-	"database": {
-		"osmium_tag_filter": "nwr/building=*",
-		"imposm": {
-			"types": [
-				"point",
-				"polygon"
-			],
-			"mapping": {
-				"building": [
-					"__any__"
-				]
-			}
-		}
-	},
-	"datasources": [
-		{
-			"source": "osm",
-			"name": "Edifici in OSM",
-			"description": "Questo edificio esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
-		},
-		{
-			"source": "stats"
-		}
-	],
-	"statistics": {
-		"count": true,
-		"length": false,
-		"feature_name": "edifici",
-		"points": {
-			"add": 1,
-			"edit": 1
-		}
+		"osmforum": "https://community.openstreetmap.org/t/progetto-di-ottobre-2026-paesininonmappati-v2/148276",
+		"external_statistics": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026#%E2%AD%90_Ottobre:_#PaesiniNonMappati_v2"
 	}
 }

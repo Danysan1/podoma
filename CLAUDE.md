@@ -88,6 +88,12 @@ Key perimeter-filtering rule (from docs/DEVELOP.md): `database.osmium_tag_filter
 
 `website/projects.js` loads and precomputes every `projects/*/info.json` + `howto.md` into memory once at server startup (no hot reload) — restart the server after editing a project.
 
+**After adding or editing any project, verify that all projects still load.** `projects.js` only `console.error`s "Invalid project" on a failure (no crash), so a broken project is silently dropped. Run:
+```bash
+node -e "const p=require('./website/projects.js');const d=require('fs').readdirSync('projects');const a=Object.keys(p.projects_including_external);console.log(a.length+'/'+d.length+' loaded; missing:',d.filter(x=>!a.includes(x)))"
+```
+There must be no "Invalid project" output and `missing: []`. Then run the id/slug collision checks and confirm the `website/images/badges/<slug>.svg` badge exists (see the conventions below).
+
 ### Data pipeline (`db/`)
 
 Numbered scripts represent an ordered pipeline, split between Node.js generators and the SQL/shell scripts they produce and invoke:
