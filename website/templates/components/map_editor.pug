@@ -5,23 +5,23 @@ form#pdm-editor-form
 	if editors.pdm && editors.pdm.fields
 		div.alert.alert-info#pdm-editor-mode
 
-		button#pdm-edit-position.btn.btn-secondary.btn-block.mb-2.d-none(type="button")
-			i.fa.fa-location-dot.mr-2
+		button#pdm-edit-position.btn.btn-secondary.w-100.mb-2.d-none(type="button")
+			i.fa.fa-location-dot.me-2
 			| #{__("Edit location")}
 
 		each field in editors.pdm.fields
 			if field.type !== "hidden"
-				div.form-group
+				div.mb-3
 					label(for=`pdm-editor_${field.tag}`)= field.name
 						if field.help
-							a(class="badge badge-pill text-light ml-2 bg-info ml-2" href=field.help target="_blank") ?
+							a.badge.rounded-pill.text-light.bg-info.ms-2(href=field.help target="_blank") ?
 
 					if ["text", "number", "email"].includes(field.type)
 						input.form-control(id=`pdm-editor_${field.tag}` name=field.tag type=field.type required=(!field.optional || false))
 					else if field.type === "textarea"
 						textarea.form-control(id=`pdm-editor_${field.tag}` rows="3" name=field.tag required=(!field.optional || false))
 					else if field.type === "select"
-						select.form-control(id=`pdm-editor_${field.tag}` name=field.tag required=(!field.optional || false))
+						select.form-select(id=`pdm-editor_${field.tag}` name=field.tag required=(!field.optional || false))
 							option(value="")
 							each kv in field.values
 								option(value=(kv.v || JSON.stringify(kv.tags)))= kv.l
@@ -49,19 +49,19 @@ form#pdm-editor-form
 							div.row.mx-n4.mb-n2.align-items-center
 								each icon, id in field.values
 									div.px-2.mb-2.col-4
-										div.custom-control.custom-checkbox.image-checkbox
-											input.custom-control-input(type="checkbox" value=JSON.stringify(icon.tags) id=`pdm-editor_${field.tag}_${id}`)
-											label.custom-control-label(for=`pdm-editor_${field.tag}_${id}` title=icon.label)
+										div.form-check.image-checkbox
+											input.form-check-input(type="checkbox" value=JSON.stringify(icon.tags) id=`pdm-editor_${field.tag}_${id}`)
+											label.form-check-label(for=`pdm-editor_${field.tag}_${id}` title=icon.label)
 												img.img-fluid(src=`/images/form/${icon.icon}.png`)
 												p= icon.label
 
 					if field.description
 						small.form-text.text-muted= field.description
 
-		div.btn-group.btn-block(role="group")
+		div.btn-group.w-100(role="group")
 			button#pdm-editor-submit.btn.btn-success.w-50(type="submit" title=__("Send info to OpenStreetMap"))
 			button#pdm-editor-cancel.btn.btn-warning.w-50(type="button" title=__("Go back to map without sending to OpenStreetMap"))
-				i.fa.fa-ban.mr-2
+				i.fa.fa-ban.me-2
 				| #{__("Cancel")}
 
 form#pdm-editor-note.d-none
@@ -69,12 +69,12 @@ form#pdm-editor-note.d-none
 	div.form-group
 		label(for="pdm-editor-note-txt")= __("Comment")
 		textarea.form-control(name="note" rows="3" required=true)
-	div.btn-group.btn-block(role="group")
+	div.btn-group.w-100(role="group")
 		button.btn.btn-success.w-50(type="submit" title=__("Send map comment to OpenStreetMap"))
-			i.fa.fa-plus.mr-2
+			i.fa.fa-plus.me-2
 			| #{__("Create")}
 		button#pdm-editor-note-cancel.btn.btn-warning.w-50(type="button" title=__("Go back to map without sending to OpenStreetMap"))
-			i.fa.fa-ban.mr-2
+			i.fa.fa-ban.me-2
 			| #{__("Cancel")}
 
 div#pdm-editor-wait.text-center.d-none
@@ -83,10 +83,12 @@ div#pdm-editor-wait.text-center.d-none
 
 div#pdm-editor-done.d-none
 	p= __("Your contribution has been taken into account, thank you!")
-	button#pdm-editor-done-btnmap.btn.btn-outline-primary.btn-block.d-md-none(type="button")= __("Go back to map")
-	button#pdm-editor-done-btnok.btn.btn-outline-primary.btn-block.d-none.d-md-block(type="button")= __("OK")
+	button#pdm-editor-done-btnmap.btn.btn-outline-primary.w-100.d-md-none(type="button")= __("Go back to map")
+	button#pdm-editor-done-btnok.btn.btn-outline-primary.w-100.d-none.d-md-block(type="button")= __("OK")
 
-script.
+script(type="module").
+	import * as maplibregl from "/lib/maplibre-gl/maplibre-gl.mjs";
+	
 	const editorModeDom = document.getElementById("pdm-editor-mode");
 	const editorFormDom = document.getElementById("pdm-editor-form");
 	const editorNoteDom = document.getElementById("pdm-editor-note");
@@ -102,7 +104,7 @@ script.
 	//
 
 	// Show proper editing mode (note or feature)
-	function showEditingMode() {
+	window.showEditingMode = function () {
 		if(editorModeDom) {
 			if(window.osm_user) { editorModeDom.innerHTML = "#{__("You are logged in: this form will directly edit OpenStreetMap")}"; }
 			else { editorModeDom.innerHTML = "#{__("You are not logged in: this form will create an OpenStreetMap note")}"; }
@@ -110,7 +112,7 @@ script.
 	}
 
 	// Show prompt before leaving page
-	function askBeforeUnload(e) {
+	window.askBeforeUnload = function (e) {
 		e.preventDefault();
 		e.returnValue = "#{__("If you leave the page, the current modifications will be lost.")}";
 		return e.returnValue;
@@ -121,7 +123,7 @@ script.
 	window.addEventListener("osm_logout", showEditingMode);
 
 	// Check if an OSM feature tags matches pattern PdM tags
-	function checkFeatureMatchesPatternTags(osmTags, pdmKey, pdmPattern) {
+	window.checkFeatureMatchesPatternTags = function (osmTags, pdmKey, pdmPattern) {
 		if(typeof pdmPattern !== "object") {
 			return false;
 		}
@@ -144,7 +146,7 @@ script.
 	}
 
 	// Load form with existing tags
-	function loadForm() {
+	window.loadForm = function () {
 		editorFormDom.reset();
 
 		// Prefill form with optional tags
@@ -202,7 +204,7 @@ script.
 	}
 
 	// Reset map and sidebar on cancel / done
-	function cancelEdit(close = true, keepPanel = false) {
+	window.cancelEdit = function (close = true, keepPanel = false) {
 		currentEditorData = null;
 		showMarker();
 		window.onbeforeunload = null;
@@ -227,7 +229,7 @@ script.
 
 	// First editing step : ask location on map
 	// Options can be used to pre-fill tags and close note/osmose issue
-	function onStartNewFeature(options = {}) {
+	window.onStartNewFeature = function (options = {}) {
 		window.dispatchEvent(new CustomEvent("pdm_sidebar_use", { detail: { close: "noCancelLoc" } }));
 		currentEditorData = options;
 		currentEditorData.mode = "add";
@@ -238,11 +240,11 @@ script.
 	}
 
 	// Second step : once located, ask for details
-	function onNewFeatureLocated(coordinates) {
+	window.onNewFeatureLocated = function (coordinates) {
 		currentEditorData.coordinates = coordinates;
 		currentEditorData.usedZoom = map.getZoom();
 		editorMoveButton.classList.add("d-none");
-		editorSubmitButton.innerHTML = `<i class="fa fa-plus mr-2"></i> #{__("Create")}`;
+		editorSubmitButton.innerHTML = `<i class="fa fa-plus me-2"></i> #{__("Create")}`;
 		loadForm();
 		editorFormDom.addEventListener("submit", onFeatureFormSubmit);
 		setTimeout(() => showMarker(coordinates), 500);
@@ -254,13 +256,13 @@ script.
 	//
 
 	// Start
-	function onStartEditFeature(options = {}) {
+	window.onStartEditFeature = function (options = {}) {
 		if(!options.osmid) { cancelEdit(); }
 
 		currentEditorData = options;
 		currentEditorData.mode = "edit";
 		editorMoveButton.classList.add("d-none");
-		editorSubmitButton.innerHTML = `<i class="fa fa-check mr-2"></i> #{__("Validate")}`;
+		editorSubmitButton.innerHTML = `<i class="fa fa-check me-2"></i> #{__("Validate")}`;
 		loadForm();
 		editorFormDom.addEventListener("submit", onFeatureFormSubmit);
 
@@ -285,7 +287,7 @@ script.
 	}
 
 	// Change coordinates
-	function onEditedFeatureMoved(coordinates) {
+	window.onEditedFeatureMoved = function (coordinates) {
 		currentEditorData.coordinates = coordinates;
 		currentEditorData.usedZoom = map.getZoom();
 		window.dispatchEvent(new CustomEvent("pdm_sidebar_use", { detail: { panel: "editor", open: true } }));
@@ -304,7 +306,7 @@ script.
 	}
 
 	// Check and send to OSM
-	function onFeatureFormSubmit(e) {
+	window.onFeatureFormSubmit = function (e) {
 		e.preventDefault();
 		showMarker();
 		const formData = Object.fromEntries([...new FormData(e.target)].filter(kv => kv[0] && !kv[0].startsWith("_") && kv[1] && kv[1].toString().trim() !== ""));
@@ -514,7 +516,7 @@ script.
 	//
 
 	// Start
-	function onStartTextNote(options = {}) {
+	window.onStartTextNote = function (options = {}) {
 		currentEditorData = options;
 		if(options.coordinates || options.originalCoordinates) { map.setCenter(options.coordinates || options.originalCoordinates); }
 		window.dispatchEvent(new CustomEvent("pdm_sidebar_use", { detail: { close: "noCancelLoc" } }));
@@ -523,7 +525,7 @@ script.
 
 	// After asking for coordinates, display form
 	// Second step : once located, ask for details
-	function onNewNoteLocated(coordinates) {
+	window.onNewNoteLocated = function (coordinates) {
 		currentEditorData.coordinates = coordinates;
 		currentEditorData.usedZoom = map.getZoom();
 		editorNoteDom.reset();
@@ -538,7 +540,7 @@ script.
 	}
 
 	// Saving note
-	function onNoteFormSubmit(e) {
+	window.onNoteFormSubmit = function (e) {
 		e.preventDefault();
 		showMarker();
 
