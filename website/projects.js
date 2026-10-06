@@ -48,34 +48,30 @@ fs.readdirSync(PROJECTS_PATH).forEach(projectDir => {
 					project.osmoseButtons[`${ds.item}_${ds.class || "all"}`] = ds.buttons;
 				});
 			
-			if (project.editors?.all && project.editors?.iD)
+			if (project.editors?.all || project.editors?.iD)
 				project.idParams = queryParams(Object.assign({}, project.editors.all, project.editors.iD));
 			
-			if(project.editors?.all && project.editors?.JOSM)
-				project.josmParams = queryParams(Object.assign({ changeset_comment: project.editors.all.comment, changeset_hashtags: project.editors.all.hashtags?.split(",")?.join(" #") }, project.editors.JOSM));
+			if(project.editors?.all || project.editors?.JOSM)
+				project.josmParams = queryParams(Object.assign({ changeset_comment: project.editors.all?.comment, changeset_hashtags: project.editors.all?.hashtags?.split(",")?.join(" #") }, project.editors.JOSM));
 
-			if (project.editors?.pdm?.fields) {
-				// Replace NSI editors fields by actual value
-				project.editors.pdm.fields.forEach(async (f, id) => {
-					if (f.type === "nsi") {
-						const nsi = await (await fetch(`https://github.com/osmlab/name-suggestion-index/raw/main/data/${f.path}.json`)).json();
-						f.type = "select";
-						f.tag = "_select" + id;
+			// Replace NSI editors fields by actual value
+			project.editors?.pdm?.fields
+				?.filter(f => f.type === "nsi")
+				?.forEach(async (f, id) => {
+					const nsi = await (await fetch(`https://github.com/osmlab/name-suggestion-index/raw/main/data/${f.path}.json`)).json();
+					f.type = "select";
+					f.tag = "_select" + id;
 
-						f.values = nsi.items
-							.filter(it => !f.locationSet || !it.locationSet || !it.locationSet.include || it.locationSet.include.includes("001") || it.locationSet.include.includes(f.locationSet))
-							.map(it => ({
-								l: it.displayName,
-								tags: it.tags
-							}));
+					f.values = nsi.items
+						.filter(it => !f.locationSet || !it.locationSet || !it.locationSet.include || it.locationSet.include.includes("001") || it.locationSet.include.includes(f.locationSet))
+						.map(it => ({
+							l: it.displayName,
+							tags: it.tags
+						}));
 
-						delete f.path;
-						delete f.locationSet;
-					}
-
-					return f;
+					delete f.path;
+					delete f.locationSet;
 				});
-			}
 			
 			projects[project.name] = project;
 		} else if (!project.links?.external_statistics) {
