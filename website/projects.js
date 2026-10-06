@@ -52,7 +52,7 @@ fs.readdirSync(PROJECTS_PATH).forEach(projectDir => {
 				project.idParams = queryParams(Object.assign({}, project.editors.all, project.editors.iD));
 			
 			if(project.editors?.all && project.editors?.JOSM)
-				project.josmParams = queryParams(Object.assign({ changeset_comment: project.editors.all.comment, changeset_hashtags: project.editors.all.hashtags.split(",").join(" #") }, project.editors.JOSM));
+				project.josmParams = queryParams(Object.assign({ changeset_comment: project.editors.all.comment, changeset_hashtags: project.editors.all.hashtags?.split(",")?.join(" #") }, project.editors.JOSM));
 
 			if (project.editors?.pdm?.fields) {
 				// Replace NSI editors fields by actual value
