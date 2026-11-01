@@ -1,14 +1,15 @@
 {
 	"id": 127,
 	"name": "2026-11_itfuel",
-	"title": "Distributori di carburante",
+	"title": "Stazioni di rifornimento",
 	"start_date": "2026-10-01",
 	"soft_start_date": "2026-11-01",
 	"soft_end_date": "2026-12-01",
 	"end_date": "2027-02-01",
 	"use_soft_dates": true,
 	"links": {
-		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026",
+		"osmforum": "https://community.openstreetmap.org/t/progetto-di-novembre-2026-stazioni-di-rifornimento/149502"
 	},
 	"database": {
 		"osmium_tag_filter": "nwr/amenity=fuel nwr/disused:amenity=fuel",
@@ -30,35 +31,35 @@
 	"datasources": [
 		{
 			"source": "osm",
-			"name": "Distributori in OSM",
-			"description": "Questo distributore esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario. Se è chiuso, marcalo come dismesso o rimuovilo."
+			"name": "Stazioni in OSM",
+			"description": "Questa stazione esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario. Se è chiusa, marcala come dismessa o rimuovila."
 		},
 		{
 			"source": "osmose",
 			"item": "7250",
 			"country": "italy*",
-			"name": "Osmose: distributori (7250)",
+			"name": "ref:mise mancante o non valido",
 			"description": "Segnalazione Osmose su un distributore: verificala a mano prima di applicarla, e sostituisci il vecchio ref:mise invece di aggiungerne uno nuovo."
 		},
 		{
 			"source": "osmose",
 			"item": "8200",
 			"country": "italy*",
-			"name": "Osmose: distributori (8200)",
+			"name": "Osmose: stazione mancante su OSM",
 			"description": "Segnalazione Osmose su un distributore: verificala a mano prima di applicarla, e sostituisci il vecchio ref:mise invece di aggiungerne uno nuovo."
 		},
 		{
 			"source": "osmose",
 			"item": "8201",
 			"country": "italy*",
-			"name": "Osmose: distributori (8201)",
+			"name": "Osmose: stazione da integrare",
 			"description": "Segnalazione Osmose su un distributore: verificala a mano prima di applicarla, e sostituisci il vecchio ref:mise invece di aggiungerne uno nuovo."
 		},
 		{
 			"source": "osmose",
 			"item": "8202",
 			"country": "italy*",
-			"name": "Osmose: distributori (8202)",
+			"name": "Osmose: necessita aggiornamento",
 			"description": "Segnalazione Osmose su un distributore: verificala a mano prima di applicarla, e sostituisci il vecchio ref:mise invece di aggiungerne uno nuovo."
 		},
 		{
@@ -80,8 +81,8 @@
 	"statistics": {
 		"count": true,
 		"length": false,
-		"feature_name": "distributori",
-		"osmose_tasks": "distributori completati",
+		"feature_name": "stazioni",
+		"osmose_tasks": "stazioni completate",
 		"points": {
 			"add": 3,
 			"edit": 1,
@@ -90,7 +91,7 @@
 	},
 	"editors": {
 		"all": {
-			"comment": "Aggiunta distributori di carburante",
+			"comment": "Aggiunta stazioni di rifornimento",
 			"hashtags": "progettodelmese"
 		},
 		"pdm": {
@@ -99,8 +100,8 @@
 				{ "type": "nsi", "name": "Marchio", "path": "brands/amenity/fuel", "locationSet": "it", "optional": true }
 			],
 			"title": {
-				"add": "Aggiungi un distributore mancante",
-				"edit": "Completa questo distributore"
+				"add": "Aggiungi una stazione mancante",
+				"edit": "Completa questa stazione"
 			}
 		}
 	}
