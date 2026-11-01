@@ -85,6 +85,7 @@
 			"fields": [
 				{ "type": "hidden", "tags": { "highway": "bus_stop", "public_transport": "platform", "bus": "yes", "shelter": "*", "source": "*" } },
 				{ "type": "text", "name": "Nome", "tag": "name", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:name", "optional": true },
+				{ "type": "nsi", "name": "Rete / azienda di trasporto", "path": "transit/route/bus", "locationSet": "it", "optional": true },
 				{ "type": "3states", "name": "Pensilina", "tag": "shelter" },
 				{ "type": "3states", "name": "Illuminazione", "tag": "lit", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:lit" },
 				{ "type": "select", "name": "Accessibilità in sedia a rotelle", "tag": "wheelchair", "help": "https://wiki.openstreetmap.org/wiki/IT:Key:wheelchair", "values": [

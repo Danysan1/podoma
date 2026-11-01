@@ -11,7 +11,7 @@
 		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"
 	},
 	"database": {
-		"osmium_tag_filter": "nwr/amenity=fuel",
+		"osmium_tag_filter": "nwr/amenity=fuel nwr/disused:amenity=fuel",
 		"imposm": {
 			"types": [
 				"point",
@@ -19,6 +19,9 @@
 			],
 			"mapping": {
 				"amenity": [
+					"fuel"
+				],
+				"disused:amenity": [
 					"fuel"
 				]
 			}
@@ -28,7 +31,35 @@
 		{
 			"source": "osm",
 			"name": "Distributori in OSM",
-			"description": "Questo distributore esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+			"description": "Questo distributore esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario. Se è chiuso, marcalo come dismesso o rimuovilo."
+		},
+		{
+			"source": "osmose",
+			"item": "7250",
+			"country": "italy*",
+			"name": "Osmose: distributori (7250)",
+			"description": "Segnalazione Osmose su un distributore: verificala a mano prima di applicarla, e sostituisci il vecchio ref:mise invece di aggiungerne uno nuovo."
+		},
+		{
+			"source": "osmose",
+			"item": "8200",
+			"country": "italy*",
+			"name": "Osmose: distributori (8200)",
+			"description": "Segnalazione Osmose su un distributore: verificala a mano prima di applicarla, e sostituisci il vecchio ref:mise invece di aggiungerne uno nuovo."
+		},
+		{
+			"source": "osmose",
+			"item": "8201",
+			"country": "italy*",
+			"name": "Osmose: distributori (8201)",
+			"description": "Segnalazione Osmose su un distributore: verificala a mano prima di applicarla, e sostituisci il vecchio ref:mise invece di aggiungerne uno nuovo."
+		},
+		{
+			"source": "osmose",
+			"item": "8202",
+			"country": "italy*",
+			"name": "Osmose: distributori (8202)",
+			"description": "Segnalazione Osmose su un distributore: verificala a mano prima di applicarla, e sostituisci il vecchio ref:mise invece di aggiungerne uno nuovo."
 		},
 		{
 			"source": "background",
@@ -61,6 +92,16 @@
 		"all": {
 			"comment": "Aggiunta distributori di carburante",
 			"hashtags": "progettodelmese"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "amenity": "fuel", "source": "*" } },
+				{ "type": "nsi", "name": "Marchio", "path": "brands/amenity/fuel", "locationSet": "it", "optional": true }
+			],
+			"title": {
+				"add": "Aggiungi un distributore mancante",
+				"edit": "Completa questo distributore"
+			}
 		}
 	}
 }
