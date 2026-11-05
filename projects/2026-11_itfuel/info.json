@@ -36,13 +36,6 @@
 		},
 		{
 			"source": "osmose",
-			"item": "7250",
-			"country": "italy*",
-			"name": "ref:mise mancante o non valido",
-			"description": "Segnalazione Osmose su un distributore: verificala a mano prima di applicarla, e sostituisci il vecchio ref:mise invece di aggiungerne uno nuovo."
-		},
-		{
-			"source": "osmose",
 			"item": "8200",
 			"country": "italy*",
 			"name": "Osmose: stazione mancante su OSM",
@@ -83,6 +76,7 @@
 		"length": false,
 		"feature_name": "stazioni",
 		"osmose_tasks": "stazioni completate",
+		"osmose_separate_axis": true,
 		"points": {
 			"add": 3,
 			"edit": 1,
