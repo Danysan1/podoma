@@ -1,0 +1,73 @@
+{
+	"id": 128,
+	"name": "2026-12_itcycleway",
+	"title": "Ciclabili e percorsi ciclopedonali",
+	"start_date": "2026-11-01",
+	"soft_start_date": "2026-11-01",
+	"soft_end_date": "2027-01-01",
+	"end_date": "2027-03-01",
+	"use_soft_dates": true,
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/IT:Italia/Progetto_del_Mese/2026"
+	},
+	"database": {
+		"osmium_tag_filter": "w/highway=cycleway w/highway=footway w/bicycle=designated",
+		"imposm": {
+			"types": [
+				"linestring"
+			],
+			"mapping": {
+				"highway": [
+					"cycleway",
+					"footway"
+				],
+				"bicycle": [
+					"designated"
+				]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osm",
+			"name": "Elementi in OSM",
+			"description": "Questo percorso esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
+		},
+		{
+			"source": "notes",
+			"name": "Note OSM",
+			"terms": ["nicebike"]
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Immagini stradali (Mapillary)",
+			"icon": "picture"
+		},
+		{
+			"source": "background",
+			"tiles": "panoramax",
+			"name": "Immagini stradali (Panoramax)",
+			"icon": "picture"
+		},
+		{
+			"source": "stats"
+		}
+	],
+	"statistics": {
+		"count": true,
+		"length": true,
+		"feature_name": "ciclabili",
+		"points": {
+			"add": 3,
+			"edit": 1,
+			"note": 1
+		}
+	},
+	"editors": {
+		"all": {
+			"comment": "Aggiunta informazioni su ciclabili e percorsi ciclopedonali #nicebike",
+			"hashtags": "progettodelmese,nicebike"
+		}
+	}
+}

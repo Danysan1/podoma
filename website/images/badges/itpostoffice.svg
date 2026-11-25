@@ -1,28 +1,100 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="132.39" height="132.39" viewBox="0 0 35.028 35.028">
-  <!-- Background circle split diagonally -->
-  <path d="M17.514 0C7.842 0 0 7.842 0 17.514c0 4.927 2.003 9.387 5.24 12.615L30.491 4.878A17.449 17.449 0 0017.514 0" fill="#9ddff1"/>
-  <path d="M30.491 4.878L5.24 30.129a17.449 17.449 0 0012.274 4.9c9.672 0 17.514-7.842 17.514-17.515 0-4.927-2.003-9.387-5.537-12.636" fill="#63c9e3"/>
-  <!-- Envelope icon -->
-  <g transform="translate(17.514,17.514)" fill="none">
-    <!-- Envelope body -->
-    <rect x="-11" y="-7" width="22" height="15" rx="1" fill="#fff9c4" stroke="#f9a825" stroke-width="0.6"/>
-    <!-- Envelope flap (top triangle) -->
-    <path d="M-11,-7 L0,3 L11,-7" fill="#ffecb3" stroke="#f9a825" stroke-width="0.6" stroke-linejoin="round"/>
-    <!-- Bottom fold lines -->
-    <path d="M-11,8 L-3,1" stroke="#f9a825" stroke-width="0.4"/>
-    <path d="M11,8 L3,1" stroke="#f9a825" stroke-width="0.4"/>
-    <!-- Stamp -->
-    <rect x="5.5" y="-5.5" width="4" height="4.5" rx="0.3" fill="#e53935" stroke="#c62828" stroke-width="0.3"/>
-    <!-- Stamp inner detail -->
-    <rect x="6" y="-5" width="3" height="3.5" rx="0.2" fill="#ef5350"/>
-    <!-- Stamp perforations (dots around stamp) -->
-    <circle cx="5.5" cy="-4" r="0.25" fill="#fff9c4"/>
-    <circle cx="5.5" cy="-2.5" r="0.25" fill="#fff9c4"/>
-    <circle cx="9.5" cy="-4" r="0.25" fill="#fff9c4"/>
-    <circle cx="9.5" cy="-2.5" r="0.25" fill="#fff9c4"/>
-    <circle cx="7" cy="-5.5" r="0.25" fill="#fff9c4"/>
-    <circle cx="8.5" cy="-5.5" r="0.25" fill="#fff9c4"/>
-    <circle cx="7" cy="-1" r="0.25" fill="#fff9c4"/>
-    <circle cx="8.5" cy="-1" r="0.25" fill="#fff9c4"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="Italian_traffic_signs_-_icona_poste.svg"
+   height="200"
+   width="200"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   version="1.1"
+   id="svg2816">
+  <metadata
+     id="metadata2822">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs2820">
+    <inkscape:perspective
+       id="perspective2824"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3626" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3648" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:document-rotation="0"
+     inkscape:current-layer="svg2816"
+     inkscape:window-maximized="1"
+     inkscape:window-y="25"
+     inkscape:window-x="0"
+     inkscape:cy="119.49211"
+     inkscape:cx="145.76433"
+     inkscape:zoom="2.2307128"
+     showgrid="false"
+     id="namedview2818"
+     inkscape:window-height="793"
+     inkscape:window-width="1440"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <g
+     transform="matrix(0.96829113,0,0,0.96829113,3.3839849,2.9667235)"
+     id="g3700">
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffda00;fill-opacity:1;stroke:#00408b;stroke-width:24.71133232;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path2828"
+       sodipodi:cx="1431.6514"
+       sodipodi:cy="1021.6494"
+       sodipodi:rx="548.11798"
+       sodipodi:ry="529.711"
+       d="m 1979.7693,1021.6494 c 0,292.5513 -245.4007,529.711 -548.1179,529.711 -302.7172,0 -548.11801,-237.1597 -548.11801,-529.711 0,-292.55129 245.40081,-529.71098 548.11801,-529.71098 302.7172,0 548.1179,237.15969 548.1179,529.71098 z"
+       transform="matrix(0.1804757,0,0,0.18727267,-158.26565,-91.1397)" />
+    <g
+       transform="matrix(0.19557729,5.0743403e-4,1.1896787e-4,0.17281264,-144.2394,-94.203799)"
+       style="font-size:613.50372314px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#00408b;fill-opacity:1;stroke:none;font-family:Transport Heavy;-inkscape-font-specification:'Transport Heavy,'"
+       id="text2830">
+      <path
+         d="m 896.69174,1343.4888 0,-439.15846 142.29216,0 c 53.9209,4.4e-4 89.0696,2.19723 105.4459,6.59037 25.1629,6.5908 46.2321,20.91985 63.2077,42.9872 16.9748,22.06813 25.4624,50.57649 25.4628,85.52509 -4e-4,26.9609 -4.8933,49.6277 -14.6786,68.0006 -9.786,18.3734 -22.2179,32.8023 -37.2955,43.2868 -15.0783,10.4849 -30.4059,17.4247 -45.9828,20.8196 -21.1694,4.194 -51.8245,6.2909 -91.9657,6.2908 l -57.8155,0 0,165.658 z m 88.67046,-364.86699 0,124.61799 48.5291,0 c 34.9487,2e-4 58.3146,-2.2964 70.0976,-6.89 11.7825,-4.593 21.019,-11.7825 27.7095,-21.5685 6.69,-9.7854 10.0351,-21.1688 10.0354,-34.1501 -3e-4,-15.9763 -4.6935,-29.1571 -14.0795,-39.5422 -9.3865,-10.38449 -21.2692,-16.875 -35.6479,-19.47157 -10.5848,-1.99672 -31.8537,-2.99526 -63.8068,-2.99562 z"
+         style="font-weight:bold;fill:#00408b;font-family:Arial;-inkscape-font-specification:Arial Bold;fill-opacity:1"
+         id="path3767" />
+      <path
+         d="m 1405.3486,1343.4888 0,-364.86699 -130.3096,0 0,-74.29147 348.9901,0 0,74.29147 -130.01,0 0,364.86699 z"
+         style="font-weight:bold;fill:#00408b;font-family:Arial;-inkscape-font-specification:Arial Bold;fill-opacity:1"
+         id="path3769" />
+    </g>
   </g>
 </svg>
