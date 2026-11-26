@@ -34,11 +34,6 @@
 			"description": "Questo percorso esiste già in OSM. Puoi completare o modificare le sue informazioni se necessario."
 		},
 		{
-			"source": "notes",
-			"name": "Note OSM",
-			"terms": ["nicebike"]
-		},
-		{
 			"source": "background",
 			"tiles": "mapillary",
 			"name": "Immagini stradali (Mapillary)",
@@ -66,8 +61,8 @@
 	},
 	"editors": {
 		"all": {
-			"comment": "Aggiunta informazioni su ciclabili e percorsi ciclopedonali #nicebike",
-			"hashtags": "progettodelmese,nicebike"
+			"comment": "Aggiunta informazioni su ciclabili e percorsi ciclopedonali",
+			"hashtags": "progettodelmese"
 		}
 	}
 }
