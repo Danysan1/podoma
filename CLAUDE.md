@@ -34,14 +34,15 @@ npm run changes:update      # (re)generates db/21_changes_update_tmp.sh
 npm run projects:update     # (re)generates db/31_projects_update_tmp.sh
 ```
 
-Each `*:update` npm script only *generates* a shell script from the current `projects/*/info.json` files; the generated `db/*_tmp.sh` must then be executed (with `init` or `update` as first arg where applicable) to actually touch the database. `dockerfiles/docker-entrypoint.sh` shows the canonical command sequences (`install`, `init`, `run`, `update_daily`, `update_features`, `update_changes`, `update_projects`, `update_imposm`, `uninstall`).
+Each `*:update` npm script only *generates* a shell script from the current `projects/*/info.json` files; the generated `db/*_tmp.sh` must then be executed (with `init` or `update` as first arg where applicable) to actually touch the database. `dockerfiles/docker-entrypoint.sh` shows the canonical command sequences (`install`, `init_instance`, `init_new_projects`, `run`, `update_daily`, `update_features`, `update_changes`, `update_projects`, `update_imposm`, `uninstall`).
 
 Operational Docker helpers (used on the server; logs land under `logs/`):
 
 ```bash
-./dockerfiles/init.sh          # compose up db, build, install schema, full init (backgrounded + tail)
-./dockerfiles/update_daily.sh  # nightly: features + changes + projects update
-./dockerfiles/teardown.sh      # compose down + drop the podoma_db-data / podoma_pdm-data volumes (destructive)
+./dockerfiles/init_instance.sh     # compose up db, build, install schema, full init (backgrounded + tail)
+./dockerfiles/init_new_project.sh  # after adding a project to a running instance: init_new_projects [keep] + restart pdm
+./dockerfiles/update_daily.sh      # nightly: features + changes + projects update
+./dockerfiles/teardown.sh          # compose down + drop the podoma_db-data / podoma_pdm-data volumes (destructive)
 ```
 
 `docker-compose.yml` services: `pgsqldb` (postgis), `pdm` (this app, command `run`), `pdm-tileserv` (pg_tileserv on :7800), `pgadmin` (behind the `pgadmin` profile).

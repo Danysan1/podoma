@@ -11,5 +11,5 @@ docker compose build
 docker compose run --rm pdm install
 
 LOG_FILE="logs/init/$(date -Is).log"
-nohup docker compose run --rm pdm init &> "$LOG_FILE" && echo "SUCCESS" || echo "FAILURE" &
+nohup docker compose run --rm pdm init_instance &> "$LOG_FILE" && echo "SUCCESS" || echo "FAILURE" &
 tail -f "$LOG_FILE"
